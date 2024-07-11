@@ -1,0 +1,386 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/shared/sallerlayout.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    int saller_id = Convert.ToInt32(Session["SallerID"]);
+    var marquee = db.tbl_Notifcation.Where(a => a.MessageFor == "Sellers").FirstOrDefault();
+}
+
+<style>
+    /*@@media screen and (min-width: 501px)
+    {
+      .headings {
+      margin-bottom: -32px;
+      margin-left: 15px;
+      margin-right: 14px;
+      }
+
+
+    }*/
+    #marqueee {
+        background: white;
+        font-weight: bold;
+        padding-top: 10px;
+        font-size: 22px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    @@media (min-width: 1200px) {
+    }
+
+    @@media (max-width: 990px) {
+        p {
+            font-size: 11px;
+        }
+    }
+
+    @@media (max-width: 800px) {
+        .subcat {
+            font-size: 15px;
+        }
+
+        p {
+            font-size: 11px;
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .subcat {
+            font-size: 12px;
+        }
+    }
+
+    @@media (max-width: 360px) {
+        .subcat {
+            font-size: 10px;
+        }
+    }
+
+    input {
+        height: 100px;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .subcat {
+        background: none;
+        border: none;
+        color: white;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>
+
+
+@if (Session["msgg"] != null)
+{
+    @Html.Raw(Session["msgg"]);
+     Session["msgg"] = null;
+}
+
+
+@if (db.sallerDetails.Any(a => a.sallerId == saller_id && a.Active == true))
+{
+
+    <section class="wrapper">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 text-center headings" style="background-color:#8B5C7E; color:white; height: 34px; padding-top: 5px; margin-bottom: -35px;">
+                    <strong>Dashboard</strong>
+                </div>
+                <br />
+            </div>
+            <br />
+        </div>
+        @if (marquee != null)
+         {
+            <marquee width="100%" id="marqueee" direction="left" height="50px">
+                @marquee.notification
+            </marquee>
+        }<br />
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 text-center headings" style="background-color:#8B5C7E; color:white; height: 34px; padding-top: 5px; margin-bottom: -35px;">
+                    <strong>Product Management</strong>
+                </div>
+                <br />
+            </div>
+            <br />
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #343a40e6;">
+                        <a href="/saller/ViewAllProduct?active=Approved" style="background :none; border :none; font-size:13px;font-size:18px; color: white;">Approved Products </a>
+                        <br />
+                        (@db.Products.Where(x => x.ApprovedByAdmin == true && x.SelleroradminId == saller_id).ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #343a40e6;">
+                        <a href="/saller/ViewAllProduct?active=blocked" style="background :none;font-size:18px; border :none; color: white;">Blocked Products   </a>
+                        <br />
+                        (@db.Products.Where(x => x.UpdateBy != "Admin" && x.SelleroradminId == saller_id && x.active == false).ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #343a40e6;">
+                        <a href="/saller/ViewAllProduct?active=Sponsered" style="background :none; border :none;font-size:18px; color: white;">Sponsered Product   </a>
+                        <br />
+                        (@db.Products.Where(x => x.Sponserd == true && x.SelleroradminId == saller_id).ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #343a40e6;">
+                        <a href="/saller/AddnewProduct" style=" background :none; border :none;font-size:18px; color: white;">Add Products   </a>
+                        <br />
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #343a40e6;">
+                        <a href="/saller/Addnewbrand" style=" background :none; border :none;font-size:19px; color: white;">Add Brands   </a>
+                        <br />
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 text-center headings" style="background-color:#8B5C7E; color:white; height: 34px; padding-top: 5px; margin-bottom: -35px;">
+                    <strong>New Order Management</strong>
+                </div>
+                <br />
+            </div>
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;" id="divbox" class="bg-danger">
+                    <a href="/saller/ViewAllOrder" style=" background :none; border :none; color: white;">New </a>
+                    <br />Orders
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.DeliveryStatus == "PENDING" && a.sallerid == saller_id).ToList().Count() )
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;    background: #31B0D5;" id="divbox">
+                    <a href="/saller/viewallorder?Type=UNDER_PROCESS" style=" background :none; border :none; color: white;">Order Under Process   </a>
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.IsConfirmed == true && a.sallerid == saller_id && a.DeliveryStatus == "UNDER_PROCESS").ToList().Count() )
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                    <a href="/saller/viewallorder?Type=AWATING_PICKUP" style=" background :none; border :none; color: white;">Awaiting Pickup   </a>
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.IsConfirmed == true && a.sallerid == saller_id && a.DeliveryStatus == "AWATING_PICKUP").ToList().Count() )
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;    background: #343a40e6;" id="divbox">
+                    <a href="/saller/viewallorder?Type=SHIPPED" style=" background :none; border :none; color: white;"> Orders Shipped   </a>
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.IsConfirmed == true && a.sallerid == saller_id && a.DeliveryStatus == "SHIPPED").ToList().Count() )
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;    background: #31B0D5;" id="divbox">
+                    <a href="/saller/viewallorder?Type=ORDER_TRANSIT" style=" background :none; border :none; color: white;">Orders In-Transit  </a>
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.IsConfirmed == true && a.sallerid == saller_id && a.DeliveryStatus == "ORDER_TRANSIT").ToList().Count() )
+
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 subcat">
+                <div style="   padding: 27px;" class="bg-danger" id="divbox">
+                    <a href="/saller/viewallorder?Type=DELIVERED" style=" background :none; border :none; color: white;">Order Delivered   </a>
+                    <br />
+                    ( @db.OrderDetails.Where(a => a.IsConfirmed == true && a.sallerid == saller_id && a.DeliveryStatus == "DELIVERED").ToList().Count() )
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="row">
+                <div class="col-md-12 text-center headings" style="background-color:#8B5C7E; color:white; height: 34px; padding-top: 5px;  margin-bottom: -35px;">
+                    <strong>Return Management</strong>
+                </div>
+                <br />
+            </div>
+            <br />
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns" style=" background :none; border :none; color: white;">Approved Returns   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn != "PICKUP_UNDER_PROCESS" && a.DeliveryStatusOfReturn != "PICKUP_RETURN" && a.DeliveryStatusOfReturn != "PICKUP_SHIPPED" && a.DeliveryStatusOfReturn != "PICKUP_TRANSIT" && a.DeliveryStatusOfReturn != "PICKUP_DELIVERED" && a.DeliveryStatusOfReturn != "RETURN_UNDER_PROCESS" && a.DeliveryStatusOfReturn != "RETURN_PICKUP" && a.DeliveryStatusOfReturn != "RETURN_SHIPPED" && a.DeliveryStatusOfReturn != "RETURN_TRANSIT" && a.DeliveryStatusOfReturn != "RETURN_DELIVERED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=PICKUP_UNDER_PROCESS" style=" background :none; border :none;    font-size: 15px; color: white;">Pickup Under Process   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "PICKUP_UNDER_PROCESS").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+
+                        <a href="/saller/ApprovedReturns?Type=PICKUP_RETURN" style=" background :none; border :none; color: white;">Pickup Return   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "PICKUP_RETURN").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+
+                        <a href="/saller/ApprovedReturns?Type=PICKUP_SHIPPED" style=" background :none; border :none; color: white;">Pickup Shipped    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "PICKUP_SHIPPED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=PICKUP_TRANSIT" style=" background :none;    font-size: 15px; border :none; color: white;">Pickup in Transit    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "PICKUP_TRANSIT").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=PICKUP_DELIVERED" style=" background :none; border :none; color: white;">Pickup Deliver   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "PICKUP_DELIVERED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=RETURN_UNDER_PROCESS" style=" background :none;    font-size: 15px; border :none; color: white;">Return Under Process    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "RETURN_UNDER_PROCESS").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=RETURN_PICKUP" style=" background :none; border :none; color: white;">Return Pickup    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "RETURN_PICKUP").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=RETURN_SHIPPED" style=" background :none; border :none; color: white;">Return Shipped    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "RETURN_SHIPPED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=RETURN_TRANSIT" style=" background :none; border :none; color: white;">Return In-Transit    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "RETURN_TRANSIT").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedReturns?Type=RETURN_DELIVERED" style=" background :none; border :none; color: white;">Return Delivered     </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.Isreturned == true && a.sallerid == saller_id && a.ReturnRequest == "APPROVED" && a.DeliveryStatusOfReturn == "RETURN_DELIVERED").ToList().Count())
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="row">
+                <div class="col-md-12 text-center headings" style="background-color:#8B5C7E; color:white; height: 34px; padding-top: 5px;  margin-bottom: -35px;">
+                    <strong>Refund Management</strong>
+                </div>
+                <br />
+            </div>
+            <br />
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 col-xs-6 subcat">
+
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+
+                        <a href="/saller/ApprovedRefund" style=" background :none; border :none; color: white;">Approved Refunds   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PENDING").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PICKUP_UNDER_PROCESS" style=" background :none; border :none;    font-size: 15px; color: white;">Pickup Under Process   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PICKUP_UNDER_PROCESS").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PICKUP_RETURN" style=" background :none; border :none; color: white;">Pickup Return   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PICKUP_RETURN").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PICKUP_SHIPPED" style=" background :none; border :none; color: white;">Pickup Shipped    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PICKUP_SHIPPED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PICKUP_TRANSIT" style=" background :none;    font-size: 15px; border :none; color: white;">Pickup in Transit    </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PICKUP_TRANSIT").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PICKUP_DELIVERED" style=" background :none; border :none; color: white;">Pickup Deliver   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PICKUP_DELIVERED").ToList().Count())
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 subcat">
+                    <div style="   padding: 27px;    background: #007bffd1;" id="divbox">
+                        <a href="/saller/ApprovedRefund?Type=PROCEED_REFUND" style=" background :none;    font-size: 15px; border :none; color: white;"> Process Refund   </a>
+                        <br />
+                        (@db.OrderDetails.Where(a => a.IsCancelled == true && a.sallerid == saller_id && a.Refundrequest == "APPROVED" && a.RefundStatus == "PROCEED_REFUND").ToList().Count())
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section class="wrapper">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <img src="~/Admin_Design/images/welcome.gif" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+
+
+    </section>}
+<br />
+<br /><br /><br />

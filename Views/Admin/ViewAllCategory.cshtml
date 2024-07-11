@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Wanc.Models.Category>
+@using Wanc.Models
+@{
+    ViewBag.Title = "ViewAllCategory";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<Category>)ViewBag.data;
+}
+
+
+<script>
+    $(document).ready(function () {
+        $('#sarvesh').DataTable();
+    });
+</script>
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All Category</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">View All Category</h3>
+        </div>
+        <div class="panel-body" style="overflow-x:scroll;">
+
+            <!-- /breadcrumbs line -->
+            <!-- Form components -->
+            <div class="tab-content">
+
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="inside_panel">
+
+                    <!-- Default table -->
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+                            <table class="table" id="sarvesh">
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        <th>Category Name</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
+                                        <th>Update By</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int i = 0;}
+                                    @foreach (var item in Data)
+                                    {
+                                        i = i + 1;
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.Name</td>
+                                            @if (item.Description != null && item.Description.Length > 20)
+                                            {
+                                                <td>@item.Description.Substring(0, 20)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Description</td>
+                                            }
+                                            <td><img src="@item.Image" style="width:100px; height:100px"  /></td>
+                                            <td>@item.UpdateBy</td>
+                                            @if (item.UpdateBy == "Admin")
+                                            {
+                                                <td><a href="/Admin/Editcategory?Id=@item.ID" onclick="return confirm('Are you sure to Edit?');" class="btn btn-success">Edit</a> </td>
+                                            }
+                                            <td> <a href="DelCategory?Id=@item.ID" onclick="return confirm('Are you sure to Delete?');" class="btn btn-danger">Delete</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /default table -->
+                </div>
+                <!-- /form components -->
+                <!-- Footer -->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+

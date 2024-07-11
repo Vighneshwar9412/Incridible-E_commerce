@@ -1,0 +1,136 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "minOrderofsellers";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    
+ }
+
+<style>
+    #headingadd {
+        background-color: #8B5C7E;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-top: -15px;
+        color: white;
+    }
+</style>
+<br />
+<br />
+<br />
+
+<div class="container">
+    <center>
+        <div class="col-md-11" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+            <h2 id="headingadd">Add Seller minimum Order details</h2><br />
+
+            <div class="panel-group" id="accordion">
+                <form action="/Admin/minOrderofsellers" method="post">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <label style="float:left">
+                                        Select Seller
+                                    </label>
+                                    <br />
+                                    <select class="form-control" name="sellerid" required>
+                                        <option value="">--Select--</option>
+                                        @{
+                                            var tblDATA = db.sallerDetails.ToList();
+                                            foreach (var item in tblDATA)
+                                            {
+                                                <option value="@item.sallerId">@item.FirstName</option>
+                                            }
+                                        }
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="float:left; font-size:15px">
+                                        Enter Minimum Order :
+                                    </label>
+                                    <br />
+                                    <input type="text" class="form-control" name="MinAmount" value="" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="float:left; font-size:15px">
+                                        &nbsp;
+                                    </label>
+                                    <br />
+                                    <input class="btn btn-success " type="submit" value="Submit" style="float: left">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                </form>
+            </div>
+        </div>
+    </center>
+</div>
+@{
+    var dataa = db.MinOrder_For_sallers.ToList();
+}
+@if (dataa != null && dataa.Count >= 0)
+{
+
+    <div class="container">
+        <center>
+            <div class="col-md-11" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+                <h2 id="headingadd">Seller Minimun Order Details</h2><br />
+
+                <div class="panel-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Seller-ID</th>
+                                <th>Minimum order</th>
+                                <th>CreateDate</th>
+                                <th>Update By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 0;}
+                            @foreach (var item in dataa)
+                            {
+                                i++;
+                                <tr>
+                                    <th>@i</th>
+                                    <th>
+
+                                        @db.sallerDetails.Where(a => a.sallerId == item.sellerid).FirstOrDefault().Salerusername
+
+                                    </th>
+                                    <th>@item.MinAmount</th>
+                                    <th>@item.craetedate</th>
+                                    <th>@item.UpdateBy</th>
+
+                                    @*<th>
+                                            <a href="/Admin/DeleteDeliveryCharge?ID=@item.ID" class="btn btn-danger btn-sm">Delete</a>
+                                        </th>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </center>
+    </div>
+}
+else
+{
+    <h1>No Data!!!</h1>
+}
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

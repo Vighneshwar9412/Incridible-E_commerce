@@ -1,0 +1,152 @@
+﻿
+@model Wanc.Models.Product
+@using Wanc.Models
+@{
+    ViewBag.Title = "ProductPage";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+<section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;"><p><h2>PRODUCT TAB</h2></p></section>
+<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="details-gallery">
+                    <ul class="details-preview">
+                        <li><img src="@Model.Image" alt="product" style="height:360px; width:560px;"></li>
+                    </ul>
+                    <ul class="details-thumb">
+                        <li><img src="@Model.Image" alt="product" style="height:100px; width:100px;"></li>
+                        <li><img src="@Model.Image" alt="product" style="height:100px; width:100px;"></li>
+                        <li><img src="@Model.Image" alt="product" style="height:100px; width:100px;"></li>
+                        <li><img src="@Model.Image" alt="product" style="height:100px; width:100px;"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="details-content">
+                    <h3 class="details-name"><a href="#">@Model.Name</a></h3>
+                    <div class="details-rating">
+                        <i class="active icofont-star"></i>
+                        <i class="active icofont-star"></i><i class="active icofont-star"></i>
+                        <i class="active icofont-star"></i>
+                        <i class="icofont-star"></i><a href="#">(3 reviews)</a>
+                    </div>
+                    <h3 class="details-price">@Model.Price Rs.<span><del>@Model.Discount</del><small></small></span></h3>
+                    <p>
+                        @Model.Description
+                    </p><br />
+                    <div class="details-list-group">
+                        <label class="details-list-title">tags:</label>
+                        <ul class="details-tag-list">
+                            <li><a href="#">organic</a></li>
+                            <li><a href="#">fruits</a></li>
+                            <li><a href="#">chilis</a></li>
+                        </ul>
+                    </div>
+                    <div class="details-list-group">
+                        <label class="details-list-title">Share:</label>
+                        <ul class="details-share-list">
+                            <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
+                            <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
+                            <li><a href="#" class="icofont-linkedin" title="Linkedin"></a></li>
+                            <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
+                        </ul>
+                    </div>
+                    <div class="details-add-group">
+
+                        @if (Session["eamil"] != null)
+                        {
+                            string useruniquID = Session["eamil"].ToString();
+                            if (db.KartDetails.Any(a => a.ProductId == Model.ID && a.uniqueID == useruniquID))
+                            {
+                                <div class="product-action"><button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
+                            <a href="/Home/CartDetailByDatabes" style="background: #ff8100; display: block" class="product-add" ><span>View Cart</span></a>
+                            }
+                            else
+                            {
+                                <div class="product-action" style="display:block">
+                                    <button class="action-minus" title="Quantity Minus">
+                                        <i class="icofont-minus"></i>
+                                    </button><input class="action-input" title="Quantity Number" id="incrrrrr" type="text" name="Quantity" value="1" style="width:40%">
+                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                </div>
+                                <br />
+                                <a  onclick="addtocart(@Model.ID)" class="product-add" style="display:block"><span>add to cart</span></a>
+                            }
+                        }
+                        else
+                        {
+                       <a href="/home/login" class="product-add" onclick="return confirm('Please Login First!')" style="display:block"><span>Add to cart</span></a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function addtocart(productId) {
+        debugger
+        var Quentity=$("#incrrrrr").val();
+        window.location.href = "/Home/AddToKart?ProductId="+productId+"&Quantity="+Quentity;
+
+    }
+</script>
+<script>
+    function redirect() {
+        window.location.href = "/Home/Checkout";
+    }
+    function RedirectToHome() {
+        window.location.href = "/Home/Index";
+    }
+    function productplus(id) {
+        var Url = "/Home/KartPlus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+
+    function productminus(id) {
+        var Url = "/Home/KartMinus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+    function deletecartitem(id) {
+        var Url = "/Home/deletecart?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+</script>

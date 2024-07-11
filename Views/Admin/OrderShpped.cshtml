@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Wanc.Models.MyOrderProductsDTO>
+@using Wanc.Models
+@{
+    ViewBag.Title = "OrderShpped";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<MyOrderProductsDTO>)ViewBag.data;
+}
+
+<style>
+    th {
+        text-align: center;
+       }
+
+    td {
+         text-align: center;
+       }
+</style>
+
+
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"]);
+     TempData["msg"] = null;
+}
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Order Shipped</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px">Order Shipped</h6>
+        </div>
+        <div class="table-responsive">
+            @if (Data != null && Data.Count() > 0)
+            {
+                <table class="table" id="Totaldata">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Order Date</th>
+                            <th>Order-ID</th>
+                            <th>Product-ID</th>
+                            <th>Product Name</th>
+                            <th>Seller-ID</th>
+                            <th>Buyer-ID</th>
+                            <th>Buyer-Address</th>
+                            <th>Qty</th>
+                            <th>MRP</th>
+                            <th>Discount</th>
+                            <th>Net Amount</th>
+                            <th>Payment Type</th>
+                            <th>Transaction-ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 0;}
+                        @foreach (var item in Data)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.CreateDate</td>
+                                <td>@item.OrderIdN</td>
+                                <td>@item.ProductId</td>
+                                <td>
+
+                                    @if (item.Productname.Length >= 10)
+                                    {
+                                        @item.Productname.Substring(0, 10)
+                                    }
+                                    else
+                                    {
+                                        @item.Productname
+                                    }
+                                </td>
+
+                                <td>@item.seller_SelID</td>
+                                <td>@item.Buyer_selfID</td>
+                                <td>@item.Buyer_address</td>
+                                <td>@item.Quantity</td>
+                                <td><i class="fa fa-inr"></i> @item.Price</td>
+                                <td>@item.Discount %</td>
+                                <td><i class="fa fa-inr"></i> @item.TotalAmount</td>
+                                <td>@item.PaymentMethod</td>
+
+                                <td></td>
+
+
+
+                                <td><a href="/Admin/ProceedOrder?ID=@item.Od_ID" class="btn btn-warning btn-sm">Proceed Order Status</a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3>No data in Database</h3>
+            }
+        </div>
+    </div>
+
+</section>

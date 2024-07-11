@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Wanc.Models.ProductDto>
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Inventory</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Inventory</a></li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold">Inventory</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table" id="sarvesh2">
+                            <thead>
+                                <tr>
+                                    <th>S. No</th>
+                                    <th>Product Name</th>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
+                                    <th>Unit</th>
+                                    <th>Price(Rs.)</th>
+                                    <th>Discount(%)</th>
+                                    <th>Descrption</th>
+                                    <th>Image</th>
+                                    <th>Update BY</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @{ int i = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    i = i + 1;
+                                    <tr>
+                                        <td>@i</td>
+                                        @if (item.Name != null)
+                                        {
+                                            <td>@item.Name</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.BrandName != null)
+                                        {
+                                            <td>@item.BrandName</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.CategoryName != null)
+                                        {
+                                            <td>@item.CategoryName</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Subname != null)
+                                        {
+                                            <td>@item.Subname</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Unit != null)
+                                        {
+                                            <td>@item.Unit</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Price != null)
+                                        {
+                                            <td>@item.Price</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Discount != null)
+                                        {
+                                            <td>@item.Discount</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Description != null)
+                                        {
+                                            if (item.Description.Length > 25)
+                                            {
+                                                <td>@item.Description.Substring(0, 25)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Description</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        <td><img src="/ProductImages/@item.Image" style="width:100px;height:50px" /></td>
+                                        @if (item.UpdateBy != null)
+                                        {
+                                            <td>@item.UpdateBy</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.UpdateBy == "Admin")
+                                        {
+                                            <td><a href="EditProducts?Id=@item.ID" onclick="return confirm('Are you sure to Edit?');" class="btn btn-success">Edit</a></td>
+                                        }
+                                        <td><a href="DeleteProduct?Id=@item.ID" onclick="return confirm('Are you sure to Delete?');" class="btn btn-danger">Delete</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

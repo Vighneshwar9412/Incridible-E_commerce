@@ -1,0 +1,225 @@
+﻿@model IEnumerable<Wanc.Models.KartDetailDto>
+@using Wanc.Models
+@{
+    ViewBag.Title = "CartDetailsBySession";
+    Layout = "~/Views/_Layouthome.cshtml";
+}
+
+@{
+    ViewBag.Title = "CartDetailsBySession";
+    Layout = "~/Views/_Layouthome.cshtml";
+    var checkoutvalue = "";
+    if (Model != null)
+    {
+        double data1 = Model.Sum(a => a.Disvalue * a.Quantity);
+        if (data1 != null)
+        {
+            if (data1 < 599)
+            {
+                checkoutvalue = (Model.Sum(a => a.Disvalue * a.Quantity) + 20).ToString();
+            }
+            else
+            {
+                checkoutvalue = (Model.Sum(a => a.Disvalue * a.Quantity)).ToString();
+            }
+        }
+    }
+}
+
+<br /><br />
+@if (Model != null && Model.Count() > 0)
+{
+    <section class="section-content padding-y">
+        <div class="container" style="    background: #d3d3d326;    padding-top: 10px;">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="card">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr>
+                                    <th scope="col" style="color: black;"><strong>Product</strong></th>
+                                    <th scope="col" style="color: black;"><strong>Quantity</strong></th>
+                                    <th scope="col" style="color: black;"><strong>Price</strong></th>
+                                    <th scope="col"> </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <figure class="itemside">
+                                                <div class="aside"><img src="@item.productImage" style="height: auto;width: 135px;"></div>
+                                                <figcaption class="info">
+                                                    <a href="#" class="title text-dark">@item.Productname</a>
+                                                    @*<p class="text-muted small"> <br> Brand: Gucci</p>*@
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" onclick="productminus(@item.ProductId)" class="cart_minus" style="text-align:center">&#x2212;</a>
+                                            <a href="javascript:void(0)" class="cart_qty">@item.Quantity</a>
+                                            <a href="javascript:void(0)" onclick="productplus(@item.ProductId)" class="cart_plus" style="text-align:center">&#x0002B;</a>
+
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap">
+                                                @if (item.Discount != null && item.Discount != 0)
+                                                {
+
+                                                    <var class="price"><i class="fa fa-inr"></i> @string.Format("{0:n0}", Convert.ToDecimal(item.DiscountedPrice)) </var>
+                                                    <small class="text-muted">&nbsp;&nbsp; <del>Mrp <i class="fa fa-inr"></i> @string.Format("{0:n0}", item.Price) </del></small>
+                                                    double total = Math.Round(Convert.ToDouble(item.DiscountedPrice)) * item.Quantity;
+
+                                                    <p>
+                                                        <b><i class="fa fa-inr"></i>@string.Format("{0:n0}", total) </b>
+                                                        <em style=" font-size: 10px;">( <i style="color: darkorange;">@item.Discount % Retail Margin</i>  )</em>
+                                                        <br /><em style=" font-size: 10px;">(@item.GST % GST Included )</em>
+                                                    </p>
+                                                }
+                                                else
+                                                {
+                                                    <var class="price"> <i class="fa fa-inr"></i>@string.Format("{0:n0}", Convert.ToDecimal(item.Price)) </var>
+
+                                                }
+
+
+                                            </div> <!-- price-wrap .// <!-- price-wrap .// -->
+                                        </td>
+                                        <td class="text-right">
+                                            @*<a data-original-title="Save to Wishlist" title="" href="#" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>*@
+                                            <a href="/Home/deletecart?id=@item.ProductId" class="btn btn-light"><button type="button" class="close"><i class="fa fa-trash"></i>   </button></a>
+                                        </td>
+                                    </tr>}
+                            </tbody>
+                        </table>
+
+                    </div> <!-- card.// -->
+                    <div class="alert alert-success mt-3">
+                        <p class="icontext"><i class="icon text-success fa fa-truck"></i> Delivery within 1-2 weeks</p>
+                    </div>
+                </main> <!-- col.// -->
+                <aside class="col-md-3">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <dl class="dlist-align">
+
+                                @if (checkoutvalue == "")
+                                {
+                                    <div>
+                                        <div style="float:right"><i class="fa fa-inr"></i> @string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue)) d</div>
+                                    </div>
+                                    <dt>Total:</dt>
+
+                                }
+                                else
+                                {
+                                    if (Convert.ToInt32(checkoutvalue) < 599)
+                                    {
+                                        <div>
+                                            <div style="float:right"><i class="fa fa-inr"></i> @string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue) - 20) </div>
+                                        </div>
+                                        <dt>Total:</dt>
+                                    }
+                                }
+
+                            </dl>
+
+                            <dl class="dlist-align">
+                                @if (checkoutvalue == "")
+                                {
+                                    <div>
+                                        <div style="float:right"><i class="fa fa-inr"></i> 20 </div>
+                                    </div>
+                                    <dt>Delivery Charge:</dt>
+
+                                }
+                                else
+                                {
+                                    if (Convert.ToInt32(checkoutvalue) < 599)
+                                    {
+                                        <div>
+                                            <div style="float:right"><i class="fa fa-inr"></i> 20 </div>
+                                        </div>
+                                        <dt>Delivery Charge:</dt>
+                                    }
+                                }
+
+                            </dl>
+
+                            @*<dl class="dlist-align">
+
+                                    <div>
+                                        <div style="float:right">  <i class="fa fa-percent"></i></div>
+                                    </div>
+                                    <dt>Retail Margin:</dt>
+
+                                </dl>*@
+
+
+                            @{
+    if (Model != null && Model.Count() > 0)
+    {
+        checkoutvalue = (Model.Sum(a => a.Disvalue * a.Quantity)).ToString();
+        <div>
+            <div style="float:right"><strong><i class="fa fa-inr"></i>@string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue)) </strong></div>
+        </div>
+                                <dt>Sub Total:</dt>
+
+                                <hr>
+                                <p class="text-center mb-3">
+                                    <button type="button" class="btn btn-success" style=" padding: 4px;font-size: 15px; border-radius: 6px;" onclick="redirect()"><i class="fa fa-inr"></i> @string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue)) Make Purchase <i class=" fa fa-chevron-right"></i> </button>
+                                </p>
+    }
+    else
+    {
+        <dl class="dlist-align">
+            <dt>Sub Total:</dt>
+            <dd class="text-right  h5"><strong><i class="fa fa-inr"></i>@string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue)) </strong></dd>
+        </dl>
+                                <hr>
+                                <p class="text-center mb-3">
+                                    checkoutvalue = (0).ToString();
+                                    <button type="button" style=" padding: 4px;font-size: 15px; border-radius: 6px;" class="btn btn-success" onclick="alert('Please Login First')">
+                                        <i class="fa fa-inr"></i> @string.Format("{0:n0}", Convert.ToDecimal(checkoutvalue)) Make Purchase <i class=" fa fa-chevron-right"></i>
+                                    </button>
+                                </p>
+    }
+                            }
+
+
+                            @*<img src="images/misc/payments.png" height="26">*@
+
+                        </div>
+                    </div>  <!-- card .// -->
+                </aside> <!-- col.// -->
+            </div>
+        </div> <!-- container .//  -->
+    </section>
+}
+else
+{
+    <section class="section-content padding-y">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="card">
+
+                        <h4>  No Products In My Kart!!!</h4>
+                    </div> <!-- card.// -->
+
+                </main> <!-- col.// -->
+                <aside class="col-md-3"></aside> <!-- col.// -->
+            </div>
+        </div> <!-- container .//  -->
+
+
+
+
+
+    </section>
+}
+
+<!---->

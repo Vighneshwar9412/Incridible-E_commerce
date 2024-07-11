@@ -1,0 +1,257 @@
+D:\project\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+D:\project\Wanc\Wanc\Wanc\bin\Wanc.dll
+D:\project\Wanc\Wanc\Wanc\bin\Wanc.pdb
+D:\project\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+D:\project\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\project\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+D:\project\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+D:\project\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+D:\project\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+D:\project\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+D:\project\Wanc\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+E:\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+E:\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+E:\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+E:\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+E:\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+E:\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+E:\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+E:\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.CopyComplete
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+C:\Users\Admin\Desktop\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+E:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+D:\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+E:\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+D:\Projects Web\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll.config
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Wanc.pdb
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Net.Http.Formatting.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.WebHost.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\EntityFramework.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\Newtonsoft.Json.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Net.Http.Formatting.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Helpers.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Http.WebHost.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Mvc.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.Razor.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.AssemblyReference.cache
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.CoreCompileInputs.cache
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.csproj.CopyComplete
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.dll
+C:\Users\nirma\OneDrive\Desktop\Wanclatest8dec2022 (1)\Wanclatest8dec2022 (1)\Wanclatest8dec2022\Wanc\Wanc\Wanc\Wanc\Wanc\obj\Debug\Wanc.pdb
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Wanc.dll.config
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Wanc.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Wanc.pdb
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\EntityFramework.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Helpers.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Mvc.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Razor.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\EntityFramework.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Helpers.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Mvc.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.Razor.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Downloads\Wanc\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Downloads\Wanc\Wanc\obj\Debug\Wanc.dll
+C:\Users\Admin\Downloads\Wanc\Wanc\obj\Debug\Wanc.pdb
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\bin\Wanc.dll.config
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\bin\Wanc.dll
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\bin\Wanc.pdb
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\bin\Newtonsoft.Json.dll
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\obj\Debug\Wanc.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\obj\Debug\Wanc.csproj.CopyComplete
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\obj\Debug\Wanc.dll
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\obj\Debug\Wanc.pdb
+C:\Users\HP\Downloads\Wanc30jan2023\Wanc\obj\Debug\Wanc.csproj.AssemblyReference.cache
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Wanc.dll.config
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Wanc.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Wanc.pdb
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Newtonsoft.Json.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.Helpers.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.Razor.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.Deployment.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.Razor.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\Microsoft.Web.Infrastructure.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.Helpers.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.Razor.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.Deployment.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\bin\System.Web.WebPages.Razor.xml
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\obj\Debug\Wanc.dll
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\obj\Debug\Wanc.pdb
+D:\Projects Web\Wanc Project\Wanc6feb2023\Wanc30jan2023\Wanc\obj\Debug\Wanc.csprojResolveAssemblyReference.cache

@@ -1,0 +1,62 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "EditPincode";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var data = (tbl_pincode)ViewBag.data;
+}
+
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">EDit Pincode</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title" style="color:green">
+                            <i class="icon-bubble4"></i>
+                        </h6>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="~/Admin/EditPincode">
+                            <label class="danger" style="color:blue;font-size:13px">@TempData["msg"]</label>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Pin Code:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" value="@data.Pincode" placeholder="Pin Code" name="Pincode" id="Pincode" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter City:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control " value="@data.City" placeholder="City" name="City" />
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter State:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" value="@data.State" placeholder="State" name="State" />
+                                    <input type="hidden" class="form-control" value="@data.Id" name="Id" />
+                                </div>
+
+
+                            </div>
+                            <div class="form-actions text-center">
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

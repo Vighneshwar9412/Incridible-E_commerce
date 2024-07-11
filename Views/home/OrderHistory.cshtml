@@ -1,0 +1,49 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var data = db.OrderDetails.ToList();
+}
+
+<section class="inner-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-4"></div>
+            <div class="col-lg-12">
+                <div class="table-scroll">
+                    <table class="table-list">
+                        <thead>
+                            <tr>
+                                
+                                <th scope="col">Product Image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">OrderId</th>
+                                <th scope="col">Order Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in db.OrderDetails.ToList())
+                            {
+                                <tr>
+                                    
+                                    <td class="table-image"><img src="@item.ProductImage" alt="product"></td>
+                                    <td scope="col">@item.ProductName</td>
+                                    <td scope="col">@item.SellingPrice</td>
+                                    <td scope="col">@item.Quantity</td>
+                                    <td scope="col">@item.OrderId</td>
+                                    <td scope="col">@item.DeliveryStatus</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

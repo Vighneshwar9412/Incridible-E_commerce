@@ -1,0 +1,214 @@
+﻿@model IEnumerable<Wanc.Models.ProductDto>
+@using Wanc.Models
+@{
+    ViewBag.Title = "GetProductBySeller";
+    Layout = "~/Views/_Layouthome.cshtml";
+    var cart = (List<KartDetailDto>)Session["kart"];
+    var categorylist = (List<Category>)ViewBag.Category;
+    var itemdata = (List<subcategory>)ViewBag.subcategory;
+    var prodata = (List<Product>)ViewBag.productdata;
+}
+
+
+<br />
+<div class="ps-section__content">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-6" style="    margin-bottom: 15px;">
+                    <div class="ps-product">
+
+                        <div class="ps-product__thumbnail">
+                            <a href="/home/product_detail?Id=@item.ID">
+                                <img src="~/ProductImages/@item.Image" alt="" style="height:235px; width:300px">
+                            </a>
+                            <div class="ps-product__badge">
+                                Margin @item.Discount %
+
+                            </div>
+
+                            <input type="hidden" id="Userid_" value="@Session["UserId"]" />
+
+                        </div>
+
+
+                        <div class="ps-product__container">
+                            @if (item.Name.Length >= 8)
+                            {
+                                <center><a class="ps-product__vendor" href="#">@item.Name.Substring(0, 12)</a></center>
+                            }
+                            else
+                            {
+                                <center><a class="ps-product__vendor" href="#">@item.Name</a></center>
+                            }
+
+                            <p class="ps-product__price sale">
+                                @if (item.Discount != null)
+                                {
+                                    var dprice = item.Price - (item.Price * item.Discount) / 100;
+                                    <div>
+
+                                        <b>MOQ:</b> @item.Unit &nbsp;&nbsp;&nbsp;
+                                        <div style="float:right">
+                                            <i class="fa fa-inr"></i><del>@string.Format("{0:n0}", item.Price)</del>
+                                        </div>
+                                        <div style="float:right">
+                                            <i class="fa fa-inr" style="color: orangered"></i>@string.Format("{0:n0}", dprice)&nbsp;&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-inr" style="color: orangered"></i><del>@string.Format("{0:n0}", item.Price)</del>
+                                }
+                            </p>
+
+
+
+                            @if (Session["UserId"] != null)
+                            {
+                                var Kart = (List<KartDetail>)ViewBag.kart;
+                                if (Kart != null && Kart.Count() > 0)
+                                {
+                                    if (Kart.Any(a => a.ProductId == item.ID))
+                                    {
+                                        <div class="pro-btn"><a href="/Home/CartDetailBydatabes" class="btn btn-primary" style="padding: 6px; background: #e8374fe3; border: none; padding-left: 30px; padding-right: 30px; font-size: 15px; width: 100%;    margin-bottom: 5px;">GO TO CART</a></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="pro-btn" onclick="AddToKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style="background: #FF8C46; border: none; width: 100%;    margin-bottom: 5px;  font-size: 15px;">ADD TO CART</a></div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="pro-btn" onclick="AddToKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style="background: #FF8C46; border: none;  width: 100%;    margin-bottom: 5px;font-size: 15px;">ADD TO CART</a></div>
+                                }
+                            }
+                            else
+                            {
+                                if (cart == null)
+                                {
+                                    break;
+                                }
+                                if (cart.Any(a => a.ProductId == item.ID))
+                                {
+                                    <div class="pro-btn"><a href="/Home/CartDetailsBySession" class="btn btn-primary" style="padding: 6px; background: #e8374fe3; border: none; padding-left: 30px; padding-right: 30px; font-size: 15px; width: 100%;    margin-bottom: 5px;">GO TO CART</a></div>
+                                }
+                                else
+                                {
+                                    <center>
+                                        <div class="pro-btn" onclick="AddToSessionKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style=" background: #FF8C46; border: none; font-size: 15px; width: 100%;    margin-bottom: 5px;">ADD TO CART</a></div>
+
+                                    </center>
+
+                                }
+                            }
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function AddToKart(productId) {
+        var Url = "/Home/AddToKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+<script>
+    function AddToSessionKart(productId) {
+        var Url = "/Home/AddToSessionKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+<script>
+    function productplus(id) {
+        debugger;
+        var Url = "/Home/KartPlus?productid=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+
+    function productminus(id) {
+        debugger;
+        var Url = "/Home/KartMinus?productid=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+</script>
+<script>
+    function AddToWishList(id) {
+        debugger;
+        var UserNid = $("#Userid_").val();
+        var Url = "/Home/AddToWishList?productid=" + id + "&UserId=" + UserNid;;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    alert("Added To WishList");
+                }
+                else if (response == "Notok") {
+                    alert("Login Your Id First");
+                }
+                else if (response == "Dublicate") {
+                    alert("Already In WishList");
+                }
+            }
+        });
+    }
+</script>
+

@@ -1,0 +1,112 @@
+/* Base for label styling */
+label { font-weight: normal;}
+input[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+input[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 2.2em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+input[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.5em; height: 1.5em;
+  border: 2px solid #5a54d8;
+  background: white;
+  border-radius: 0px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+input[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2714';
+  position: absolute;
+  top: .2em; left: .2em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #5a54d8;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+input[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* RADIO */
+
+.radiobtn {
+  display: inline-block;
+  position: relative;
+}
+
+.radiobtn input[type='radio'] {
+  display: none;
+}
+
+.radiobtn label {
+  color: #666;
+  font-weight: normal;
+  margin-right: 15px;
+}
+
+.radiobtn label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 5px 0 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 2px solid skyblue;
+  background-color: transparent;
+}
+
+.radiobtn input[type=radio]:checked + label:after {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 9px;
+  left: 4px;
+  content: " ";
+  display: block;
+  background: skyblue;
+}
+
+/*Float Label CSS*/
+.form-group { 
+  display: flex; 
+}
+.control-label { 
+  font-size: 16px; 
+  font-weight: 400; 
+  left: 40px; 
+  opacity: 0.8; 
+  pointer-events: none; 
+  position: absolute; 
+  transform: translate3d(0, 15px, 0) scale(1); 
+  transform-origin: left top; transition: 240ms; 
+}
+.form-group.focused .control-label { 
+  opacity: 1; 
+  transform: scale(0.75); 
+  color: skyblue; 
+}
+input { align-self: flex-end; }
+input::-webkit-input-placeholder { color: transparent; transition: 240ms; }
+input:focus::-webkit-input-placeholder { transition: none; }
+.form-group.focused input::-webkit-input-placeholder { color: #bbb; }

@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "CreatePurchase";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Create Purchase</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Create Purchase</a></li>
+        </ul>
+        @if (TempData["MGS1"] != null)
+        {
+            <h4>@TempData["MGS1"].ToString()</h4>
+        }
+    </div>
+    <form action="/Saller/CreatePurchase" method="post">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <b>ProductName</b><br />
+                <input type="text" name="Name" class="ProductName" />
+            </div>
+            <div class="col-md-2">
+                <b>Quantity</b><br />
+                <input type="number" onchange="GetPrice(this)" name="Quantity" style="width:100%;" required />
+            </div>
+            <div class="col-md-2">
+                <b>Price</b><br />
+                <input type="number" onchange="calcTotal(this)" name="Price" style="width:100%;" required />
+            </div>
+            <div class="col-md-3">
+                <b>Total</b><br />
+                <input type="number" name="Total" style="width:100%;" />
+            </div>
+            <div class="col-md-2">
+                <input type="submit" onclick="$('#purchaseForm').submit()" class="btn btn-primary" value="create" style="margin-top:17px;" required>
+            </div>
+        </div>
+    </form>
+
+</section>
+<script>
+    //For applying autocomplete on Dynamically Generated Rows
+    function Replicate() {
+        $('#tbody').append('<div class="col-md-12 tr"><div class="col-md-3"><input type="text" name="ProductName" class="ProductName" style="float: left; margin-left: -15px;" /><input type="number" style="display:none" class="ProductId" name="productId" /></div><div class="col-md-2"><input type="number" onchange="GetPrice(this)" name="Quantity" style="margin-left: -10px;" /></div><div class="col-md-2"><input type="number" onchange="calcTotal(this)" name="Price" style="margin-left: 50px;" /></div><div class="col-md-3"><input type="number" name="Total"  style="float: right; margin-right: -95px;"/></div><div class="col-md-2"><a href="#" style="float:right;" onclick="Replicate()" class="btn btn-danger"><i class="fa fa-plus-square"></i></a><a href="#" style="float:right;" onclick="Delete(this)" class="btn btn-primary"><i class="fa fa-trash-o"></i></a></div></div>').find('.ProductName').focus().autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/Saller/GetProducts',
+                    data: { term: request.term },
+                    type: 'GET',
+                    success: function (data) {
+                        if (!data.length) {
+                            var result = [{ label: 'No data found', value: response.term }];
+                            response(result);
+                            $(this).val("");
+                        }
+                        else {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Name,
+                                    value: item.Name,
+                                    id: item.ID
+                                };
+                            }));
+                        }
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $(this).find('.ProductId').text(ui.item.id);
+                $('#search').val(ui.item.value);
+                return false;
+            }
+        });;
+    }
+
+    function GetPrice(obj) {
+        var product = $(obj).parent('div').prev('div').children('input:first').val();
+        var Url = "/Saller/GetPrice?Name=" + product;
+        $.ajax({
+            url: Url,
+            method: 'Get',
+            success: function (data) {
+                if (data != null) {
+                    $(obj).parent('div').prev('div').find('input[name^=productId]').val(data.ID * 1);
+                    $(obj).parent('div').next('div').children('input').val(data.Price * 1);
+                    calcTotal($(obj).parent('div').next('div').children('input'));
+                }
+            }
+        });
+    };
+
+    function Delete(obj) {
+        var tr = $(obj).parent('div').parent('div');
+        tr.html('');
+    }
+
+    function calcTotal(obj) {
+        var price = $(obj).val();
+        var quantity = $(obj).parent('div').prev('div').children('input').val();
+        $(obj).parent('div').next('div').children('input').val(price * quantity);
+    }
+
+    //For the Default(First) Line Of Form
+    $('.ProductName').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '/Saller/GetProducts',
+                data: { term: request.term },
+                type: 'GET',
+                success: function (data) {
+                    if (!data.length) {
+                        var result = [{ label: 'No data found', value: response.term }];
+                        response(result);
+                        $(this).val("");
+                    }
+                    else {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.Name,
+                                value: item.Name,
+                                id: item.Id
+                            };
+                        }));
+                    }
+                }
+            });
+        },
+        select: function (event, ui) {
+            $('#catId').val(ui.item.id);
+            $('#search').val(ui.item.value);
+            return false;
+        }
+    });
+
+</script>

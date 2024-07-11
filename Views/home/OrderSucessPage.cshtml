@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "OrderSucessPage";
+    Layout = "~/Views/_Layouthome.cshtml";
+}
+
+<section class="inner-section wishlist-part">
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-scroll">
+                    <div class="account-title">
+                        <h4>Thanks For Shopping With Us!</h4>
+                    </div>
+                    <div class="row">
+                        <center>
+                            <span style="font-weight:bold; font-size:20px;"> <img src="~/Images/tick.png" style="width:60px;" /></span>
+
+                            <br />
+                            <h3>Order Placed Successfully.</h3>
+                            @Html.Raw(Session["ShoppingMessage"])
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

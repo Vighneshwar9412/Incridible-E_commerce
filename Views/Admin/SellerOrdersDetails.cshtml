@@ -1,0 +1,98 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "SellerOrdersDetails";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Model = (List<OrderDetailDTO>)ViewBag.dataa;
+}
+
+<style>
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#"> seller Order Details</a></li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px;">Order Details</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (Model != null)
+                        {
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Saller</th>
+                                        <th>Address</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Discount</th>
+                                        <th colspan="2">Delivery Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ClientName</td>
+
+                                            @{
+                                        wanc_dbEntities db = new wanc_dbEntities();
+                                        int id = Convert.ToInt32(item.saller_id);
+                                            }
+                                            @if (db.sallerDetails.Any(a => a.sallerId == id))
+                                            {
+                                                <td>
+                                                    @db.sallerDetails.Where(a => a.sallerId == id).FirstOrDefault().FirstName;
+                                                </td>
+                                            }
+
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+
+
+                                            <td>@item.Address</td>
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Discount</td>
+                                            <td>@item.DeliveryStatus</td>
+                                            @if (item.Isconfirm == true)
+                                            {
+                                                <td><a href="~/Admin/ConfirmOrder?Id=@item.ID" class="btn btn-info btn-sm">Confirmed </a></td>
+                                            }
+                                            else
+                                            {
+                                                <td><a href="~/Admin/ConfirmOrder?Id=@item.ID" class="btn btn-danger btn-sm">Blocked </a></td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br />

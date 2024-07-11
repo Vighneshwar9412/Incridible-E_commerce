@@ -1,0 +1,306 @@
+﻿@model Wanc.Models.Product
+@using Wanc.Models
+@{
+    ViewBag.Title = "AddnewProduct";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<section class="wrapper">
+    <div>
+
+    </div>
+    @if (TempData["MSG"] != null)
+    {
+        @Html.Raw(TempData["MSG"]);
+        TempData["MSG"] = null;
+    }
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title" style="color:green;padding-top:15px">
+                            <b>Add Products</b>
+                        </h6>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("AddNewProduct", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <label class="col-md-4">Product Type:</label>
+                                <div class="col-md-8">
+                                    <select required name="Type">
+                                        <option value="">--Select--</option>
+                                        <option value="New">New Arrival Product</option>
+                                        <option value="Featured">Featured Product</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Product Name:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Delivery Pin:</label>
+                                <div class="col-md-8" style="max-height:65px;overflow-y:scroll;">
+                                    <input type="checkbox" id="checkAll" /> Check All<br />
+                                    @{ var dataPin = (List<tbl_pincode>)ViewBag.pin;}
+                                    @foreach (var item in dataPin)
+                                    {
+                                        <input type="checkbox" name="Pincode" value="@item.Pincode " /> @item.Pincode<br />
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Product Brand:</label>
+                                <div class="col-md-6">
+                                    @Html.DropDownListFor(a => a.BrandID, new SelectList(ViewBag.Brand, "ID","BrandName"), new { @class = "form-control", @required = "required" })
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" style="float:right" onclick="showhde();" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="form-group" id="showbrand" style="display:none">
+                                <label class="col-md-4"></label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="brnd" placeholder="Enter Brand Name">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" style="float:right" onclick="return brandsubmit();" class="btn btn-success btn-sm"> Submit</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Select Product Category:</label>
+                                <div class="col-md-8">
+
+                                    @Html.DropDownListFor(a => a.categoryId, new SelectList(ViewBag.Cate, "ID", "Name"), new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Select SubCategory:</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(a => a.subcatid, new SelectList(ViewBag.subcate, "id", "subcategorname"), new { @class = "form-control", @required = "required" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">Min Qty:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.Unit, new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">Product Weight (g ):</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="Weight" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Color:</label>
+                                <div class="col-md-6">
+                                    <div id="favcolorID">
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" style="float:right" id="Addcolor" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Dimensions:</label>
+                                <div class="col-md-6">
+                                    <div id="fields"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" style="float:right" id="btnAddField" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">Specification:</label>
+                                <div class="col-md-6">
+                                    <div id="fields1"></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" style="float:right" id="btnAddField1" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Product MRP:</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="Price" value=" " class="form-control" required id="Price" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Margin(%)</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="Discount" class="form-control" required id="Discount" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter GST(%)</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="GST" class="form-control" required id="GST" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Product Description:</label>
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(a => a.Description, 10, 40, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4"></label>
+                                <div class="col-md-8">
+                                    <div class="gallery"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Product Image: </label>
+                                <div class="col-md-8">
+                                    <input type="file" multiple id="gallery-photo-add" title="search image" name="file">
+                                </div>
+                            </div>
+                            <div class="form-actions text-right">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                                <a href="Dashboard" class="btn btn-primary">Cancel</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img style="height:auto; width:100px">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#gallery-photo-add').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+    });
+
+</script>
+
+<script>
+    function cdvalue() {
+        debugger;
+        var value = $("#price").val() * 1;
+        var per = $("#valuecd").val() * 1;
+        var tree = per * value;
+        var four = tree / 100;
+        var final = value - four;
+        $("#dvalue").val(final);
+    };
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#categoryId").change(function () {
+            $.get("/admin/getsubcategory", { categoryId: $("#categoryId").val() }, function (data) {
+                $("#subcatid").empty();
+                $.each(data, function (index, row) {
+                    $("#subcatid").append("<option value='" + row.id + "'>" + row.subcategorname + "</option>")
+                });
+            })
+        });
+    });
+
+    function showhde() {
+        if ($('#showbrand').css('display') == 'none') {
+            $("#showbrand").show(500);
+        }
+        else {
+            $("#showbrand").hide(500);
+        }
+
+
+    };
+    function brandsubmit() {
+        debugger;
+        var inputbrand = $("#brnd").val();
+        var Url = "/Admin/Addbrands?BRAND=" + inputbrand;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "OK") {
+                    debugger;
+                    location.reload(true);
+                    alert("Brand Added");
+                }
+                else {
+                    alert("Already Exists");
+                }
+
+            }
+        });
+
+    };
+</script>
+@*<script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({ selector: 'textarea' });
+    </script>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $fields = $('#fields');
+        $('#btnAddField').click(function (e) {
+            //confirm('Are You sure');
+            e.preventDefault();
+            $('<input type="text" name="Heading" />&nbsp;&nbsp;&nbsp;<input type="text" name="Para" /><br/>').appendTo($fields);
+        });
+
+        var $fields1 = $('#fields1');
+        $('#btnAddField1').click(function (e) {
+            //confirm('Are You sure');
+            e.preventDefault();
+            $('<input type="text" name="SHeading" />&nbsp;&nbsp;&nbsp;<input type="text" name="SPara" /><br/>').appendTo($fields1);
+        });
+
+        var $color = $('#favcolorID');
+        $('#Addcolor').click(function (e) {
+            e.preventDefault();
+            $('<input type="color" name="color" value="">').appendTo($color);
+        });
+    });
+
+    $("#checkAll").click(function () {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+
+</script>
+

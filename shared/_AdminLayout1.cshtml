@@ -1,0 +1,227 @@
+﻿@*@model Ellegor.Models.tbl_user
+@using Ellegor.Models
+@{
+    vedafresh_dbEntities db = new vedafresh_dbEntities();
+    var firstdata = db.tbl_user.ToList().FirstOrDefault();
+}*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WANC Admin</title>
+    <link rel="icon" href="~/images/wanc.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/Admin_Design/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/ico" href="/Homecss/images/wanc.png" />
+    <link href="/Admin_Design/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="/Admin_Design/css/style-responsive.css" rel="stylesheet" />
+    <link href="/Admin_Design/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <style>
+        @@media (min-width: 1200px) {
+        }
+
+        @@media (max-width: 990px) {
+        }
+
+        @@media (max-width: 800px) {
+            .lloogut {
+                opacity: 0;
+            }
+        }
+
+        @@media (max-width: 600px) {
+        }
+
+        @@media (max-width: 360px) {
+        }
+    </style>
+</head>
+<body>
+    <section id="container">
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="#" class="logo"><label style="font-size:20px;">WANC</label></a>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars"></div>
+                </div>
+            </div>
+            <div class="top-nav clearfix" style="margin-top: -45px;">
+                <br />
+                <ul class="nav pull-right top-menu">
+                    <a href="/admin/LogOut" type="button" class="btn btn-danger btn-sm lloogut" style="margin-top: 24px;">LogOut</></a>
+                </ul>
+            </div>
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <!-- sidebar menu start-->
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li>
+                            <a class="active" href="/Admin/dashboard">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-cog"></i>
+                                <span>Password / Banner Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/ChangePassword">Change Password</a></li>
+                                <li><a href="~/Admin/AddBanner">Manage Banner</a></li>
+                                <li><a href="~/Admin/ViewBanner">View All Banner</a></li>
+                                <li><a href="~/Admin/minOrderofsellers">Add Seller Minimum Order</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Featured Category Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/HomeCateegories">Add Featured Category</a></li>
+                                <li><a href="/admin/ViewHomeCateegories">View Featured Category</a></li>
+                            </ul>
+                        </li>
+                       
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Manage Delivery Charges</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/AddDeliveryCharges">Add Delivery Charge</a></li>
+                                @*<li><a href="/admin/ViewAllDiscount">View Delivery Charge</a></li>*@
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Manage Discount</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/ChooseAppyOn">Add New Discount</a></li>
+                                <li><a href="/admin/ViewAllDiscount">View All Discount</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-users"></i>
+                                <span>Buyers</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="~/Admin/UserLists">Buyers View</a></li>
+                            </ul>
+                        </li>
+                      
+                    
+                        <li class="sub-menu">
+                            <a href="javascript:;" style=" font-size: 11px;">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span>Brand / Category / Pin Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/AddNewBrand">Add New Brand</a></li>
+                                <li><a href="/Admin/ViewBrand">View All Brand</a></li>
+                                <li><a href="/Admin/AddNewCategory">Add New category</a></li>
+                                <li><a href="/Admin/ViewAllCategory">View All Category</a></li>
+                                <li><a href="/Admin/AddSubCategory">Add New Subcategory</a></li>
+                                <li><a href="/Admin/ViewSubCategory">View All SubCategory</a></li>
+                                <li><a href="/Admin/PinCode">View All PinCode</a></li>
+                                <li><a href="/Admin/AddPin">Add PinCode</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Manage Product</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/AddnewProduct">Add New Product</a></li>
+                                <li><a href="/admin/ViewAllProduct">View All Product</a></li>
+                            </ul>
+                        </li>
+                      
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-list"></i>
+                                <span>Manage Order</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/ViewAllOrder">View All Order</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-list"></i>
+                                    <span>Manage Review</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="/Admin/Reviews">View Reviews</a></li>
+                                </ul>
+                            </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Manage Notification</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/addnotification">Add Notification</a></li>
+                                <li><a href="/admin/ViewNotification">View Notification</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-list"></i>
+                                <span>Manage Saller</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/SallerList">View All Saller</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-list"></i>
+                                <span>Manage Feedback/Query</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/Admin/Querylist">View FeedBack/Querys</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub">
+
+                            <a href="/admin/LogOut">
+                                <i class="fa fa-list"></i>Logout
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <section id="main-content">
+            @RenderBody()
+            <div class="footer">
+                <div class="wthree-copyright">
+                    <p style="text-align: center; font-size: 12px;">© 2022 WANC. All rights reserved | Design by <a href="http://www.incredibleindiatechxpert.com/" target="_blank">Wanc</a></p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="/Admin_Design/js/bootstrap.min.js"></script>
+    <script src="/Admin_Design/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Admin_Design/js/scripts.js"></script>
+    <script src="/Admin_Design/js/jquery.nicescroll.js"></script>
+    <script src="/Admin_Design/js/jquery.scrollTo.js"></script>
+</body>
+</html>

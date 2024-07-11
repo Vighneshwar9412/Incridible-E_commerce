@@ -1,0 +1,163 @@
+﻿@model Wanc.Models.tbl_user
+@using Wanc.Models
+@{
+    ViewBag.Title = "ViewUserDetails";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+   wanc_dbEntities db = new wanc_dbEntities();
+    
+}
+
+<br /><br /><br />
+<div class="page-content" style="background-color:white;">
+    <div class="page-content-inner">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-bordered user" style="margin-top: 20px; color: white;">
+                    <tr>
+                        <th colspan="4" style="text-align:center;"><label style="font-size:25px; font-weight:bold; color:black;">User Details</label></th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.full_name != null)
+                            {
+
+                                <span><strong>Name : </strong>@Model.full_name</span>
+                            }
+                            else
+                            {
+                                <span><strong>Name : </strong> No Data Found</span>
+                            }
+                        </td>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.JoiningDate != null)
+                            {
+                                <span><strong>Joinig Date : </strong>@Model.JoiningDate.Value.ToString("dd-MMM-yyyy")</span>
+                            }
+                            else
+                            {
+                                <span><strong>Joinig Date : </strong> No Data Found</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.self_s_id != null)
+                            {
+                                <span><strong>My Unique Id : </strong>@Model.self_s_id</span>
+                            }
+                            else
+                            {
+                                <span><strong>My Unique Id : </strong> No Data Found</span>
+                            }
+                        </td>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.Active == true)
+                            {
+                                <span><strong>Status :</strong> Active</span>
+                            }
+                            else
+                            {
+                                <span><strong>Status :</strong>: Not-Active</span>
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.mobilenumber != null)
+                            {
+                                <span><strong>Contact Number :</strong> @Model.mobilenumber</span>
+
+                            }
+                            else
+                            {
+                                <span><strong>Contact Number :</strong> No Data Found</span>
+                            }
+                        </td>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.email != null)
+                            {
+                                <span><strong>Email Id  : </strong> @Model.email</span>
+                            }
+                            else
+                            {
+                                <span><strong>Email Id  : </strong>No Data Found</span>
+                            }
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="2" style=" color:black;">
+                            @if (Model.gender != null)
+                            {
+                                <span><strong>Gender :</strong> @Model.gender</span>
+                            }
+                            else
+                            {
+                                <span><strong>Gender :</strong> No Data Found</span>
+                            }
+                        </td>
+                        <td colspan="2" style=" color:black;"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" style=" color:black;"><strong>Address :</strong>@Model.Address</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table table-bordered user" style="margin-top:20px;">
+                    <tr>
+                        <th style="text-align:center;"><label style="font-size:25px; font-weight:bold;">User Bank Details</label></th>
+                    </tr>
+                    @*@if (BankData != null)
+                        {
+                            <tr>
+                                <td>Account Holder Name : @BankData.AccHolderName</td>
+                            </tr>
+                            <tr>
+                                <td>Account Number : @BankData.AccNumber</td>
+                            </tr>
+                            <tr>
+                                <td>Bank Name : @BankData.BankName</td>
+                            </tr>
+                            <tr>
+                                <td>IFSC Code : @BankData.IFSCCode</td>
+                            </tr>
+                            <tr>
+                                <td>Account Type : @BankData.AccType</td>
+                            </tr>
+                            <tr>
+                                <td>Branch Name : @BankData.BranchName</td>
+                            </tr>
+                            <tr>
+                                <td>Pan Number : @BankData.PanNumber</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><span style="font-size:20px; font-weight:bold;">No Data Found </span></td>
+                            </tr>
+                        }*@
+                </table>
+            </div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-12">
+                @*<a href="/Admin/UserList" class="btn btn-primary" style="border-radius:0px;"><< Back To User List</a>*@
+                @*@if (Model.Active == true)
+                    {
+                        <a href="/Admin/ActiveDeactive?Id=@Model.Id" class="btn btn-warning" style="border-radius:0px;">Deactive</a>
+                    }
+                    else
+                    {
+                        <a href="/Admin/ActiveUserData?Id=@Model.Id" class="btn btn-warning" style="border-radius:0px;">Active</a>
+                    }
+                    <a href="/Admin/DelUser?Id=@Model.Id" class="btn btn-danger" style="border-radius:0px;">Block User</a>*@
+                @*<a href="/Admin/Profile?UniqueId=@Model.Id" class="btn btn-warning" style="border-radius:0px;">Edit</a>*@
+            </div>
+        </div>
+
+    </div>
+</div>

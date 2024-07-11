@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Wanc.Models.Brand>
+@using Wanc.Models
+@{
+    ViewBag.Title = "ViewBrand";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+     var Data = (List<Brand>)ViewBag.data;
+}
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#sarvesh8').DataTable();
+    });
+</script>
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>View All Brands</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All Brands</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight:bold">View All Brands</h3>
+        </div>
+        @*<div class="panel-body" style="overflow-x:scroll;">
+
+                @using (Html.BeginForm("ViewBrand", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+
+                }
+
+
+            </div>*@
+
+        <table class="table" id="sarvesh8">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Images</th>
+                    <th>Brand Name</th>
+                    <th>Update By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 0;}
+                @foreach (var item in Data)
+                {
+                    i = i + 1;
+                    <tr>
+
+                        <td>@i</td>
+                        <td><img src="@item.Images" style="width:70px;height:70px"></td>
+                        <td>@item.BrandName</td>
+                        <td>@item.UpdateBy</td>
+                        <td>
+                            <a href="/Admin/DelBrand?Id=@item.ID" onclick="return confirm('Are You Sure to Delete');" class="btn btn-danger">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</section>

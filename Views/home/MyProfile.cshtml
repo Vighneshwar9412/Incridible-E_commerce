@@ -1,0 +1,425 @@
+﻿@model Wanc.Models.tbl_registration
+@using Wanc.Models
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+  
+}
+
+    <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <div class="container">
+            <h2>my profile</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/home/index">Home</a>
+                </li>
+               &nbsp;&nbsp; <span style="color:white; font-weight:700">/</span>
+               &nbsp;&nbsp; <li class="breadcrumb-item">
+                    <a href="/home/MyProfile">Profile</a>
+                </li>
+            </ol>
+        </div>
+    </section>
+    <section class="inner-section profile-part">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="account-card">
+                        <div class="account-title">
+                            <h4>Your Profile</h4>
+                            <button data-bs-toggle="modal" data-bs-target="#profile-edit">edit profile</button>
+                        </div>
+                        <div class="account-content">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="profile-image"><a href="#"><img src="/images/user.png" alt="user"></a></div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+
+                                    <div class="form-group">
+                                        <label class="form-label">name</label>
+                                        <input type="hidden" name="id" value="@Model.id" />
+                                        <input class="form-control" type="text" value="@Model.name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control" type="email" value="@Model.eamil">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="margin-top:29px;">
+                                    <div class="profile-btn btn btn-success" style="margin-top:215px; margin-top:26px;width:244px;">
+                                        <a href="/home/Change_password" style="color:white;">change password</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="account-card">
+                        <div class="account-title">
+                          <h4>contact number</h4>
+                           @*<button data-bs-toggle="modal" data-bs-target="#contact-add">add contact</button>*@
+                        </div>
+                        <div class="account-content">
+                         <div class="row">
+                            <div class="col-md-6 col-lg-4 alert fade show">
+                             
+                             <div class="profile-card contact active">
+                                <h6>primary</h6>
+                                <p>@Model.mobile1</p>
+                               <ul> 
+
+                              <li>
+                                  <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                              </li>
+                                
+                               
+                                 <li>
+                                     @*<a href="/home/DeleteContact?id=@item.id" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>*@                                  
+                                   <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert" data-bs-target="#DeleteContact"></button>
+                                 </li>
+                                   
+                             </ul>
+                            </div>
+                               
+                          </div>
+                         <div class="col-md-6 col-lg-4 alert fade show">
+                             <div class="profile-card contact">
+                             <h6>secondary</h6>
+                             <p>@Model.mobile2</p>
+                             <ul>
+                               <li>
+                                 <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                                 </li>
+                               <li>
+                                 <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                              </li>
+                              </ul>
+                           </div>
+                        </div>
+                       <div class="col-md-6 col-lg-4 alert fade show">
+                             <div class="profile-card contact">
+                               <h6>secondary</h6>
+                                <p>@Model.mobile2</p>
+                                 <ul>
+                                  <li>
+                                     <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button>
+                                  </li>
+                                 <li>
+                                     <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                                 </li>
+                               </ul>
+                         </div>
+                      </div>
+                  </div>
+             </div>
+                    </div>
+                </div>
+                @*<div class="col-lg-12">
+                <div class="account-card">
+                    <div class="account-title">
+                      <h4>delivery address</h4>
+                    <button data-bs-toggle="modal" data-bs-target="#address-add">add address</button>
+                    </div>
+                    <div class="account-content">
+                      <div class="row">
+                        <div class="col-md-6 col-lg-4 alert fade show">
+                          <div class="profile-card address active">
+                            <h6>Home</h6>
+                            <p>jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A</p>
+                            <ul class="user-action">
+                              <li>
+                                <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button>
+                              </li>
+                              <li>
+                                <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                              </li>
+                              </ul>
+                            </div>
+                          </div>
+                        <div class="col-md-6 col-lg-4 alert fade show">
+                          <div class="profile-card address">
+                            <h6>Office</h6>
+                            <p>east tejturi bazar, dhaka-1200. word no-04, road no-13/c, house no-4/b</p>
+                            <ul class="user-action">
+                              <li>
+                                <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button>
+                             </li>
+                            <li>
+                                <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                            </li>
+                           </ul>
+                         </div>
+                      </div>
+                     <div class="col-md-6 col-lg-4 alert fade show">
+                          <div class="profile-card address">
+                            <h6>Bussiness</h6><p>kawran bazar, dhaka-1100. word no-02, road no-13/d, house no-7/m</p>
+                                 <ul class="user-action">
+                                     <li>
+                                       <button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button>
+                                     </li>
+                                  <li>
+                                     <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                                  </li>
+                              </ul>
+                         </div>
+                       </div>
+                     </div>
+                  </div>
+                </div>
+              </div>*@
+              @*<div class="col-lg-12">
+                 <div class="account-card mb-0">
+                  <div class="account-title">
+                     <h4>payment option</h4>
+                       <button data-bs-toggle="modal" data-bs-target="#payment-add">add card</button>
+                     </div>
+                  <div class="account-content">
+                     <div class="row">
+                       <div class="col-md-6 col-lg-4 alert fade show">
+                         <div class="payment-card payment active">
+                           <img src="images/payment/png/01.png" alt="payment"><h4>card number</h4>
+                             <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p><h5>miron mahmud</h5>
+                             <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                            </div>
+                         </div>
+                      <div class="col-md-6 col-lg-4 alert fade show">
+                         <div class="payment-card payment">
+                           <img src="/images/payment/png/02.png" alt="payment"><h4>card number</h4><p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p><h5>miron mahmud</h5>
+                           <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                        </div>
+                      </div>
+                    <div class="col-md-6 col-lg-4 alert fade show">
+                         <div class="payment-card payment">
+                          <img src="/images/payment/png/03.png" alt="payment"><h4>card number</h4><p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p><h5>miron mahmud</h5>
+                         <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
+                    </div>
+                  </div>
+               </div>
+             </div>
+           </div>
+         </div>*@
+        </div>
+       </div>
+    </section>
+    <div class="modal fade" id="contact-add">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+        <form class="modal-form">
+            <div class="form-title"><h3>add new contact</h3></div>
+            <div class="form-group">
+            <label class="form-label">title</label>
+            <select class="form-select" >
+                <option selected>choose title</option>
+                <option value="primary">primary</option>
+                <option value="secondary">secondary</option>
+            </select>
+           </div>
+          <div class="form-group">
+            <label class="form-label">number</label>
+            <input class="form-control"  placeholder="Enter your number" >
+         </div>
+            <button class="form-btn" type="submit">save contact info</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="address-add">
+       <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+           <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+           <form class="modal-form">
+            <div class="form-title"><h3>add new address</h3></div>
+            <div class="form-group">
+               <label class="form-label">title</label>
+              <select class="form-select">
+                <option selected>choose title</option>
+                <option value="home">home</option>
+                <option value="office">office</option>
+                <option value="Bussiness">Bussiness</option>
+                <option value="academy">academy</option>
+                <option value="others">others</option>
+              </select>
+             </div>
+           <div class="form-group">
+               <label class="form-label">address</label>
+               <textarea class="form-control" placeholder="Enter your address"></textarea>
+           </div>
+          <button class="form-btn" type="submit">save address info</button>
+          </form>
+         </div>
+         </div>
+       </div>
+      @*<div class="modal fade" id="payment-add">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+               <form class="modal-form">
+                <div class="form-title"><h3>add new payment</h3></div>
+                 <div class="form-group">
+                  <label class="form-label">card number</label>
+                     <input class="form-control" type="text" placeholder="Enter your card number">
+                  </div>
+                  <button class="form-btn" type="submit">save card info</button>
+                  </form>
+                </div>
+              </div>
+            </div>*@
+
+      <div class="modal fade" id="profile-edit">
+           <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                 
+                <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+                  <form class="modal-form" action="/home/Editprofile" method="post">
+                      <div class="form-title"><h3>edit profile info</h3></div>
+                      @*<div class="form-group">
+             <label class="form-label">profile image</label>
+               <input class="form-control" type="file">
+            </div>*@
+                      <div class="form-group">
+                          <label class="form-label">name</label>
+                          <input type="hidden" name="id" value="@Model.id" />
+                          <input class="form-control" type="text" name="name" value="@Model.name">
+                      </div>
+                      @*<div class="form-group">
+                          <label class="form-label">email</label>
+                          <input class="form-control" type="email" name="eamil" value="@Model.eamil">
+                      </div>*@
+                      <button class="form-btn" type="submit">save profile info</button>
+                  </form>
+                     </div>
+                   </div>
+                 </div>
+              <div class="modal fade" id="contact-edit">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+                    <form class="modal-form" action="/home/EditContact" method="post">
+                        <input type="hidden" name="id" value="@Model.id"/>
+                      <div class="form-title">
+                        <h3>edit contact info</h3>
+                       </div>
+
+                        <div class="profile-card contact active">
+                            <h6>primary</h6>
+                            <input type="text" name="mobile1" value="@Model.mobile1"/>
+                        </div>
+                      
+                       @*<div class="form-group">
+                         <label class="form-label">title</label> 
+                           <select class="form-select">
+                               <option value="@Model.mobile1" selected>@Model.mobile1</option>
+                              <option value="primary" selected>primary</option>
+                              <option value="secondary">secondary</option>
+                           </select>
+                        </div>*@
+                        <div class="form-title">
+                            <h3>edit contact info</h3>
+                        </div>
+
+                        <div class="profile-card contact active">
+                            <h6>Secondary</h6>
+                            <input type="text" name="mobile2" value="@Model.mobile2" />
+                        </div>
+                      @*<div class="form-group">
+                        <label class="form-label">number</label>
+                         <input class="form-control" type="text" value="+8801838288389">
+                      </div>*@
+                      <button class="form-btn" type="submit">save contact info</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+         
+              <div class="modal fade" id="address-edit">
+          <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                   <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+                   <form class="modal-form">
+                      <div class="form-title"><h3>edit address info</h3></div>
+                       <div class="form-group">
+                       <label class="form-label">title</label>
+                       <select class="form-select">
+                           <option value="home" selected>home</option>
+                           <option value="office">office</option>
+                           <option value="Bussiness">Bussiness</option>
+                           <option value="academy">academy</option>
+                           <option value="others">others</option>
+                       </select>
+                      </div>
+                    <div class="form-group">
+                       <label class="form-label">address</label>
+                       <textarea class="form-control" placeholder="jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A"></textarea>
+                   </div>
+                   <button class="form-btn" type="submit">save address info</button>
+                  </form>
+              </div>
+             </div>
+          </div>
+         <section class="news-part" style="background: url(images/newsletter.jpg) no-repeat center;">
+         <div class="container">
+             <div class="row align-items-center">
+              <div class="col-md-5 col-lg-6 col-xl-7">
+                 <div class="news-text"><h2>Get 20% Discount for Subscriber</h2><p>Lorem ipsum dolor consectetur adipisicing accusantium</p></div>
+               </div>
+             <div class="col-md-7 col-lg-6 col-xl-5">
+                 <form class="news-form">
+                   <input type="text" placeholder="Enter Your Email Address">
+                    <button><span><i class="icofont-ui-email"></i>Subscribe</span></button>
+                 </form>
+              </div>
+            </div>
+           </div>
+       </section>
+      <section class="intro-part">
+         <div class="container">
+           <div class="row intro-content">
+             <div class="col-sm-6 col-lg-3">
+               <div class="intro-wrap">
+                 <div class="intro-icon">
+                   <i class="fas fa-truck"></i>
+                 </div>
+                 <div class="intro-content">
+                   <h5>free home delivery</h5>
+                   <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                 </div>
+                </div>
+              </div>
+             <div class="col-sm-6 col-lg-3">
+               <div class="intro-wrap">
+                 <div class="intro-icon"><i class="fas fa-sync-alt"></i></div>
+                   <div class="intro-content">
+                      <h5>instant return policy</h5>
+                        <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    </div>
+                 </div>
+               </div>
+             <div class="col-sm-6 col-lg-3">
+               <div class="intro-wrap">
+                 <div class="intro-icon"><i class="fas fa-headset"></i></div>
+                 <div class="intro-content">
+                   <h5>quick support system</h5>
+                     <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                 </div>
+               </div>
+             </div>
+           <div class="col-sm-6 col-lg-3">
+               <div class="intro-wrap">
+                 <div class="intro-icon"><i class="fas fa-lock"></i></div>
+                   <div class="intro-content">
+                     <h5>secure payment way</h5>
+                      <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                   </div>
+               </div>
+             </div>
+          </div>
+       </div>
+    </section>
+    

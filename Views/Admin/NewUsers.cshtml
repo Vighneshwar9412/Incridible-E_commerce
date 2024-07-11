@@ -1,0 +1,127 @@
+﻿@using Wanc.Models
+@model IEnumerable<Wanc.Models.tbl_registration>
+@{
+    ViewBag.Title = "NewUsers";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<TotalSellersnbuyers>)ViewBag.Data;
+}
+
+<style>
+    th {
+        color: black;
+        text-align: center;
+    }
+</style>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"]);
+    TempData["msg"] = null;
+}
+
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">New Users Lists</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+
+        <div class="panel-body" style="overflow-x:scroll;">
+
+            <!-- /breadcrumbs line -->
+            <!-- Form components -->
+            <div class="tab-content">
+
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="inside_panel">
+
+
+
+                    <!-- Default table -->
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+
+                            <table class="table" id="sarvesh">
+                                <thead>
+                                    <tr style=" background: lightgrey;">
+                                        <th>ID</th>
+                                        <th>UserName</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Password</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{int i = 0;}
+                                    @if (Model !=null)
+                                    { 
+                                    foreach (var item in Model)
+                                    {
+                                        i++;
+                                        <tr>
+                                            <th style="background-color:lightgrey;">@i</th>
+
+
+                                            @if (item.name == null)
+                                            {
+
+                                                <th>No Data!!!</th>
+                                            }
+                                            else
+                                            {
+                                                <th>@item.name</th>
+                                            }
+
+                                            @if (item.eamil == null)
+                                            {
+
+                                                <th>No Data!!!</th>
+                                            }
+                                            else
+                                            {
+                                                <th>@item.eamil</th>
+                                            }
+
+                                            @if (item.mobile1 == null)
+                                            {
+
+                                                <th>No Data!!!</th>
+                                            }
+                                            else
+                                            {
+                                                <th>@item.mobile2</th>
+                                            }
+                                            @if (item.password == null)
+                                            {
+
+                                                <th>No Data!!!</th>
+                                            }
+                                            else
+                                            {
+                                                <th>@item.password</th>
+                                            }
+                                            @*<th>
+                                                <a href="/admin/ActiveDeactive?id=@item.id&usertype=Delete" class="btn btn-danger btn-sm"> Delete</a>
+                                            </th>*@
+                                        </tr>
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <!-- /default table -->
+                </div>
+                <!-- /form components -->
+                <!-- Footer -->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

@@ -1,0 +1,258 @@
+﻿@model IEnumerable<Wanc.Models.Product>
+@using Wanc.Models
+@{
+    ViewBag.Title = "ViewAllProduct";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+@if (TempData["msgg"] != null)
+{
+    @Html.Raw(TempData["msgg"]);
+    TempData["msgg"] = null;
+}
+<style>
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">All Product Details</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search" id="myInput" />
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px">All Product Details</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table" id="Totaldata">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    @*<th>P_ID</th>*@
+                                    <th>P_Name</th>
+                                    @*<th>Brand</th>*@
+                                    <th>Category</th>
+                                    @*<th>Subcategory</th>*@
+                                    @*<th>MOQ</th>*@
+                                    <th>Price(Rs.)</th>
+                                    @*<th>Margin(%)</th>
+                                    <th>Wieght(g)</th>
+                                    <th>Gst(%)</th>*@
+                                    @*<th>Descrption</th>*@
+                                    <th>Image</th>
+                                    <th>Update BY</th>
+                                    <th colspan="4">Action</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody id="myTable">
+                                @{ int i = 0;}
+                                @foreach (var item in Model)
+                                {
+                                    var categorydetails = db.Categories.Where(a => a.ID == item.categoryId).FirstOrDefault();
+                                    var subcategorydetails = db.subcategories.Where(a => a.id==item.subcatid).FirstOrDefault();
+                                    var branddetails = db.Brands.Where(a => a.ID == item.BrandID).FirstOrDefault();
+                                    var productdetails = db.Products.Where(a => a.ID == item.ID).FirstOrDefault();
+                                    i = i + 1;
+                                    <tr>
+                                        <td>@i</td>
+
+                                        @*<td>@item.ID</td>*@
+
+
+                                        <td>@item.Name</td>
+                                        @if(branddetails!=null)
+                                        {
+                                            @*<td>@branddetails.BrandName</td>*@
+                                        }
+                                        else
+                                        {
+                                               <td></td>
+                                        }
+                                        @if (categorydetails!=null)
+                                        { 
+
+                                            <td>@categorydetails.Name</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (subcategorydetails != null)
+                                        { 
+                                            @*<td>@subcategorydetails.subcategorname</td>*@
+                                        }
+
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @*<td>@item.Unit</td>*@
+
+
+                                        <td>@item.Price</td>
+
+
+                                        @*<td>@item.Discount</td>*@
+
+
+                                        @*<td>@item.Weight</td>*@
+
+
+                                        @*<td>@item.GST</td>*@
+
+                                        @*@if (item.Description != null)
+                                        {
+                                            if (item.Description.Length > 25)
+                                            {
+                                                <td>@item.Description.Substring(0, 25)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Description</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }*@
+                                        <td><img src="@productdetails.Image" style="width:100px;height:50px" /></td>
+                                        @if (item.UpdateBy != null)
+                                        {
+                                            if (item.SelleroradminId == null)
+                                            {
+                                                <td>  @item.UpdateBy</td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <a class="btn btn-success btn-sm" href="/admin/ViewSallerDetails?Id=@item.SelleroradminId"> @item.UpdateBy</a>
+                                                    <br />
+                                                    @if (db.sallerDetails.Any(a => a.sallerId == item.SelleroradminId))
+                                                    {
+                                                        <a class="btn btn-warning btn-sm"> @db.sallerDetails.Where(a => a.sallerId == item.SelleroradminId).FirstOrDefault().Salerusername</a>
+                                                    }
+
+                                                </td>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.ApprovedByAdmin == false)
+                                        {
+                                            <td style="    background: #e2e1e17d; color:red">
+                                                Not Approved
+                                            </td>
+                                        }
+                                        else
+                                        {
+
+                                            <td style="    background: #e2e1e17d; color:forestgreen">
+                                                Approved
+                                            </td>
+
+                                        }
+
+                                        <td style="    background: #e2e1e17d;">
+                                            <a class="btn btn-primary btn-sm" href="/admin/ApproveProduct?Id=@item.ID">Approve / Reject  </a>
+                                        </td>
+
+                                        @if (item.active == false)
+                                        {
+                                            <td style="    background: #6495ed42; color:red">
+                                                Blocked
+                                            </td>
+                                        }
+                                        else
+                                        {
+
+                                            <td style="    background: #6495ed42; color:forestgreen">
+                                                Un-Blocked
+                                            </td>
+
+                                        }
+
+                                        <td style="    background: #6495ed42;">
+                                            <a class="btn btn-warning btn-sm" href="/admin/BlockProduct?Id=@item.ID">Block / Unblock  </a>
+                                        </td>
+
+
+                                        @if (item.Sponserd == true)
+                                        {
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="/admin/SponserProduct?Id=@item.ID">Sponsered  </a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <a class="btn btn-success btn-sm" href="/admin/SponserProduct?Id=@item.ID">Not Sponsered  </a>
+                                            </td>
+                                        }
+
+                                        <td><a href="EditProducts?Id=@item.ID" onclick="return confirm('Are you sure to Edit?');" class="btn btn-success btn-sm">Edit</a></td>
+
+                                        <td><a href="DeleteProduct?Id=@item.ID" onclick="return confirm('Are you sure to Delete?');" class="btn btn-danger btn-sm">Delete</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

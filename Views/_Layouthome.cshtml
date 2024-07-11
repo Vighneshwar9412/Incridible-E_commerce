@@ -1,0 +1,543 @@
+﻿@using Wanc.Models
+@{
+    wanc_dbEntities db = new wanc_dbEntities();
+    var cart = (List<KartDetailDto>)Session["kart"];
+    var categorylist = (List<Category>)ViewBag.categorylist;
+    var itemdata = (List<subcategory>)ViewBag.itemdata;
+    var kartDetail = (List<KartDetail>)ViewBag.itemdatas;
+    var pro = (List<Product>)ViewBag.pro;
+    var data = db.OrderDetails.ToList();
+    var checkoutvalue = "";
+    if (db.KartDetails.Sum(a => a.Price * a.Quantity) < 100)
+    {
+        checkoutvalue = (db.KartDetails.Sum(a => a.Price * a.Quantity) + 20).ToString();
+    }
+    else
+    {
+        checkoutvalue = (db.KartDetails.Sum(a => a.Price * a.Quantity)).ToString();
+    }
+    Session["Amount"] = checkoutvalue;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="template" content="greeny">
+    <meta name="title" content="greeny - Ecommerce Food Store HTML Template">
+    <meta name="keywords" content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online">
+    <title>WANC-Online Grocery & Vegetables</title>
+    <link rel="icon" href="~/images/wanc.png">
+    <link rel="stylesheet" href="~/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="~/fonts/icofont/icofont.min.css">
+    <link rel="stylesheet" href="~/fonts/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="~/vendor/venobox/venobox.min.css">
+    <link rel="stylesheet" href="~/vendor/slickslider/slick.min.css">
+    <link rel="stylesheet" href="~/vendor/niceselect/nice-select.min.css">
+    <link rel="stylesheet" href="~/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/home-grid.css">
+    <link rel="stylesheet" href="~/css/about.css">
+    <link rel="stylesheet" href="~/css/product-details.css">
+    <link rel="stylesheet" href="~/css/product-grid.css">
+    <link rel="stylesheet" href="~/css/checkout.css">
+</head>
+<body>
+    <div class="backdrop"></div>
+    <a class="backtop fas fa-arrow-up" href="#"></a>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-5">
+                    <div class="header-top-welcome">
+                        <p>Welcome to Wanc in Your Dream Online Store!</p>
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-3">
+                </div>
+                <div class="col-md-7 col-lg-4">
+                    <ul class="header-top-list">
+                        <li><a href="#">Offers</a></li>
+                        <li><a href="#">Need Help</a></li>
+                        <li><a href="~/home/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-part">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-media-group">
+                    <button class="header-user">
+                        <img src="~/images/user.png" alt="user">
+                    </button><a href="~/home/index"><img src="~/images/wanc.png" alt="logo"></a>
+                    <button class="header-src"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="~/home/index" class="header-logo">
+                    <img src="~/images/wanc.png" alt="logo">
+                </a>
+                @if (Session["eamil"] == null)
+                {
+                    <a href="~/home/Login" class="header-widget" title="My Account">
+
+                        <img src="~/images/user.png" alt="user"><span></span>
+                    </a>
+                }
+                else
+                {
+                    <a href="~/home/MyProfile" class="header-widget" title="My Account">
+                        <img src="~/images/user.png" alt="user"><span>@(Session["name"])</span>
+                    </a>
+                }
+                <form class="header-form" action="~/home/search" method="post">
+
+                    <input name="Search" placeholder="Search anything..." id="browser">
+
+                    @if (pro != null)
+                    {
+                        <datalist id="browsers">
+
+                            @foreach (var item in pro)
+                            {
+                                <option value="@item.Name" />
+                            }
+
+                        </datalist>
+
+                    }
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+                <div class="header-widget-group">
+                    @if (Session["KartCount"] != null)
+                    {
+                       <span>
+                          <button class="header-widget header-cart" title="Cartlist">
+                               <i class="fas fa-shopping-basket"> @Session["KartCount"].ToString()</i>
+                              </button>
+                        </span>
+                    }
+
+                  
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <nav class="navbar-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="navbar-content">
+                        <ul class="navbar-list">
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link " href="~/home/index">Home</a>
+                            </li>
+                            <li class="navbar-item dropdown-megamenu">
+                                <a class="navbar-link dropdown-arrow" href="#">Category</a>
+                                <div class="megamenu">
+                                    <div class="container megamenu-scroll">
+                                        <div class="row row-cols-5">
+                                            @foreach (var Category in db.Categories.ToList())
+                                            {
+                                                <div class="col">
+                                                    <div class="megamenu-wrap">
+                                                        <h5 class="megamenu-title">@Category.Name</h5>
+                                                        <ul class="megamenu-list">
+                                                            @foreach (var item1 in db.subcategories.Where(a => a.catid == Category.ID).ToList())
+                                                            {
+                                                                <li><a href="~/home/GetProductBySubCategory?id=@item1.id">@item1.subcategorname</a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                }
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link " href="~/home/about">About</a>
+                            </li>
+                            <li class="navbar-item dropdown">
+                                <a class="navbar-link " href="~/home/products">Products</a>
+                            </li>
+                            @*<li class="navbar-item dropdown">
+                                <a class="navbar-link " href="~/home/shop">Shop Now</a>
+                            </li>*@
+                            @if (Session["eamil"] == null)
+                            {
+                                <li class="navbar-item dropdown">
+                                    <a class="navbar-link " href="~/home/login">Login</a>
+                                </li>
+                                <li class="navbar-item dropdown">
+                                    <a class="navbar-link " href="~/home/registration">Registration</a>
+                                </li>
+                            }
+                            @if (Session["eamil"] != null)
+                            {
+                                <li class="navbar-item dropdown-megamenu">
+                                    <a class="navbar-link dropdown-arrow">Profile</a>
+                                    <div class="megamenu" style="width:170px;">
+                                        <div class="container">
+                                            <div class="megamenu-wrap" style="margin-left:-29px;">
+                                                <ul class="megamenu-list">
+                                                    <li><a href="~/home/MyProfile">MyProfile</a></li>
+                                                    <li><a href="~/home/TrackOrder">Order Tracking</a></li>
+                                                    <li><a href="~/home/OrderHistory">Order History</a></li>
+                                                    <li><a href="~/home/logout">Logout</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div class="navbar-info-group">
+                            <div class="navbar-info">
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p><small>Call Us</small><span><a href="tel:7352745964">+917352745964</a></span></p>
+                            </div>
+                            <div class="navbar-info">
+                                <i class="icofont-ui-email"></i>
+                                <p><small>Email Us</small><span><a href="mailto:support@wanc.in">support@wanc.in</a></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <aside class="category-sidebar">
+        <div class="category-header">
+            <h4 class="category-title"><i class="fas fa-align-left"></i><span>categories</span></h4>
+            <button class="category-close"><i class="icofont-close"></i></button>
+        </div>
+        @foreach (var Category in db.Categories.ToList())
+        {
+            <ul class="category-list">
+                <li class="category-item">
+                    <a class="category-link dropdown-link" href="#"><i class="flaticon-vegetable"></i><span>@Category.Name</span></a>
+                    <ul class="dropdown-list">
+                        @foreach (var item1 in db.subcategories.Where(a => a.catid == Category.ID).ToList())
+                        {
+                            <li><a href="~/home/GetProductBySubCategory?id=@item1.id">@item1.subcategorname</a></li>
+                        }
+                    </ul>
+                </li>
+
+            </ul>
+        }
+        <div class="category-footer">
+            <p>All Rights Reserved by <a href="#">Wanc</a></p>
+        </div>
+    </aside>
+    <aside class="cart-sidebar">
+        <div class="cart-header">
+            <div class="cart-total">
+                <div id="openkart" data-toggle="modal" data-target="#cart-modal">
+                    @if (Session["KartCount"] != null)
+                    {
+                        <a href="~/home/CartDetailBydatabes"><i class="fas fa-shopping-basket"></i><span><i>@Session["KartCount"].ToString()</i></span></a>
+                    }
+                    else
+                    {
+                        if (cart == null)
+                        {
+                            <a href="~/Home/CartDetailsBySession"><i class="fas fa-shopping-basket"></i><span>total item </span><span><i>(0)</i></span></a>
+                        }
+                        else
+                        {
+                            <a href="~/Home/CartDetailsBySession"> <i class="fas fa-shopping-basket"></i><span><i>@cart.Count</i></span></a>
+                        }
+                    }
+                </div>
+            </div>
+            <button class="cart-close"><i class="icofont-close"></i></button>
+        </div>
+        <ul class="cart-list">
+                @foreach (var item in db.KartDetails.ToList())
+                {
+                    var total = item.Price * item.Quantity;
+                    var product = db.Products.Where(x => x.ID == item.ProductId).FirstOrDefault();
+                    if(product !=null)
+                    { 
+                    <li class="cart-item">
+                        <div class="cart-media"><a href="#"><img src="@product.Image" alt="product"></a><button class="cart-delete" onclick="deletecartitem(@item.ID)"><i class="far fa-trash-alt"></i></button></div>
+                        <div class="cart-info-group">
+                            <div class="cart-info">
+                                <h6><a href="#">@product.Name</a></h6>
+                                <p>Unit Price - @item.Price</p>
+                            </div>
+                            @*<div class="cart-action-group">
+                                <div class="product-action">
+                                <button class="action-minus" title="Quantity Minus">
+                                    <i class="icofont-minus"></i>
+                                </button>
+                                    <input class="action-input" title="Quantity Number" id="incrrrrr" type="text" name="Quantity" value="1">
+                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
+                                <h6>@total</h6>
+                            </div>*@
+                        </div>
+                    </li>
+                   
+                    }
+                }
+            </ul>
+        <div class="cart-footer">
+            <button class="coupon-btn">Do you have a coupon code?</button>
+            <form class="coupon-form"><input type="text" placeholder="Enter your coupon code"><button type="submit"><span>apply</span></button></form>
+            <a class="cart-checkout-btn" href="#" onclick="redirect()"><span class="checkout-label">Proceed to Checkout</span><span class="checkout-price"> @checkoutvalue</span></a>
+        </div>
+    </aside>
+    <aside class="nav-sidebar">
+        <div class="nav-header"><a href="~/home/index"><img src="~/images/wanc.png" alt="logo"></a><button class="nav-close"><i class="icofont-close"></i></button></div>
+        <div class="nav-content">
+            <ul>
+                @if (Session["eamil"] == null)
+                {
+                    <li class="navbar-item dropdown">
+                        <a class="navbar-link " href="~/home/login">User Login</a>
+                    </li>
+                }
+                @if (Session["eamil"] != null)
+                {
+                    <li class="navbar-item dropdown-megamenu">
+                        <a class="navbar-link dropdown-arrow">Profile</a>
+                        <div class="megamenu" style="width:170px;">
+                            <div class="container">
+                                <div class="megamenu-wrap" style="margin-left:-29px;">
+                                    <ul class="megamenu-list">
+                                        <li><a href="~/home/MyProfile">MyProfile</a></li>
+                                        <li><a href="~/home/OrderHistory">Order History</a></li>
+                                        <li><a href="~/home/logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="nav-select-group">
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a class="nav-link" href="~/home/index"><i class="icofont-home"></i>Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/home/about"><i class="icofont-home"></i>About</a>
+                </li>
+                <li>
+                    <a class="nav-link " href="~/home/SellerRegistrations"><i class="icofont-home"></i> Seller Registration</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Saller/SallerLogin"><i class="icofont-home"></i> Seller Login</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/home/contact"><i class="icofont-home"></i> Contact Us</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/home/TrackOrder"><i class="icofont-home"></i> Track Order</a>
+                </li>
+            </ul>
+            <div class="nav-info-group">
+                <div class="nav-info">
+                    <i class="icofont-ui-touch-phone"></i>
+                    <p><small>call us</small><span><a href="tel:7352745964">+917352745964</a></span></p>
+                </div>
+                <div class="nav-info">
+                    <i class="icofont-ui-email"></i>
+                    <p><small>email us</small><span><a href="mailto:support@wanc.in">support@wanc.in</a></span></p>
+                </div>
+            </div>
+            <div class="nav-footer">
+                <p>All Rights Reserved by <a href="#">WANC</a></p>
+            </div>
+        </div>
+    </aside>
+    <div class="mobile-menu">
+        <a href="~/home/index" title="Home Page"><i class="fas fa-home"></i><span>Home</span></a>
+        <button class="cate-btn" title="Category List"><i class="fas fa-list"></i><span>category</span></button>
+        @if (Session["KartCount"] != null)
+        {
+            <span>
+                <button class="header-widget header-cart" title="Cartlist">
+                    <i class="fas fa-shopping-basket"> @Session["KartCount"].ToString()</i>
+                </button>
+            </span>
+        }
+    </div>
+    <div class="modal fade" id="product-view">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="modal-close icofont-close" data-bs-dismiss="modal"></button>
+                <div class="product-view">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="view-gallery">
+                                <div class="view-label-group"></div>
+                                <ul class="preview-slider slider-arrow">
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                </ul>
+                                <ul class="thumb-slider">
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                    <li><img src="~/images/product/01.jpg" alt="product"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+
+    <footer class="footer-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xl-4">
+                    <div class="footer-widget">
+                        <a class="footer-logo" href="~/home/index"><img src="~/images/wanc.png" alt="logo"></a>
+                        <ul class="footer-social">
+                            <li><a class="icofont-facebook" href="#"></a></li>
+                            <li><a class="icofont-twitter" href="#"></a></li>
+                            <li><a class="icofont-linkedin" href="#"></a></li>
+                            <li><a class="icofont-instagram" href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xl-4">
+                    <div class="footer-widget contact">
+                        <h3 class="footer-title">contact us</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="icofont-ui-email"></i>
+                                <p><span><a href="mailto:support@wanc.in">support@wanc.in</a></span></p>
+                            </li>
+                            <li>
+                                <i class="icofont-ui-touch-phone"></i>
+                                <p><span><a href="tel:7352745964">+917352745964</a></span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="footer-widget">
+                        <h3 class="footer-title">quick Links</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="~/home/TrackOrder">Order Tracking</a></li>
+                                <li><a href="~/home/SellerRegistrations">Seller Registration</a></li>
+                                <li><a href="~/Saller/SallerLogin">Seller Login</a></li>
+                                <li><a href="~/home/contact">Contact Us</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="~/home/Location">Location</a></li>
+                                <li><a href="~/home/ShippingPolicy">Shipping Policy</a></li>
+                                <li><a href="~/home/CancellationRefund">Cancellation/Refund</a></li>
+                                <li><a href="~/home/TermandCondition">Terms and Conditions </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p class="footer-copytext">&copy; All Copyrights Reserved by <a href="#">WANC</a></p>
+                        <div class="footer-card"><a href="#"><img src="~/images/payment/jpg/01.jpg" alt="payment"></a><a href="#"><img src="~/images/payment/jpg/02.jpg" alt="payment"></a><a href="#"><img src="~/images/payment/jpg/03.jpg" alt="payment"></a><a href="#"><img src="~/images/payment/jpg/04.jpg" alt="payment"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/vendor/bootstrap/jquery-1.12.4.min.js"></script>
+    <script src="~/vendor/bootstrap/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="~/vendor/countdown/countdown.min.js"></script>
+    <script src="~/vendor/niceselect/nice-select.min.js"></script>
+    <script src="~/vendor/slickslider/slick.min.js"></script>
+    <script src="~/vendor/venobox/venobox.min.js"></script>
+    <script src="~/js/nice-select.js"></script>
+    <script src="~/js/countdown.js"></script>
+    <script src="~/js/accordion.js"></script>
+    <script src="~/js/venobox.js"></script>
+    <script src="~/js/slick.js"></script>
+    <script src="~/js/main.js"></script>
+
+</body>
+</html>
+<script>
+    function addtocart(productId) {
+        debugger
+        var Quentity = $("#incrrrrr").val();
+        window.location.href = "/Home/AddToKart?ProductId=" + productId + "&Quantity=" + Quentity;
+
+    }
+</script>
+<script>
+    function redirect() {
+        window.location.href = "/Home/Checkout";
+    }
+    function RedirectToHome() {
+        window.location.href = "/Home/Index";
+    }
+    function productplus(id) {
+        var Url = "/Home/KartPlus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+
+    function productminus(id) {
+        var Url = "/Home/KartMinus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+    function deletecartitem(id) {
+        var Url = "/Home/deletecart?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+</script>

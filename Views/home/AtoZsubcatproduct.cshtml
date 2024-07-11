@@ -1,0 +1,280 @@
+﻿@using Wanc.Models;
+@{
+    ViewBag.Title = "AtoZsubcatproduct";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    int subcatid = ViewBag.subid;
+    int catname = ViewBag.catname;
+    var subcategoryList = db.subcategories.Where(a => a.catid == catname).ToList();
+    var totalsub = db.Products.Where(a => a.categoryId == subcatid).ToList();
+    var BrandName = db.Brands.ToList();
+    var cart = (List<KartDetailDto>)Session["kart"];
+    var categorylist = db.Categories.ToList();
+    var itemdata = db.subcategories.ToList();
+}
+
+<br />
+<div class="ps-page--shop">
+    <div class="ps-container">
+        <div class="ps-layout--shop">
+            <div class="ps-layout__left">
+                <aside class="widget widget_shop" style="max-height:368px;overflow-y:scroll;">
+                    <h4 class="widget-title">Categories</h4>
+
+                    @foreach (var item in categorylist)
+                    {
+                        <ul class="ps-list--categories">
+                            <li class="current-menu-item menu-item-has-children">
+                                @item.Name
+                                <span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                @foreach (var item2 in itemdata)
+                                {
+                                    if (item.ID == item2.catid)
+                                    {
+                                        <ul class="sub-menu">
+                                            <li class="current-menu-item ">
+                                                <a href="/Home/GetProductBySubCategory?id=@item2.id">@item2.subcategorname</a>
+                                            </li>
+                                        </ul>
+                                    }
+                                }
+                            </li>
+
+
+                        </ul>
+                    }
+
+
+                </aside>
+                <aside class="widget widget_shop">
+                    <h4 class="widget-title">BY BRANDS</h4>
+                    <figure class="ps-custom" data-height="250">
+
+                        @if (BrandName != null && BrandName.Count > 0)
+                        { <form action="/Home/GetProductByBrand" method="post">
+                            @{int count = 0;}
+                            @foreach (var item in BrandName)
+                            {
+                                count++;
+                                <div class="ps-checkbox">
+                                    <input  type="checkbox" id="brand-@count" value="@item.ID" name="Brandid">
+                                    <label for="brand-@count">@item.BrandName</label>
+                                </div>
+                            }
+                            <input  style="background: #dd2400db;font-size: 20px;color: white;" type="submit" value="Search" />
+                        </form>
+                        }
+                    </figure>
+                </aside>
+            </div>
+            <div class="ps-layout__right">
+                <div class="ps-block--shop-features">
+
+                    <div class="row">
+                        @foreach (var item in totalsub)
+                        {
+                            <div class="col-md-4 col-sm-6" style="    margin-bottom: 15px;">
+                                <div class="ps-product" style=" padding: 10px 11px 0;">
+
+                                    @if (db.ProductImages.Any(a => a.ProductId == item.ID))
+                                    {
+                                        var im = db.ProductImages.Where(a => a.ProductId == item.ID).FirstOrDefault().Images;
+
+                                        var image = "/ProductImages/" + im;
+                                        var path = HttpContext.Current.Server.MapPath(image);
+                                        if (System.IO.File.Exists(path))
+                                        {
+                                            <div class="ps-product__thumbnail">
+                                                <a href="/home/product_detail?Id=@item.ID">
+                                                    <img src="@db.ProductImages.Where(a => a.ProductId == item.ID).FirstOrDefault().Images" alt="" style="height:235px; width:300px">
+                                                </a>
+                                                <div class="ps-product__badge">
+                                                    Margin @item.Discount %
+                                                </div>
+                                                <input type="hidden" id="Userid_" value="@Session["UserId"]" />
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="ps-product__thumbnail">
+                                                <a href="/home/product_detail?Id=@item.ID">
+                                                    @*<img src="/Homecss/img/products/test/dummy.png" alt="" style="height:235px; width:300px">*@
+                                                    <img src="@db.ProductImages.Where(a => a.ProductId == item.ID).FirstOrDefault().Images" alt="" style="height:235px; width:300px">
+                                                </a>
+                                                <div class="ps-product__badge">
+                                                    Margin @item.Discount %
+                                                </div>
+                                                <input type="hidden" id="Userid_" value="@Session["UserId"]" />
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <div class="ps-product__thumbnail">
+                                            <a href="/home/product_detail?Id=@item.ID">
+                                                @*<img src="/Homecss/img/products/test/dummy.png" alt="" style="height:235px; width:300px">*@
+                                            </a>
+                                            <div class="ps-product__badge">
+                                                Margin @item.Discount %
+                                            </div>
+                                            <input type="hidden" id="Userid_" value="@Session["UserId"]" />
+                                        </div>
+                                    }
+
+                                    <div class="ps-product__container">
+                                        @{
+
+                            if (item.Name.Length < 15)
+                            {
+                                <center><a class="ps-product__vendor" href="#">@item.Name</a></center>
+                            }
+                            else
+                            {
+                                <center><a class="ps-product__vendor" href="#">@item.Name.Substring(0, 15)...</a></center>
+                            }
+                                        }
+                                        <p class="ps-product__price sale">
+                                            @if (item.Discount != null)
+                                            {
+                                                var dprice = item.Price - (item.Price * item.Discount) / 100;
+                                                <div>
+
+                                                    <b>MOQ:</b> @item.Unit &nbsp;&nbsp;&nbsp;
+                                                    <div style="float:right">
+                                                        <i class="fa fa-inr"></i><del>@string.Format("{0:n0}", item.Price)</del>
+                                                    </div>
+                                                    <div style="float:right">
+                                                        <i class="fa fa-inr" style="color: orangered"></i>@string.Format("{0:n0}", dprice)&nbsp;&nbsp;&nbsp;
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-inr" style="color: orangered"></i><del>@string.Format("{0:n0}", item.Price)</del>
+                                            }
+                                        </p>
+
+
+
+                                        @if (Session["UserId"] != null)
+                                        {
+                                            var Kart = (List<KartDetail>)ViewBag.kart;
+                                            if (Kart != null && Kart.Count() > 0)
+                                            {
+                                                if (Kart.Any(a => a.ProductId == item.ID))
+                                                {
+                                                    <div class="pro-btn"><a href="/Home/CartDetailBydatabes" class="btn btn-primary" style="padding: 6px; background: #e8374fe3; border: none; padding-left: 30px; padding-right: 30px; font-size: 15px; width: 100%;    margin-bottom: 5px;">GO TO CART</a></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="pro-btn" onclick="AddToKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style="background: #FF8C46; border: none; width: 100%;    margin-bottom: 5px;  font-size: 15px;">ADD TO CART</a></div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <div class="pro-btn" onclick="AddToKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style="background: #FF8C46; border: none;  width: 100%;    margin-bottom: 5px;font-size: 15px;">ADD TO CART</a></div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (cart == null)
+                                            {
+                                                break;
+                                            }
+                                            if (cart.Any(a => a.ProductId == item.ID))
+                                            {
+                                                <div class="pro-btn"><a href="/Home/CartDetailsBySession" class="btn btn-primary" style="padding: 6px; background: #e8374fe3; border: none; padding-left: 30px; padding-right: 30px; font-size: 15px; width: 100%;    margin-bottom: 5px;">GO TO CART</a></div>
+                                            }
+                                            else
+                                            {
+                                                <center>
+                                                    <div class="pro-btn" onclick="AddToSessionKart(@item.ID)"><a href="javascript:void(0)" class="btn btn-primary" style=" background: #FF8C46; border: none; font-size: 15px; width: 100%;    margin-bottom: 5px;">ADD TO CART</a></div>
+
+                                                </center>
+
+                                            }
+                                        }
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                            <hr />
+
+                        }
+                    </div>
+
+                </div>
+                <!---->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function AddToKart(productId) {
+        var Url = "/Home/AddToKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+<script>
+    function AddToSessionKart(productId) {
+        var Url = "/Home/AddToSessionKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+
+<script>
+    function AddToWishList(id) {
+        debugger;
+        var UserNid = $("#Userid_").val();
+        var Url = "/Home/AddToWishList?productid=" + id + "&UserId=" + UserNid;;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    alert("Added To WishList");
+                }
+                else if (response == "Notok") {
+                    alert("Login Your Id First");
+                }
+                else if (response == "Dublicate") {
+                    alert("Already In WishList");
+                }
+            }
+        });
+    }
+</script>

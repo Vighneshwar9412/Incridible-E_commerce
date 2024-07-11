@@ -1,0 +1,57 @@
+﻿@model Wanc.Models.Brand
+@using Wanc.Models
+@{
+    ViewBag.Title = "AddNewBrand";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var data = (List<tbl_pincode>)ViewBag.pin;
+}
+
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Add Brand</a></li>
+        </ul>
+    </div>
+
+    <!-- /breadcrumbs line -->
+    <!-- Form components -->
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+
+                <!-- Basic inputs -->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h6 class="panel-title" style="color:red"><i class="icon-bubble4"></i></h6></div>
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        <form action="/Admin/AddNewBrand" method="post" enctype="multipart/form-data">
+                            <label class="danger" style="color:blue;font-size:13px">@TempData["msg"]</label>
+
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Brand Name:</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="BrandName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Upload Brand</label>
+                                <div class="col-sm-8">
+                                    <input type="file" class="form-control" name="file" required />
+                                  
+                                </div>
+                            </div>
+                            <div class="form-actions text-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="Dashboard" class="btn btn-primary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /basic inputs -->
+            </div>
+        </div>
+    </div>
+
+</section>

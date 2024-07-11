@@ -1,0 +1,77 @@
+﻿@model Wanc.Models.CategoryDto
+@{
+    ViewBag.Title = "Editcategory";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Edit Category</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Edit Category</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-body" style="font-weight:bold">Edit New Category</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="/Saller/Editcategory" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(a => a.ID)
+                            @Html.HiddenFor(a => a.Parentid)
+                            @Html.HiddenFor(a => a.UpdateBy)
+                            @Html.HiddenFor(a => a.Image)
+                            @Html.HiddenFor(a => a.SelleroradminId)
+                            <label class="danger" style="color:blue;font-size:13px">@TempData["msg"]</label>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Delivery Pin:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.DeliveryPin, new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Category Name:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Description:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.Description, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <center>
+                                    <div class="col-md-8">
+                                        <img src="/CategoryImage/@Model.Image" style="width:100px; height:100px" class="" />
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">Enter Image:</label>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(a => a.file, new { @class = "form-control", @type = "File" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" align="center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="/admin/Dashboard" class="btn btn-primary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

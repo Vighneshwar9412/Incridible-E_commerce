@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a010a3bfcf09401293065d8ffdba25ec" Name="Diagram1">
+        <EntityTypeShape EntityType="wanc_dbModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Banner" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Brand" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Category" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.City" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Client" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.KartDetail" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.MinOrder_For_sallers" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.OrderDetail" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.OTP" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Product" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.ProductImage" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.profilepic" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Puchase" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.PurchaseDetail" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.sallerDetail" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.subcategory" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_address" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_apikeys" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_cashback" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_Contact" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.Tbl_DeliveryCharge" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_Dimensions" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_HomePageCaetegories" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_Notifcation" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_offerbanner" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_orderdate" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_pincode" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_review" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_Specifications" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_user" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_wallettrans" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_WishList" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_checkout" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_Order" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="wanc_dbModel.tbl_registration" Width="1.5" PointX="7.375" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

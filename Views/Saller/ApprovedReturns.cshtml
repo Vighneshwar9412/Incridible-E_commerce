@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Wanc.Models.MyReturnProductsDto>
+@using Wanc.Models
+@{
+    ViewBag.Title = "ApprovedReturns";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Return Order Details</a></li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h6 class="panel-title" style="font-weight:bold; padding-top: 10px;">Return Order Details</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (Model != null)
+                        {
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Return Request</th>
+                                        <th>Order Date</th>
+                                        <th>Order ID</th>
+                                        <th>Pro ID</th>
+                                        <th>Pro Name</th>
+                                        <th>Buyer-Name</th>
+                                        <th>Buyer-Address</th>
+                                        <th>Qty</th>
+                                        <th>Mrp</th>
+                                        <th>Discount</th>
+                                        <th>Coupan Code/FlatDiscount</th>
+                                        <th>DeliveryCharge</th>
+                                        <th>Net Amount</th>
+                                        <th>Payment Status</th>
+                                        <th>Return Reason</th>
+                                        <th>Return Proof</th>
+                                        <th colspan="4">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                            int i = 0;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        i++;
+                                        <tr>
+                                            <td>@i</td>
+                                            <td></td>
+                                            <td>@item.CreateDate</td>
+                                            <td>@item.OrderIdN</td>
+                                            <td>@item.ProductId</td>
+                                            @if (item.Productname.Length >= 12)
+                                            {
+                                                <td>@item.Productname.Substring(0, 12)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Productname</td>
+                                            }
+                                            <td>@item.Buyer_selfID</td>
+                                            <td>@item.Buyer_address</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Discount</td>
+                                            <td></td>
+                                            <td>@item.DeliveryCharge</td>
+                                            <td>@item.TotalAmount</td>
+                                            <td>@item.PaymentMethod</td>
+                                            <td>@item.ReturnReason</td>
+                                            <td>
+                                                <a href="~/Images/@item.Returnproof"> <img src="~/Images/@item.Returnproof" style="height: 90px; width: 90px;margin-top: -29px;" /></a>
+                                            </td>
+                                            <td>
+                                                @item.DeliveryStatus
+                                            </td>
+                                            @if (item.DeliveryStatus == "PICKUP_TRANSIT" || item.DeliveryStatus == "RETURN_UNDER_PROCESS" || item.DeliveryStatus == "RETURN_PICKUP")
+                                            {
+                                                <td><a href="/Saller/ReturnProceedOrder?ID=@item.Od_ID" class="btn btn-warning btn-sm">Proceed Order Status </a></td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

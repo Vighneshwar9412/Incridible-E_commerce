@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Wanc.Models.Client>
+@{
+    ViewBag.Title = "WalletList";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#sarvesh4').DataTable();
+    });
+</script>
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Manage Users Details</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All Users Details</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">View All Users Details</h3>
+        </div>
+        <div class="panel-body" style="overflow-x:scroll;">
+            <div class="tab-content">
+                <div class="tab-pane active fade in" id="inside_panel">
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+                            <table class="table" id="sarvesh4">
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile No.</th>
+                                    </tr>
+                                </thead>
+                                @if (Model != null)
+                                {
+                                    <tbody>
+                                        @{ int i = 0;}
+                                        @foreach (var item in Model)
+                                        {
+                                            i = i + 1;
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.Name  @item.lastname</td>
+                                                <td>@item.Email</td>
+                                                <td>@item.Mobile</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

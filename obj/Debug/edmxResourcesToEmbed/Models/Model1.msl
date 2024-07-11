@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="wanc_dbModelStoreContainer" CdmEntityContainer="wanc_dbEntities">
+    <FunctionImportMapping FunctionImportName="sp_userregistration" FunctionName="wanc_dbModel.Store.sp_userregistration" />
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="wanc_dbModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banners">
+      <EntityTypeMapping TypeName="wanc_dbModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="wanc_dbModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="SellereoradminId" ColumnName="SellereoradminId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="wanc_dbModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="SelleroradminId" ColumnName="SelleroradminId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Parentid" ColumnName="Parentid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="wanc_dbModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Stateid" ColumnName="Stateid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="wanc_dbModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KartDetails">
+      <EntityTypeMapping TypeName="wanc_dbModel.KartDetail">
+        <MappingFragment StoreEntitySet="KartDetails">
+          <ScalarProperty Name="uniqueID" ColumnName="uniqueID" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MinOrder_For_sallers">
+      <EntityTypeMapping TypeName="wanc_dbModel.MinOrder_For_sallers">
+        <MappingFragment StoreEntitySet="MinOrder_For_sallers">
+          <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="craetedate" ColumnName="craetedate" />
+          <ScalarProperty Name="sellerid" ColumnName="sellerid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="wanc_dbModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="Refundrequest" ColumnName="Refundrequest" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="IsConfirm" ColumnName="IsConfirm" />
+          <ScalarProperty Name="DeliveryStatusOfReturn" ColumnName="DeliveryStatusOfReturn" />
+          <ScalarProperty Name="RefundStatus" ColumnName="RefundStatus" />
+          <ScalarProperty Name="ReturnRequest" ColumnName="ReturnRequest" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ListedPrice" ColumnName="ListedPrice" />
+          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="DeliveryCharge" ColumnName="DeliveryCharge" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="sallerid" ColumnName="sallerid" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Isreturned" ColumnName="Isreturned" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OTPs">
+      <EntityTypeMapping TypeName="wanc_dbModel.OTP">
+        <MappingFragment StoreEntitySet="OTP">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Otp1" ColumnName="Otp" />
+          <ScalarProperty Name="CheckSum" ColumnName="CheckSum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="wanc_dbModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ApprovedByAdmin" ColumnName="ApprovedByAdmin" />
+          <ScalarProperty Name="Copon" ColumnName="Copon" />
+          <ScalarProperty Name="AverageOrPercantage" ColumnName="AverageOrPercantage" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="ApplyDiscount" ColumnName="ApplyDiscount" />
+          <ScalarProperty Name="Todate" ColumnName="Todate" />
+          <ScalarProperty Name="Fromdate" ColumnName="Fromdate" />
+          <ScalarProperty Name="productColor" ColumnName="productColor" />
+          <ScalarProperty Name="Sponserd" ColumnName="Sponserd" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="Specification" ColumnName="Specification" />
+          <ScalarProperty Name="Dimentions" ColumnName="Dimentions" />
+          <ScalarProperty Name="GST" ColumnName="GST" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+          <ScalarProperty Name="DP" ColumnName="DP" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="BestSeller" ColumnName="BestSeller" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SelleroradminId" ColumnName="SelleroradminId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="Cashbacktype" ColumnName="Cashbacktype" />
+          <ScalarProperty Name="cashback" ColumnName="cashback" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="subcatid" ColumnName="subcatid" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImages">
+      <EntityTypeMapping TypeName="wanc_dbModel.ProductImage">
+        <MappingFragment StoreEntitySet="ProductImage">
+          <ScalarProperty Name="salerid" ColumnName="salerid" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profilepics">
+      <EntityTypeMapping TypeName="wanc_dbModel.profilepic">
+        <MappingFragment StoreEntitySet="profilepic">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puchases">
+      <EntityTypeMapping TypeName="wanc_dbModel.Puchase">
+        <MappingFragment StoreEntitySet="Puchase">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseDetails">
+      <EntityTypeMapping TypeName="wanc_dbModel.PurchaseDetail">
+        <MappingFragment StoreEntitySet="PurchaseDetail">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="PurDate" ColumnName="PurDate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Productname" ColumnName="Productname" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sallerDetails">
+      <EntityTypeMapping TypeName="wanc_dbModel.sallerDetail">
+        <MappingFragment StoreEntitySet="sallerDetails">
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CINno" ColumnName="CINno" />
+          <ScalarProperty Name="PANno" ColumnName="PANno" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="Document" ColumnName="Document" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="BanificeryName" ColumnName="BanificeryName" />
+          <ScalarProperty Name="bankAddress" ColumnName="bankAddress" />
+          <ScalarProperty Name="IFSECode" ColumnName="IFSECode" />
+          <ScalarProperty Name="BamkName" ColumnName="BamkName" />
+          <ScalarProperty Name="BussinessType" ColumnName="BussinessType" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="sallerpass" ColumnName="sallerpass" />
+          <ScalarProperty Name="Salerusername" ColumnName="Salerusername" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="sallerContactNo" ColumnName="sallerContactNo" />
+          <ScalarProperty Name="SallerEmailId" ColumnName="SallerEmailId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="sallerId" ColumnName="sallerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategories">
+      <EntityTypeMapping TypeName="wanc_dbModel.subcategory">
+        <MappingFragment StoreEntitySet="subcategory">
+          <ScalarProperty Name="ParentCategoryName" ColumnName="ParentCategoryName" />
+          <ScalarProperty Name="SelleroradminId" ColumnName="SelleroradminId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="subcategorname" ColumnName="subcategorname" />
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_address">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_address">
+        <MappingFragment StoreEntitySet="tbl_address">
+          <ScalarProperty Name="DeliveryPersonMOB" ColumnName="DeliveryPersonMOB" />
+          <ScalarProperty Name="DeliveryPersonName" ColumnName="DeliveryPersonName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Statename" ColumnName="Statename" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="AddLine2" ColumnName="AddLine2" />
+          <ScalarProperty Name="mainAddress" ColumnName="mainAddress" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_apikeys">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_apikeys">
+        <MappingFragment StoreEntitySet="tbl_apikeys">
+          <ScalarProperty Name="apikey" ColumnName="apikey" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_cashback">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_cashback">
+        <MappingFragment StoreEntitySet="tbl_cashback">
+          <ScalarProperty Name="cashbackvalue" ColumnName="cashbackvalue" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="cashbacktype" ColumnName="cashbacktype" />
+          <ScalarProperty Name="Cashback" ColumnName="Cashback" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CientId" ColumnName="CientId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Contact">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_Contact">
+        <MappingFragment StoreEntitySet="tbl_Contact">
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_DeliveryCharge">
+      <EntityTypeMapping TypeName="wanc_dbModel.Tbl_DeliveryCharge">
+        <MappingFragment StoreEntitySet="Tbl_DeliveryCharge">
+          <ScalarProperty Name="Charge" ColumnName="Charge" />
+          <ScalarProperty Name="To_Weight" ColumnName="To_Weight" />
+          <ScalarProperty Name="From_Weight" ColumnName="From_Weight" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Courier_Type" ColumnName="Courier_Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Dimensions">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_Dimensions">
+        <MappingFragment StoreEntitySet="tbl_Dimensions">
+          <ScalarProperty Name="Para" ColumnName="Para" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_HomePageCaetegories">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_HomePageCaetegories">
+        <MappingFragment StoreEntitySet="tbl_HomePageCaetegories">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Notifcation">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_Notifcation">
+        <MappingFragment StoreEntitySet="tbl_Notifcation">
+          <ScalarProperty Name="MessageFor" ColumnName="MessageFor" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="notification" ColumnName="notification" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_offerbanner">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_offerbanner">
+        <MappingFragment StoreEntitySet="tbl_offerbanner">
+          <ScalarProperty Name="Possition" ColumnName="Possition" />
+          <ScalarProperty Name="OfferImage" ColumnName="OfferImage" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_orderdate">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_orderdate">
+        <MappingFragment StoreEntitySet="tbl_orderdate">
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_pincode">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_pincode">
+        <MappingFragment StoreEntitySet="tbl_pincode">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_review">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_review">
+        <MappingFragment StoreEntitySet="tbl_review">
+          <ScalarProperty Name="Productname" ColumnName="Productname" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Specifications">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_Specifications">
+        <MappingFragment StoreEntitySet="tbl_Specifications">
+          <ScalarProperty Name="Para" ColumnName="Para" />
+          <ScalarProperty Name="Heading" ColumnName="Heading" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="DocImage" ColumnName="DocImage" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="self_s_id" ColumnName="self_s_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_wallettrans">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_wallettrans">
+        <MappingFragment StoreEntitySet="tbl_wallettrans">
+          <ScalarProperty Name="platform" ColumnName="platform" />
+          <ScalarProperty Name="parymentgatewaytranid" ColumnName="parymentgatewaytranid" />
+          <ScalarProperty Name="countryname" ColumnName="countryname" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="timezone" ColumnName="timezone" />
+          <ScalarProperty Name="appversion" ColumnName="appversion" />
+          <ScalarProperty Name="appname" ColumnName="appname" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+          <ScalarProperty Name="sysgenid" ColumnName="sysgenid" />
+          <ScalarProperty Name="providertranid" ColumnName="providertranid" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="modifieddate" ColumnName="modifieddate" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="tran_id" ColumnName="tran_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_WishList">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_WishList">
+        <MappingFragment StoreEntitySet="tbl_WishList">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_checkout">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_checkout">
+        <MappingFragment StoreEntitySet="tbl_checkout">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+          <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Orderid" ColumnName="Orderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Order">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_Order">
+        <MappingFragment StoreEntitySet="tbl_Order">
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="IsReturn" ColumnName="IsReturn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Deleverytime" ColumnName="Deleverytime" />
+          <ScalarProperty Name="Deleverydate" ColumnName="Deleverydate" />
+          <ScalarProperty Name="sallerid" ColumnName="sallerid" />
+          <ScalarProperty Name="IsApprovedReturn" ColumnName="IsApprovedReturn" />
+          <ScalarProperty Name="Iscancelled" ColumnName="Iscancelled" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="TotalOrderAmount" ColumnName="TotalOrderAmount" />
+          <ScalarProperty Name="SellerUniqueID" ColumnName="SellerUniqueID" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="CustomerNumber" ColumnName="CustomerNumber" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerUniqueID" ColumnName="CustomerUniqueID" />
+          <ScalarProperty Name="Delivery_Charges" ColumnName="Delivery_Charges" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_registration">
+      <EntityTypeMapping TypeName="wanc_dbModel.tbl_registration">
+        <MappingFragment StoreEntitySet="tbl_registration">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="mobile2" ColumnName="mobile2" />
+          <ScalarProperty Name="mobile1" ColumnName="mobile1" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="eamil" ColumnName="eamil" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

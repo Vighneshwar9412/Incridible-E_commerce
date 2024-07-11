@@ -1,0 +1,77 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "Querylist";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data= (List<tbl_Contact>)ViewBag.data ;
+}
+}
+
+<style>
+    th {
+        color: black;
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Feedback/Querys Lists</a></li>
+        </ul>
+    </div>
+    @*<div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+            </div>
+        </div>*@
+
+    <div class="panel panel-default">
+
+        <div class="panel-body" style="overflow-x:scroll;">
+
+            <!-- /breadcrumbs line -->
+            <!-- Form components -->
+            <div class="tab-content">
+
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="inside_panel">
+
+
+
+                    <!-- Default table -->
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+
+                            <table class="table st" id="Totaldata">
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email-ID</th>
+                                    <th>Message For</th>
+                                    <th>Message</th>
+                                </tr>
+
+                                @{int i = 0;}
+                                @foreach (var item in Data)
+                                {
+                                    i++;
+                                    <tr>
+                                        <th>@i</th>
+                                        <th>@item.email</th>
+                                        <th>@item.reason</th>
+                                        <th>@item.message</th>
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

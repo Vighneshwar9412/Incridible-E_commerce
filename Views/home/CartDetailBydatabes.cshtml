@@ -1,0 +1,174 @@
+﻿@model IEnumerable<Wanc.Models.KartDetail>
+@using Wanc.Models
+ 
+@{
+    ViewBag.Title = "CartDetailBydatabes";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var checkoutvalue = "";
+    if (Model.Sum(a => a.Price * a.Quantity) < 100)
+    {
+        checkoutvalue = (Model.Sum(a => a.Price * a.Quantity) + 20).ToString();
+    }
+    else
+    {
+        checkoutvalue = (Model.Sum(a => a.Price * a.Quantity)).ToString();
+    }
+    Session["Amount"] = checkoutvalue;
+}
+<section class="inner-section wishlist-part">
+    <div class="container mt-5">
+        @if (Model.Count() >= 1)
+        {
+            int i = 0;
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-scroll">
+                        <div class="account-title">
+                            <h4>Your order</h4>
+                        </div>
+                        <table class="table-list">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">shopping</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    i++;
+                                    var total = item.Price * item.Quantity;
+                                    var data = db.Products.Where(a => a.ID == item.ProductId).FirstOrDefault();
+                                    if (data!=null)
+                                    {
+                                    <tr>
+                                        <td class="table-serial"><h6>@i</h6></td>
+                                        <td class="table-image"><img src="@data.Image" alt="product"></td>
+                                        <td class="table-name"><h6>@data.Name</h6></td>
+                                        <td class="table-price"><h6>₹@(data.Price) x @item.Quantity</h6></td>
+                                        <td class="table-shop">
+                                            <div class="product-action" style="display:flexbox;">
+                                                <button onclick="productminus(@item.ID)" class="action-minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" type="text" value="@item.Quantity">
+                                                <button onclick="productplus(@item.ID)" class="action-plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>₹@total </td>
+                                        <td class="table-action">
+                                            <a class="trash" href="#" onclick="deletecartitem(@item.ID)"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    }
+                                  }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout-charge">
+                <ul>
+                  @foreach (var item in Model)
+               {
+                 i++;
+                      
+                     var data = db.Products.Where(a => a.ID == item.ProductId).FirstOrDefault();
+                      decimal vv = Convert.ToDecimal(data.Price)*Convert.ToDecimal(item.Quantity);
+                    <li><span>@data.Name<small></small></span><span>₹@vv</span></li>
+                  }
+                    <li><span>Delivery Charge<small></small></span><span>₹@(Convert.ToDecimal(checkoutvalue)>=100?0:20)</span></li>
+                    <li><span>Total<small></small></span><span>₹@checkoutvalue</span></li>
+                </ul>
+            </div>
+            <div class="cart-footer">
+                @{ 
+            if (Model != null && Model.Count() > 0)
+            {
+                <a class="cart-checkout-btn" href="#" onclick="redirect()"><span class="checkout-label">Proceed to Checkout</span><span class="checkout-price"> @checkoutvalue</span></a>
+            }
+            else
+            {
+                <a class="cart-checkout-btn" href="#" onclick="alert('Please Login First')"><span class="checkout-label">Proceed to Checkout</span><span class="checkout-price">₹@checkoutvalue</span></a>
+            }
+                }
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-scroll">
+                        <center>
+                            <div class="account-title">
+                                <h4>Cart Is Empty</h4>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<script>
+    function redirect() {
+        window.location.href = "/Home/Checkout";
+    }
+    function RedirectToHome() {
+        window.location.href = "/Home/Index";
+    }
+    function productplus(id) {
+        var Url = "/Home/KartPlus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+
+    function productminus(id) {
+        var Url = "/Home/KartMinus?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+    function deletecartitem(id) {
+        var Url = "/Home/deletecart?ID=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+</script>
+
+

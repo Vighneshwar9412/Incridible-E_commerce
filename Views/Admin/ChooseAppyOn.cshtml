@@ -1,0 +1,68 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "ChooseAppyOn";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+<style>
+    #headingadd {
+        background-color: #8B5C7E;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-top: -15px;
+        color: white;
+    }
+</style>
+<br />
+<br />
+<br />
+
+<div class="container">
+    <center>
+        <div class="col-md-4" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+            <h2 id="headingadd">Appy On</h2><br />
+
+            <div class="panel-group" id="accordion">
+                <form action="/Admin/AddDiscount" method="post">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <br />
+                            <select class="form-control" name="Appyon" required>
+                                <option value="">--Select--</option>
+                                <optgroup label="Admin's Product">
+                                    <option value="0">Admin</option>
+                                </optgroup>
+                                <optgroup label="Sallers's Product'">
+                                    @foreach (var item in db.sallerDetails.Where(a => a.Active == true).ToList())
+                                    {
+                                        <option value="@item.sallerId">@item.Salerusername</option>
+                                    }
+                                </optgroup>
+                            </select>
+                            <br />
+                            <input class="btn btn-success " type="submit" value="Apply" required>
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </center>
+</div>
+<br /><br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

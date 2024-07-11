@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Wanc.Models.Product>
+@using Wanc.Models
+@{
+    ViewBag.Title = "Showallproduct";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var catdata = db.Categories.ToList().Take(5);
+    var bannerList = (List<Banner>)ViewBag.Banners;
+    var pro = db.Products.ToList();
+}
+
+<section class="section recent-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            @foreach (var Product in db.Products.ToList())
+            {
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-media">
+                            <div class="product-label"></div>
+                            <button class="product-wish wish"><i class="fas fa-heart"></i></button><a class="product-image" href="#"><img src="@Product.Image" alt="product" style="border-radius:10px; height:100px;"></a>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
+                            <h6 class="product-name"><a href="#"></a>@Product.Name</h6>
+                            <h6 class="product-price">@Product.Price<span><small><del>@Product.Discount Rs.</del></small></span></h6>
+                            <a href="/Home/ProductPage?ProductId=@Product.ID" class="product-add" title="View Product"><span>View Product</span></a>
+                            @*<div class="product-action"><button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>*@
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

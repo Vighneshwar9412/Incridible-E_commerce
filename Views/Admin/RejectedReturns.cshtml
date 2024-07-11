@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Wanc.Models.OrderDetailDTO>
+@using Wanc.Models
+@{
+    ViewBag.Title = "RejectedReturns";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var data = (List<OrderDetailDTO>)ViewBag.data;
+   
+}
+
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Return Order Details</a></li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h6 class="panel-title" style="font-weight:bold; padding-top: 10px;">Return Order Details</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (data != null)
+                        {
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Saller / Admin</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Discount</th>
+                                        <th>IsBlocked</th>
+                                        <th colspan="4">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                            int i = 0;
+                                    }
+                                    @foreach (var item in data)
+                                    {
+                                        i++;
+                                        <tr>
+                                            <td>@i</td>
+                                            @if (item.saller_id == null)
+                                            {
+                                                <td>Admin</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.saller_id</td>
+                                            }
+                                            @if (item.ProductName.Length >= 12)
+                                            {
+                                                <td>@item.ProductName.Substring(0, 12)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.ProductName</td>
+                                            }
+
+                                            <td>@item.Quantity</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Discount</td>
+                                            @if (item.Isconfirm == true)
+                                            {
+                                                <td><a href="~/Admin/BlockOrApproveProducts?Id=@item.ID&type=BlockUnblock" class="btn btn-info btn-sm">Confirmed </a></td>
+                                            }
+                                            else
+                                            {
+                                                <td><a href="~/Admin/BlockOrApproveProducts?Id=@item.ID&type=BlockUnblock" class="btn btn-danger btn-sm">Blocked </a></td>
+                                            }
+                                            @if (item.Isreturned == true)
+                                            {
+                                                if (item.image != null)
+                                                {
+                                                    <td>
+                                                        <a href="/Images/@item.image"> <img src="~/Images/@item.image" style="height: 90px; width: 90px;margin-top: -29px;" /></a>
+                                                        <br />
+
+                                                        @if (item.ReturnRequest == "Reject")
+                                                        {
+                                                            <b>Rejected</b>
+                                                        }
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                            }
+                                            @if (item.Reasonforreturn != null)
+                                            {
+                                                <td>
+                                                    <b>@item.Reasonforreturn</b>
+                                                </td>
+                                            }
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No Data!!!</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

@@ -1,0 +1,317 @@
+﻿@model Wanc.Models.ProductDto
+@using Wanc.Models
+@{
+    ViewBag.Title = "AddDiscount";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var Data = (List<ProductDto>)ViewBag.data;
+}
+
+<style>
+    #headingadd {
+        background-color: #8B5C7E;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-top: -15px;
+        color: white;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+<br />
+<br />
+<br />
+
+<div class="container">
+    <center>
+        @*<div class="col-md-1"></div>*@
+        <div class="col-md-11" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+            <h2 id="headingadd">Add Discount</h2><br />
+
+            <div class="panel-group" id="accordion">
+                <form action="/Admin/AddFlatOrCouponDiscount" method="post">
+                    <div class="row">
+
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label>Discount Type</label><br />
+                            <select class="form-control" name="DiscountType" id="DiscountType" onchange="DiscountType_(value)" required>
+                                <option value="">Select</option>
+                                <option value="Flat">Flat</option>
+                                <option value="Coupon">Coupon</option>
+                            </select>
+                        </div>
+
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label>From Date</label><br />
+                            <input class="form-control" type="date" name="fromdate" required>
+                        </div>
+
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label>To Date</label><br />
+                            <input class="form-control" type="date" name="todate" required>
+                        </div>
+
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label style="    font-size: 14px;">Amount / Percentage</label><br />
+                            <select class="form-control" name="averageOrPercentage" required>
+                                <option value="">Select</option>
+                                <option value="Amount">Amount</option>
+                                <option value="Percentage">Percentage</option>
+                            </select>
+                        </div>
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label>Discount</label><br />
+                            <input class="form-control" type="text" name="Discount" required>
+                        </div>
+                        <div class=" col-sm-2" style="text-align: left;">
+                            <label>&nbsp;</label><br />
+                            <input class="btn btn-success " type="submit" value="Apply"  required>
+                        </div>
+                        <div class=" col-sm-3" id="copon">
+                            <br />
+                            <label>Make Copon Code</label><br />
+                            <input class="form-control" type="text" name="CouponCode" id="CouponCode">
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="panel panel-default">
+                        <div id="collapseOne">
+                            <div class="container-fluid">
+                                <div class="col-md-12" style="margin-top: 30px; margin-bottom: 50px; background: #fff; padding: 15px; background-color: #d3d3d32b; box-shadow: 0 0 1px;">
+                                    <h2 id="headingadd" style="font-size: 20px;">Products</h2><br />
+                                    <div class="row">
+
+                                        <div class=" col-sm-12" style="text-align: left;">
+                                            <div class="table-responsive">
+                                                <table class="table" id="Totaldata">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>P_ID</th>
+                                                            <th>Update BY</th>
+                                                            <th>P_Name</th>
+                                                            <th>Brand</th>
+                                                            <th>Category</th>
+                                                            <th>Subcategory</th>
+                                                            <th>MOQ</th>
+                                                            <th>Price(Rs.)</th>
+                                                            <th>Margin(%)</th>
+                                                            <th>Gst(%)</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="myTable">
+                                                        @{ int i = 0;}
+                                                        @foreach (var item in Data)
+                                                        {
+                                                            i = i + 1;
+                                                            <tr>
+
+                                                                <th>
+                                                                    <input type="checkbox" id="Product_IDS" required name="Product_IDS" value="@item.ID" />
+                                                                </th>
+                                                                @if (item.ID != null)
+                                                                {
+                                                                    <td>@item.ID</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.UpdateBy != null)
+                                                                {
+                                                                    if (item.SelleroradminId == null)
+                                                                    {
+                                                                        <td>  @item.UpdateBy</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td>
+                                                                            @if (db.sallerDetails.Any(a => a.sallerId == item.SelleroradminId))
+                                                                            {
+                                                                                @db.sallerDetails.Where(a => a.sallerId == item.SelleroradminId).FirstOrDefault().Salerusername
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+
+                                                                }
+                                                                @if (item.Name != null)
+                                                                {
+                                                                    if (item.Name.Length >= 12)
+                                                                    {
+                                                                        <td>@item.Name.Substring(0, 12)</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td>@item.Name</td>
+                                                                    }
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+
+                                                                @if (item.BrandName != null)
+                                                                {
+                                                                    <td>@item.BrandName</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.CategoryName != null)
+                                                                {
+                                                                    <td>@item.CategoryName</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.Subname != null)
+                                                                {
+                                                                    <td>@item.Subname</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.Unit != null)
+                                                                {
+                                                                    <td>@item.Unit</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.Price != null)
+                                                                {
+                                                                    <td>@item.Price</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.Discount != null)
+                                                                {
+                                                                    <td>@item.Discount</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.GST != null)
+                                                                {
+                                                                    <td>@item.GST</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+                                                                @if (item.Description != null)
+                                                                {
+                                                                    if (item.Description.Length > 25)
+                                                                    {
+                                                                        <td>@item.Description.Substring(0, 25)</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td>@item.Description</td>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td></td>
+                                                                }
+
+
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+
+                                            </div>
+
+
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="collapsetwo">
+                            <div class="container-fluid">
+                                <div class="col-md-12" style="margin-top: 30px; margin-bottom: 50px; background: #fff; padding: 15px; background-color: #d3d3d32b; box-shadow: 0 0 1px;">
+                                    <h2 id="headingadd" style="font-size: 20px;">Products</h2><br />
+                                    <div class="row">
+
+                                        <div class=" col-sm-12" style="text-align: left;">
+                                            <div class=" col-sm-2" style="text-align: left;">
+                                                <label>Create Code</label><br />
+                                                <input type="text" name="CoponCode">
+                                            </div>
+
+
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </center>
+</div>
+<br /><br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<script>
+    $(document).ready(function () {
+        $("#copon").hide()
+        $("#collapsetwo").hide();
+
+    });
+
+    function DiscountType_(select) {
+        debugger
+        if (select == "Coupon") {
+            //$("#collapseOne").hide(600);
+            //$("#collapsetwo").show(600);
+            $("#copon").show(400)
+            $('#CouponCode').attr('required', 'required');
+        }
+        if (select == "Flat") {
+            //$("#collapseOne").show(600);
+            //$("#collapsetwo").hide(600);
+            $('#CouponCode').removeAttr('required');
+            $("#copon").hide(400)
+        }
+    }
+</script>
+
+
+

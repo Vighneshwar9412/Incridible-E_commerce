@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Wanc.Controllers.innerjoinClass>
+@{
+    ViewBag.Title = "ViewAllOrder";
+    Layout = "~/shared/sallerlayout.cshtml";
+    var Mode = Model;
+    var bardad = "";
+}
+
+<style>
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">All Orders</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px">All Orders</h6>
+        </div>
+        <div class="table-responsive">
+            @if (Mode != null && Mode.Count() > 0)
+            {
+                <table class="table" id="Totaldata">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            @*<th>OrderID</th>*@
+                            <th>Order Date</th>
+                            <th>Customer Name</th>
+                            <th>Customer Mobile</th>
+                            <th>Shipping Details</th>
+                            <th>Product Image</th>
+                            @*<th>Price</th>*@
+                            <th>QTY</th>
+                            <th>Net Amount</th>
+                            <th>Status</th>
+                            <th>Pay Mode</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        @{int i = 0;}
+                        @foreach (var item in Mode)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Date</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.CustomerMobile</td>
+                                <td>@item.CustomerShippingDetails</td>
+                                <td>
+                                    <img src="@item.ProductImage" style="width:50px;" />
+                                </td>
+                                @*<td>@item.ProductPrice</td>*@
+                                <td>@item.Quantity</td>
+                                <td>@item.OrderTotal</td>
+                                <td>@item.DeliveryStatus</td>
+                                <td>@item.PayMode</td>
+                                @if (item.DeliveryStatus != "DELIVERED")
+                                {
+
+                                    <td><a href="/Saller/ProceedOrders?ID=@item.OrderdetailsID" class="btn btn-warning btn-sm">Proceed Order Status</a></td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            }
+            else
+            {
+                <h3>No data in Database</h3>
+            }
+        </div>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+        $("#myTable tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+            , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

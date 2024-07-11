@@ -1,0 +1,1576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9EB4785A-5CD8-43C4-89CE-06C40CD7B7BE}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wanc</RootNamespace>
+    <AssemblyName>Wanc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\homeController.cs" />
+    <Compile Include="Controllers\SallerController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADDDiscountDTO.cs" />
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Banner.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BannerDto.cs" />
+    <Compile Include="Models\Brand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrandDto.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoryDto.cs" />
+    <Compile Include="Models\City.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileUploader.cs" />
+    <Compile Include="Models\GetOrderDetails.cs" />
+    <Compile Include="Models\KartDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KartDetailDto.cs" />
+    <Compile Include="Models\locationNew.cs" />
+    <Compile Include="Models\MinOrder_For_sallers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyOrderProductsDTO.cs" />
+    <Compile Include="Models\MyReturnProductsDto.cs" />
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetailDTO.cs" />
+    <Compile Include="Models\OTP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductDto.cs" />
+    <Compile Include="Models\ProductImage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\profilepic.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Puchase.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefundOrdersDTO.cs" />
+    <Compile Include="Models\sallerDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\subcategory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubcategoryDto.cs" />
+    <Compile Include="Models\tbl_address.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_apikeys.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_cashback.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_checkout.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_DeliveryCharge.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Dimensions.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_HomePageCaetegories.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Notifcation.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_offerbanner.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_orderdate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_pincode.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_registration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_review.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Specifications.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_user.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_wallettrans.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_WishList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TotalSellersnbuyers.cs" />
+    <Compile Include="Models\TrackItemDTO.cs" />
+    <Compile Include="Models\UsercashbackDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="css\about.css" />
+    <Content Include="css\all-category.css" />
+    <Content Include="css\blog-author.css" />
+    <Content Include="css\blog-details.css" />
+    <Content Include="css\blog-grid.css" />
+    <Content Include="css\blog-standard.css" />
+    <Content Include="css\brand-list.css" />
+    <Content Include="css\brand-single.css" />
+    <Content Include="css\checkout.css" />
+    <Content Include="css\coming-soon.css" />
+    <Content Include="css\compare.css" />
+    <Content Include="css\contact.css" />
+    <Content Include="css\error.css" />
+    <Content Include="css\faq.css" />
+    <Content Include="css\home-category.css" />
+    <Content Include="css\home-classic.css" />
+    <Content Include="css\home-grid.css" />
+    <Content Include="css\home-standard.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\invoice.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\orderlist.css" />
+    <Content Include="css\privacy.css" />
+    <Content Include="css\product-details.css" />
+    <Content Include="css\product-grid.css" />
+    <Content Include="css\profile.css" />
+    <Content Include="css\user-auth.css" />
+    <Content Include="css\wallet.css" />
+    <Content Include="css\wishlist.css" />
+    <Content Include="fonts\flaticon\flaticon.css" />
+    <Content Include="fonts\flaticon\Flaticon.svg" />
+    <Content Include="fonts\fontawesome\fa-brands-400.svg" />
+    <Content Include="fonts\fontawesome\fa-regular-400.svg" />
+    <Content Include="fonts\fontawesome\fa-solid-900.svg" />
+    <Content Include="fonts\fontawesome\fontawesome.min.css" />
+    <Content Include="fonts\icofont\icofont.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Homecss\css\autopart.css" />
+    <Content Include="Homecss\css\electronic.css" />
+    <Content Include="Homecss\css\furniture.css" />
+    <Content Include="Homecss\css\home-kids.css" />
+    <Content Include="Homecss\css\home-photo.css" />
+    <Content Include="Homecss\css\market-place-1.css" />
+    <Content Include="Homecss\css\market-place-2.css" />
+    <Content Include="Homecss\css\market-place-3.css" />
+    <Content Include="Homecss\css\market-place-4.css" />
+    <Content Include="Homecss\css\organic.css" />
+    <Content Include="Homecss\css\style.css" />
+    <Content Include="Homecss\css\technology.css" />
+    <Content Include="Homecss\css\ui.css" />
+    <Content Include="Homecss\css\vendor.css" />
+    <Content Include="Homecss\fonts\Linearicons\Linearicons\Font\demo-files\demo.css" />
+    <Content Include="Homecss\img\404.jpg" />
+    <Content Include="Homecss\img\ads\product-ads.png" />
+    <Content Include="Homecss\img\app-store.png" />
+    <Content Include="Homecss\img\app.png" />
+    <Content Include="Homecss\img\awards\1.png" />
+    <Content Include="Homecss\img\awards\2.png" />
+    <Content Include="Homecss\img\awards\3.png" />
+    <Content Include="Homecss\img\awards\4.png" />
+    <Content Include="Homecss\img\awards\5.png" />
+    <Content Include="Homecss\img\bg\about-us.jpg" />
+    <Content Include="Homecss\img\bg\blog-detail.jpg" />
+    <Content Include="Homecss\img\bg\header-kid.svg" />
+    <Content Include="Homecss\img\bg\home-kids-promotion.jpg" />
+    <Content Include="Homecss\img\bg\home-kids.jpg" />
+    <Content Include="Homecss\img\bg\subscribe.jpg" />
+    <Content Include="Homecss\img\bg\testimonial-organic.jpg" />
+    <Content Include="Homecss\img\bg\vendor.jpg" />
+    <Content Include="Homecss\img\blog\detail\2.jpg" />
+    <Content Include="Homecss\img\blog\detail\3.jpg" />
+    <Content Include="Homecss\img\blog\detail\4.jpg" />
+    <Content Include="Homecss\img\blog\detail\carousel\1.jpg" />
+    <Content Include="Homecss\img\blog\detail\carousel\2.jpg" />
+    <Content Include="Homecss\img\blog\grid\1.jpg" />
+    <Content Include="Homecss\img\blog\grid\2.jpg" />
+    <Content Include="Homecss\img\blog\grid\3.jpg" />
+    <Content Include="Homecss\img\blog\grid\4.jpg" />
+    <Content Include="Homecss\img\blog\grid\5.jpg" />
+    <Content Include="Homecss\img\blog\grid\6.jpg" />
+    <Content Include="Homecss\img\blog\grid\large.jpg" />
+    <Content Include="Homecss\img\blog\list\1.jpg" />
+    <Content Include="Homecss\img\blog\list\2.jpg" />
+    <Content Include="Homecss\img\blog\list\3.jpg" />
+    <Content Include="Homecss\img\blog\list\4.jpg" />
+    <Content Include="Homecss\img\blog\list\5.jpg" />
+    <Content Include="Homecss\img\blog\list\6.jpg" />
+    <Content Include="Homecss\img\blog\organic\1.jpg" />
+    <Content Include="Homecss\img\blog\organic\2.jpg" />
+    <Content Include="Homecss\img\blog\organic\3.jpg" />
+    <Content Include="Homecss\img\brand\1.jpg" />
+    <Content Include="Homecss\img\brand\2-1.jpg" />
+    <Content Include="Homecss\img\brand\2-10.jpg" />
+    <Content Include="Homecss\img\brand\2-2.jpg" />
+    <Content Include="Homecss\img\brand\2-3.jpg" />
+    <Content Include="Homecss\img\brand\2-4.jpg" />
+    <Content Include="Homecss\img\brand\2-5.jpg" />
+    <Content Include="Homecss\img\brand\2-6.jpg" />
+    <Content Include="Homecss\img\brand\2-7.jpg" />
+    <Content Include="Homecss\img\brand\2-8.jpg" />
+    <Content Include="Homecss\img\brand\2-9.jpg" />
+    <Content Include="Homecss\img\brand\2.jpg" />
+    <Content Include="Homecss\img\brand\3.jpg" />
+    <Content Include="Homecss\img\brand\4.jpg" />
+    <Content Include="Homecss\img\brand\5.jpg" />
+    <Content Include="Homecss\img\brand\6.jpg" />
+    <Content Include="Homecss\img\brand\7.jpg" />
+    <Content Include="Homecss\img\brand\8.jpg" />
+    <Content Include="Homecss\img\categories\1.jpg" />
+    <Content Include="Homecss\img\categories\2.jpg" />
+    <Content Include="Homecss\img\categories\3.jpg" />
+    <Content Include="Homecss\img\categories\4.jpg" />
+    <Content Include="Homecss\img\categories\5.jpg" />
+    <Content Include="Homecss\img\categories\6.jpg" />
+    <Content Include="Homecss\img\categories\7.jpg" />
+    <Content Include="Homecss\img\categories\8.jpg" />
+    <Content Include="Homecss\img\categories\clothing\1.jpg" />
+    <Content Include="Homecss\img\categories\clothing\2.jpg" />
+    <Content Include="Homecss\img\categories\clothing\3.jpg" />
+    <Content Include="Homecss\img\categories\clothing\4.jpg" />
+    <Content Include="Homecss\img\categories\clothing\5.jpg" />
+    <Content Include="Homecss\img\categories\clothing\6.jpg" />
+    <Content Include="Homecss\img\categories\clothing\7.jpg" />
+    <Content Include="Homecss\img\categories\clothing\large.jpg" />
+    <Content Include="Homecss\img\categories\electronic\1.jpg" />
+    <Content Include="Homecss\img\categories\electronic\2.jpg" />
+    <Content Include="Homecss\img\categories\electronic\3.jpg" />
+    <Content Include="Homecss\img\categories\electronic\4.jpg" />
+    <Content Include="Homecss\img\categories\electronic\5.jpg" />
+    <Content Include="Homecss\img\categories\electronic\6.jpg" />
+    <Content Include="Homecss\img\categories\electronic\7.jpg" />
+    <Content Include="Homecss\img\categories\electronic\8.jpg" />
+    <Content Include="Homecss\img\categories\electronic\large.jpg" />
+    <Content Include="Homecss\img\categories\furniture\1.png" />
+    <Content Include="Homecss\img\categories\furniture\10.png" />
+    <Content Include="Homecss\img\categories\furniture\11.png" />
+    <Content Include="Homecss\img\categories\furniture\12.png" />
+    <Content Include="Homecss\img\categories\furniture\2.png" />
+    <Content Include="Homecss\img\categories\furniture\3.png" />
+    <Content Include="Homecss\img\categories\furniture\4.png" />
+    <Content Include="Homecss\img\categories\furniture\5.png" />
+    <Content Include="Homecss\img\categories\furniture\6.png" />
+    <Content Include="Homecss\img\categories\furniture\7.png" />
+    <Content Include="Homecss\img\categories\furniture\8.png" />
+    <Content Include="Homecss\img\categories\furniture\9.png" />
+    <Content Include="Homecss\img\categories\furniture\room-1.png" />
+    <Content Include="Homecss\img\categories\furniture\room-2.png" />
+    <Content Include="Homecss\img\categories\furniture\room-3.png" />
+    <Content Include="Homecss\img\categories\furniture\room-4.png" />
+    <Content Include="Homecss\img\categories\furniture\room-5.png" />
+    <Content Include="Homecss\img\categories\furniture\room-6.png" />
+    <Content Include="Homecss\img\categories\furniture\room-7.png" />
+    <Content Include="Homecss\img\categories\furniture\room-8.png" />
+    <Content Include="Homecss\img\categories\home-2\1.jpg" />
+    <Content Include="Homecss\img\categories\home-2\2.jpg" />
+    <Content Include="Homecss\img\categories\home-2\3.jpg" />
+    <Content Include="Homecss\img\categories\home-2\4.jpg" />
+    <Content Include="Homecss\img\categories\home-2\5.jpg" />
+    <Content Include="Homecss\img\categories\home-2\6.jpg" />
+    <Content Include="Homecss\img\categories\home-5\1.jpg" />
+    <Content Include="Homecss\img\categories\home-5\10.jpg" />
+    <Content Include="Homecss\img\categories\home-5\11.jpg" />
+    <Content Include="Homecss\img\categories\home-5\12.jpg" />
+    <Content Include="Homecss\img\categories\home-5\13.jpg" />
+    <Content Include="Homecss\img\categories\home-5\14.jpg" />
+    <Content Include="Homecss\img\categories\home-5\15.jpg" />
+    <Content Include="Homecss\img\categories\home-5\16.jpg" />
+    <Content Include="Homecss\img\categories\home-5\2.jpg" />
+    <Content Include="Homecss\img\categories\home-5\3.jpg" />
+    <Content Include="Homecss\img\categories\home-5\4.jpg" />
+    <Content Include="Homecss\img\categories\home-5\5.jpg" />
+    <Content Include="Homecss\img\categories\home-5\6.jpg" />
+    <Content Include="Homecss\img\categories\home-5\7.jpg" />
+    <Content Include="Homecss\img\categories\home-5\8.jpg" />
+    <Content Include="Homecss\img\categories\home-5\9.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\1.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\10.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\11.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\12.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\13.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\14.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\15.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\16.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\2.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\3.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\4.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\5.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\6.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\7.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\8.jpg" />
+    <Content Include="Homecss\img\categories\home-kids\9.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\1.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\2.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\3.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\4.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\5.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\6.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\7.jpg" />
+    <Content Include="Homecss\img\categories\kitchen\large.jpg" />
+    <Content Include="Homecss\img\categories\organic\1.jpg" />
+    <Content Include="Homecss\img\categories\organic\2.jpg" />
+    <Content Include="Homecss\img\categories\organic\3.jpg" />
+    <Content Include="Homecss\img\categories\organic\4.jpg" />
+    <Content Include="Homecss\img\categories\organic\5.jpg" />
+    <Content Include="Homecss\img\categories\organic\6.jpg" />
+    <Content Include="Homecss\img\categories\shop\1.jpg" />
+    <Content Include="Homecss\img\categories\shop\10.jpg" />
+    <Content Include="Homecss\img\categories\shop\2.jpg" />
+    <Content Include="Homecss\img\categories\shop\3.jpg" />
+    <Content Include="Homecss\img\categories\shop\4.jpg" />
+    <Content Include="Homecss\img\categories\shop\5.jpg" />
+    <Content Include="Homecss\img\categories\shop\6.jpg" />
+    <Content Include="Homecss\img\categories\shop\7.jpg" />
+    <Content Include="Homecss\img\categories\shop\8.jpg" />
+    <Content Include="Homecss\img\categories\shop\9.jpg" />
+    <Content Include="Homecss\img\categories\technology\1.jpg" />
+    <Content Include="Homecss\img\categories\technology\2.jpg" />
+    <Content Include="Homecss\img\categories\technology\3.jpg" />
+    <Content Include="Homecss\img\categories\technology\4.jpg" />
+    <Content Include="Homecss\img\categories\technology\5.jpg" />
+    <Content Include="Homecss\img\categories\technology\6.jpg" />
+    <Content Include="Homecss\img\collection\home-1\1.jpg" />
+    <Content Include="Homecss\img\collection\home-1\2.jpg" />
+    <Content Include="Homecss\img\collection\home-1\3.jpg" />
+    <Content Include="Homecss\img\collection\home-1\ad-1.jpg" />
+    <Content Include="Homecss\img\collection\home-1\ad-2.jpg" />
+    <Content Include="Homecss\img\coming-soon-logo.png" />
+    <Content Include="Homecss\img\coming-soon.jpg" />
+    <Content Include="Homecss\img\flag\en.png" />
+    <Content Include="Homecss\img\flag\fr.png" />
+    <Content Include="Homecss\img\flag\germany.png" />
+    <Content Include="Homecss\img\google-play.png" />
+    <Content Include="Homecss\img\home\home-photo\author-1.png" />
+    <Content Include="Homecss\img\home\home-photo\author-2.png" />
+    <Content Include="Homecss\img\home\home-photo\author-3.png" />
+    <Content Include="Homecss\img\home\home-photo\banner.jpg" />
+    <Content Include="Homecss\img\home\home-photo\blog-1.jpg" />
+    <Content Include="Homecss\img\home\home-photo\blog-2.jpg" />
+    <Content Include="Homecss\img\home\home-photo\blog-3.jpg" />
+    <Content Include="Homecss\img\home\home-photo\brand-1.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-2.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-3.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-4.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-5.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-6.png" />
+    <Content Include="Homecss\img\home\home-photo\brand-7.png" />
+    <Content Include="Homecss\img\home\home-photo\home-content\1.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\10.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\11.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\12.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\13.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\14.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\15.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\16.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\17.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\2.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\3.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\5.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\6.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\7.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\8.jpg" />
+    <Content Include="Homecss\img\home\home-photo\home-content\9.jpg" />
+    <Content Include="Homecss\img\home\home-photo\popular-bg.jpg" />
+    <Content Include="Homecss\img\home\home-photo\share-work.png" />
+    <Content Include="Homecss\img\home\home-photo\testimonial-1.jpg" />
+    <Content Include="Homecss\img\home\home-photo\testimonial-2.jpg" />
+    <Content Include="Homecss\img\icons\vendor-1.png" />
+    <Content Include="Homecss\img\icons\vendor-2.png" />
+    <Content Include="Homecss\img\icons\vendor-3.png" />
+    <Content Include="Homecss\img\icons\vendor-4.png" />
+    <Content Include="Homecss\img\instagram\1.jpg" />
+    <Content Include="Homecss\img\instagram\2.jpg" />
+    <Content Include="Homecss\img\instagram\3.jpg" />
+    <Content Include="Homecss\img\instagram\4.jpg" />
+    <Content Include="Homecss\img\instagram\5.jpg" />
+    <Content Include="Homecss\img\instagram\6.jpg" />
+    <Content Include="Homecss\img\instagram\7.jpg" />
+    <Content Include="Homecss\img\instagram\8.jpg" />
+    <Content Include="Homecss\img\logo-autopart.png" />
+    <Content Include="Homecss\img\logo-electronic.png" />
+    <Content Include="Homecss\img\logo-furniture.png" />
+    <Content Include="Homecss\img\logo-kids.png" />
+    <Content Include="Homecss\img\logo-organic.png" />
+    <Content Include="Homecss\img\logo-photo.png" />
+    <Content Include="Homecss\img\logo-technology.png" />
+    <Content Include="Homecss\img\logo.png" />
+    <Content Include="Homecss\img\logo_light.png" />
+    <Content Include="Homecss\img\mylogo.png" />
+    <Content Include="Homecss\img\mylogo1.png" />
+    <Content Include="Homecss\img\payment-method\1.jpg" />
+    <Content Include="Homecss\img\payment-method\2.jpg" />
+    <Content Include="Homecss\img\payment-method\3.jpg" />
+    <Content Include="Homecss\img\payment-method\4.jpg" />
+    <Content Include="Homecss\img\payment-method\5.jpg" />
+    <Content Include="Homecss\img\products\arrivals\1.jpg" />
+    <Content Include="Homecss\img\products\arrivals\2.jpg" />
+    <Content Include="Homecss\img\products\arrivals\3.jpg" />
+    <Content Include="Homecss\img\products\arrivals\4.jpg" />
+    <Content Include="Homecss\img\products\arrivals\5.jpg" />
+    <Content Include="Homecss\img\products\arrivals\6.jpg" />
+    <Content Include="Homecss\img\products\clothing\1.jpg" />
+    <Content Include="Homecss\img\products\clothing\2.jpg" />
+    <Content Include="Homecss\img\products\clothing\3.jpg" />
+    <Content Include="Homecss\img\products\clothing\4.jpg" />
+    <Content Include="Homecss\img\products\clothing\5.jpg" />
+    <Content Include="Homecss\img\products\clothing\6.jpg" />
+    <Content Include="Homecss\img\products\clothing\7.jpg" />
+    <Content Include="Homecss\img\products\detail\affiliate\1.jpg" />
+    <Content Include="Homecss\img\products\detail\affiliate\2.jpg" />
+    <Content Include="Homecss\img\products\detail\affiliate\3.jpg" />
+    <Content Include="Homecss\img\products\detail\content\description.jpg" />
+    <Content Include="Homecss\img\products\detail\countdown\1.jpg" />
+    <Content Include="Homecss\img\products\detail\countdown\2.jpg" />
+    <Content Include="Homecss\img\products\detail\countdown\3.jpg" />
+    <Content Include="Homecss\img\products\detail\countdown\4.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\a-1.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\a-2.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\a-3.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\b-1.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\b-2.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\b-3.jpg" />
+    <Content Include="Homecss\img\products\detail\deal-hot\b-4.jpg" />
+    <Content Include="Homecss\img\products\detail\fullwidth\1.jpg" />
+    <Content Include="Homecss\img\products\detail\fullwidth\2.jpg" />
+    <Content Include="Homecss\img\products\detail\fullwidth\3.jpg" />
+    <Content Include="Homecss\img\products\detail\fullwidth\4.html" />
+    <Content Include="Homecss\img\products\detail\groupped\1.jpg" />
+    <Content Include="Homecss\img\products\detail\groupped\2.jpg" />
+    <Content Include="Homecss\img\products\detail\groupped\3.jpg" />
+    <Content Include="Homecss\img\products\detail\groupped\4.jpg" />
+    <Content Include="Homecss\img\products\detail\image-swatches\1.jpg" />
+    <Content Include="Homecss\img\products\detail\image-swatches\2.jpg" />
+    <Content Include="Homecss\img\products\detail\instagram\1.jpg" />
+    <Content Include="Homecss\img\products\detail\instagram\2.jpg" />
+    <Content Include="Homecss\img\products\detail\instagram\3.jpg" />
+    <Content Include="Homecss\img\products\detail\instagram\4.jpg" />
+    <Content Include="Homecss\img\products\detail\on-sale\1.jpg" />
+    <Content Include="Homecss\img\products\detail\on-sale\2.jpg" />
+    <Content Include="Homecss\img\products\detail\on-sale\3.jpg" />
+    <Content Include="Homecss\img\products\detail\on-sale\4.jpg" />
+    <Content Include="Homecss\img\products\detail\out-stock\1.jpg" />
+    <Content Include="Homecss\img\products\detail\out-stock\2.jpg" />
+    <Content Include="Homecss\img\products\detail\out-stock\3.jpg" />
+    <Content Include="Homecss\img\products\detail\out-stock\4.jpg" />
+    <Content Include="Homecss\img\products\detail\variants\small-1.jpg" />
+    <Content Include="Homecss\img\products\detail\variants\small-2.jpg" />
+    <Content Include="Homecss\img\products\detail\variants\small-3.jpg" />
+    <Content Include="Homecss\img\products\electronic\1.jpg" />
+    <Content Include="Homecss\img\products\electronic\10.jpg" />
+    <Content Include="Homecss\img\products\electronic\11.jpg" />
+    <Content Include="Homecss\img\products\electronic\12.jpg" />
+    <Content Include="Homecss\img\products\electronic\13.jpg" />
+    <Content Include="Homecss\img\products\electronic\14.jpg" />
+    <Content Include="Homecss\img\products\electronic\15.jpg" />
+    <Content Include="Homecss\img\products\electronic\16.jpg" />
+    <Content Include="Homecss\img\products\electronic\17.jpg" />
+    <Content Include="Homecss\img\products\electronic\18.jpg" />
+    <Content Include="Homecss\img\products\electronic\19.jpg" />
+    <Content Include="Homecss\img\products\electronic\2.jpg" />
+    <Content Include="Homecss\img\products\electronic\20.jpg" />
+    <Content Include="Homecss\img\products\electronic\3.jpg" />
+    <Content Include="Homecss\img\products\electronic\4.jpg" />
+    <Content Include="Homecss\img\products\electronic\5.jpg" />
+    <Content Include="Homecss\img\products\electronic\6.jpg" />
+    <Content Include="Homecss\img\products\electronic\7.jpg" />
+    <Content Include="Homecss\img\products\electronic\8.jpg" />
+    <Content Include="Homecss\img\products\electronic\9.jpg" />
+    <Content Include="Homecss\img\products\furniture\1.jpg" />
+    <Content Include="Homecss\img\products\furniture\10.jpg" />
+    <Content Include="Homecss\img\products\furniture\11.jpg" />
+    <Content Include="Homecss\img\products\furniture\12.jpg" />
+    <Content Include="Homecss\img\products\furniture\13.jpg" />
+    <Content Include="Homecss\img\products\furniture\2.jpg" />
+    <Content Include="Homecss\img\products\furniture\3.jpg" />
+    <Content Include="Homecss\img\products\furniture\4.jpg" />
+    <Content Include="Homecss\img\products\furniture\5.jpg" />
+    <Content Include="Homecss\img\products\furniture\6.jpg" />
+    <Content Include="Homecss\img\products\furniture\7.jpg" />
+    <Content Include="Homecss\img\products\furniture\8.jpg" />
+    <Content Include="Homecss\img\products\furniture\9.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\1.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\2.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\3.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\4.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\5.jpg" />
+    <Content Include="Homecss\img\products\home-2\recommend\6.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\1.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\2.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\3.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\4.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\5.jpg" />
+    <Content Include="Homecss\img\products\home-3\healthy\6.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\1.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\2.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\3.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\4.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\5.jpg" />
+    <Content Include="Homecss\img\products\home-3\technology\6.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\a-1.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\a-2.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\a-3.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\b-1.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\b-2.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\b-3.jpg" />
+    <Content Include="Homecss\img\products\home-6\deal-hot\b-4.jpg" />
+    <Content Include="Homecss\img\products\home-9\a-1.jpg" />
+    <Content Include="Homecss\img\products\home-9\a-2.jpg" />
+    <Content Include="Homecss\img\products\home-9\a-3.jpg" />
+    <Content Include="Homecss\img\products\home-9\b-1.jpg" />
+    <Content Include="Homecss\img\products\home-9\b-2.jpg" />
+    <Content Include="Homecss\img\products\home-9\b-3.jpg" />
+    <Content Include="Homecss\img\products\home-9\b-4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\1.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\2.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\3.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\5.jpg" />
+    <Content Include="Homecss\img\products\home-kids\apparels\6.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\1.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\2.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\3.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\5.jpg" />
+    <Content Include="Homecss\img\products\home-kids\baby-out\6.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\1.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\2.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\3.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\5.jpg" />
+    <Content Include="Homecss\img\products\home-kids\eat-drink\6.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\1.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\2.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\3.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\5.jpg" />
+    <Content Include="Homecss\img\products\home-kids\pregnancy\6.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\1.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\2.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\3.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\4.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\5.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\6.jpg" />
+    <Content Include="Homecss\img\products\home-kids\recent-view\7.jpg" />
+    <Content Include="Homecss\img\products\home\1.jpg" />
+    <Content Include="Homecss\img\products\home\2.jpg" />
+    <Content Include="Homecss\img\products\home\3.jpg" />
+    <Content Include="Homecss\img\products\home\4.jpg" />
+    <Content Include="Homecss\img\products\home\5.jpg" />
+    <Content Include="Homecss\img\products\home\6.jpg" />
+    <Content Include="Homecss\img\products\home\7.jpg" />
+    <Content Include="Homecss\img\products\organic\1.jpg" />
+    <Content Include="Homecss\img\products\organic\10.jpg" />
+    <Content Include="Homecss\img\products\organic\2.jpg" />
+    <Content Include="Homecss\img\products\organic\3.jpg" />
+    <Content Include="Homecss\img\products\organic\4.jpg" />
+    <Content Include="Homecss\img\products\organic\5.jpg" />
+    <Content Include="Homecss\img\products\organic\6.jpg" />
+    <Content Include="Homecss\img\products\organic\7.jpg" />
+    <Content Include="Homecss\img\products\organic\8.jpg" />
+    <Content Include="Homecss\img\products\organic\9.jpg" />
+    <Content Include="Homecss\img\products\shop\1.jpg" />
+    <Content Include="Homecss\img\products\shop\10.jpg" />
+    <Content Include="Homecss\img\products\shop\11.jpg" />
+    <Content Include="Homecss\img\products\shop\12.jpg" />
+    <Content Include="Homecss\img\products\shop\13.jpg" />
+    <Content Include="Homecss\img\products\shop\14.jpg" />
+    <Content Include="Homecss\img\products\shop\15.jpg" />
+    <Content Include="Homecss\img\products\shop\16.jpg" />
+    <Content Include="Homecss\img\products\shop\17.jpg" />
+    <Content Include="Homecss\img\products\shop\18.jpg" />
+    <Content Include="Homecss\img\products\shop\19.jpg" />
+    <Content Include="Homecss\img\products\shop\2.jpg" />
+    <Content Include="Homecss\img\products\shop\20.jpg" />
+    <Content Include="Homecss\img\products\shop\21.jpg" />
+    <Content Include="Homecss\img\products\shop\22.jpg" />
+    <Content Include="Homecss\img\products\shop\23.jpg" />
+    <Content Include="Homecss\img\products\shop\3.jpg" />
+    <Content Include="Homecss\img\products\shop\4.jpg" />
+    <Content Include="Homecss\img\products\shop\5.jpg" />
+    <Content Include="Homecss\img\products\shop\6.jpg" />
+    <Content Include="Homecss\img\products\shop\7.jpg" />
+    <Content Include="Homecss\img\products\shop\8.jpg" />
+    <Content Include="Homecss\img\products\shop\9.jpg" />
+    <Content Include="Homecss\img\products\shop\best\1.jpg" />
+    <Content Include="Homecss\img\products\shop\best\2.jpg" />
+    <Content Include="Homecss\img\products\shop\best\3.jpg" />
+    <Content Include="Homecss\img\products\shop\best\4.jpg" />
+    <Content Include="Homecss\img\products\shop\best\5.jpg" />
+    <Content Include="Homecss\img\products\shop\best\6.jpg" />
+    <Content Include="Homecss\img\products\shop\best\7.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\1.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\2.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\3.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\4.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\5.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\6.jpg" />
+    <Content Include="Homecss\img\products\shop\recommended\7.jpg" />
+    <Content Include="Homecss\img\products\technology\1.jpg" />
+    <Content Include="Homecss\img\products\technology\11.jpg" />
+    <Content Include="Homecss\img\products\technology\12.jpg" />
+    <Content Include="Homecss\img\products\technology\13.jpg" />
+    <Content Include="Homecss\img\products\technology\14.jpg" />
+    <Content Include="Homecss\img\products\technology\15.jpg" />
+    <Content Include="Homecss\img\products\technology\16.jpg" />
+    <Content Include="Homecss\img\products\technology\17.jpg" />
+    <Content Include="Homecss\img\products\technology\18.jpg" />
+    <Content Include="Homecss\img\products\technology\19.jpg" />
+    <Content Include="Homecss\img\products\technology\2.jpg" />
+    <Content Include="Homecss\img\products\technology\20.jpg" />
+    <Content Include="Homecss\img\products\technology\21.jpg" />
+    <Content Include="Homecss\img\products\technology\22.jpg" />
+    <Content Include="Homecss\img\products\technology\3.jpg" />
+    <Content Include="Homecss\img\products\technology\4.jpg" />
+    <Content Include="Homecss\img\products\technology\5.jpg" />
+    <Content Include="Homecss\img\products\technology\6.jpg" />
+    <Content Include="Homecss\img\products\technology\7.jpg" />
+    <Content Include="Homecss\img\products\technology\8.jpg" />
+    <Content Include="Homecss\img\products\technology\9.jpg" />
+    <Content Include="Homecss\img\products\test\dummy.png" />
+    <Content Include="Homecss\img\promotions\header-promotion.jpg" />
+    <Content Include="Homecss\img\promotions\home-10\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-10\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-2-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-2-2.jpg" />
+    <Content Include="Homecss\img\promotions\home-2-3.jpg" />
+    <Content Include="Homecss\img\promotions\home-3-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-3-2.jpg" />
+    <Content Include="Homecss\img\promotions\home-3-3.jpg" />
+    <Content Include="Homecss\img\promotions\home-4-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\clothing-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\clothing-2.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\electronic-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\electronic-2.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\kitchen-1.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\kitchen-2.jpg" />
+    <Content Include="Homecss\img\promotions\home-5\simple.jpg" />
+    <Content Include="Homecss\img\promotions\home-6\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-6\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-7\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-7\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-7\3.jpg" />
+    <Content Include="Homecss\img\promotions\home-8\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-8\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-8\3.jpg" />
+    <Content Include="Homecss\img\promotions\home-9\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-9\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-kids\1.jpg" />
+    <Content Include="Homecss\img\promotions\home-kids\2.jpg" />
+    <Content Include="Homecss\img\promotions\home-kids\3.jpg" />
+    <Content Include="Homecss\img\promotions\home-kids\top.jpg" />
+    <Content Include="Homecss\img\slider\autopart\1.jpg" />
+    <Content Include="Homecss\img\slider\autopart\2.jpg" />
+    <Content Include="Homecss\img\slider\home-10\1.jpg" />
+    <Content Include="Homecss\img\slider\home-10\2.jpg" />
+    <Content Include="Homecss\img\slider\home-1\promotion-1.jpg" />
+    <Content Include="Homecss\img\slider\home-1\promotion-2.jpg" />
+    <Content Include="Homecss\img\slider\home-1\slide-1.jpg" />
+    <Content Include="Homecss\img\slider\home-1\slide-2.jpg" />
+    <Content Include="Homecss\img\slider\home-1\slide-3.jpg" />
+    <Content Include="Homecss\img\slider\home-3\clothing-1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\clothing-2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\clothing-3.jpg" />
+    <Content Include="Homecss\img\slider\home-3\electronic-1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\electronic-2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\electronic-3.jpg" />
+    <Content Include="Homecss\img\slider\home-3\healthy-1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\healthy-2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\healthy-3.jpg" />
+    <Content Include="Homecss\img\slider\home-3\home-banner\1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\home-banner\2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\kitchen-1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\kitchen-2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\kitchen-3.jpg" />
+    <Content Include="Homecss\img\slider\home-3\technology-1.jpg" />
+    <Content Include="Homecss\img\slider\home-3\technology-2.jpg" />
+    <Content Include="Homecss\img\slider\home-3\technology-3.jpg" />
+    <Content Include="Homecss\img\slider\home-4\1.jpg" />
+    <Content Include="Homecss\img\slider\home-4\2.jpg" />
+    <Content Include="Homecss\img\slider\home-4\3.jpg" />
+    <Content Include="Homecss\img\slider\home-4\left.jpg" />
+    <Content Include="Homecss\img\slider\home-5\1.jpg" />
+    <Content Include="Homecss\img\slider\home-5\2.jpg" />
+    <Content Include="Homecss\img\slider\home-5\3.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-1.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-2.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-3.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-4.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-5.jpg" />
+    <Content Include="Homecss\img\slider\home-5\promotion-6.jpg" />
+    <Content Include="Homecss\img\slider\home-6\1.jpg" />
+    <Content Include="Homecss\img\slider\home-6\2.jpg" />
+    <Content Include="Homecss\img\slider\home-7\1.jpg" />
+    <Content Include="Homecss\img\slider\home-7\2.jpg" />
+    <Content Include="Homecss\img\slider\home-7\3.jpg" />
+    <Content Include="Homecss\img\slider\home-7\promotion-1.jpg" />
+    <Content Include="Homecss\img\slider\home-7\promotion-2.jpg" />
+    <Content Include="Homecss\img\slider\home-8\1.jpg" />
+    <Content Include="Homecss\img\slider\home-8\2.jpg" />
+    <Content Include="Homecss\img\slider\home-9\1.jpg" />
+    <Content Include="Homecss\img\slider\home-9\2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\apparel-1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\apparel-2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\apparel-3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\baby-out-1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\baby-out-2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\baby-out-3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\eat-1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\eat-2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\eat-3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\pregnancy-1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\pregnancy-2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\pregnancy-3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-1.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-2.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-3.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-4.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-5.jpg" />
+    <Content Include="Homecss\img\slider\home-kids\promotion-6.jpg" />
+    <Content Include="Homecss\img\slider\shop-carousel\1.jpg" />
+    <Content Include="Homecss\img\slider\shop-carousel\2.jpg" />
+    <Content Include="Homecss\img\slider\shop-default\1.jpg" />
+    <Content Include="Homecss\img\slider\shop-default\2.jpg" />
+    <Content Include="Homecss\img\slider\shop-sidebar\1.jpg" />
+    <Content Include="Homecss\img\slider\shop-sidebar\2.jpg" />
+    <Content Include="Homecss\img\users\1.jpg" />
+    <Content Include="Homecss\img\users\1.png" />
+    <Content Include="Homecss\img\users\2.png" />
+    <Content Include="Homecss\img\users\3.jpg" />
+    <Content Include="Homecss\img\users\our-team\1.jpg" />
+    <Content Include="Homecss\img\users\our-team\2.jpg" />
+    <Content Include="Homecss\img\users\our-team\3.jpg" />
+    <Content Include="Homecss\img\users\our-team\4.jpg" />
+    <Content Include="Homecss\img\users\our-team\5.jpg" />
+    <Content Include="Homecss\img\users\our-team\6.jpg" />
+    <Content Include="Homecss\img\users\our-team\7.jpg" />
+    <Content Include="Homecss\img\vendor\milestone-1.png" />
+    <Content Include="Homecss\img\vendor\milestone-2.png" />
+    <Content Include="Homecss\img\vendor\milestone-3.png" />
+    <Content Include="Homecss\img\vendor\milestone-4.png" />
+    <Content Include="Homecss\img\vendor\store\1.jpg" />
+    <Content Include="Homecss\img\vendor\store\2.jpg" />
+    <Content Include="Homecss\img\vendor\store\3.jpg" />
+    <Content Include="Homecss\img\vendor\store\default_banner.jpg" />
+    <Content Include="Homecss\img\vendor\store\user\3.jpg" />
+    <Content Include="Homecss\img\vendor\store\user\4.jpg" />
+    <Content Include="Homecss\img\vendor\store\user\5.jpg" />
+    <Content Include="Homecss\img\vendor\vendor-store.jpg" />
+    <Content Include="Homecss\js\chart.js" />
+    <Content Include="Homecss\js\main.js" />
+    <Content Include="Homecss\plugins\bootstrap4\css\bootstrap.min.css" />
+    <Content Include="Homecss\plugins\bootstrap4\js\bootstrap.min.js" />
+    <Content Include="Homecss\plugins\Chart.js\Chart.min.js" />
+    <Content Include="Homecss\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfont5b62.svg" />
+    <Content Include="Homecss\plugins\gmap3.min.js" />
+    <Content Include="Homecss\plugins\imagesloaded.pkgd.min.js" />
+    <Content Include="Homecss\plugins\isotope.pkgd.min.js" />
+    <Content Include="Homecss\plugins\jquery-1.12.4.min.js" />
+    <Content Include="Homecss\plugins\jquery-bar-rating\dist\jquery.barrating.min.js" />
+    <Content Include="Homecss\plugins\jquery-bar-rating\dist\themes\fontawesome-stars.css" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Homecss\plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Homecss\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Homecss\plugins\jquery.matchHeight-min.js" />
+    <Content Include="Homecss\plugins\jquery.slimscroll.min.js" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\css\lightgallery.min.css" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\fonts\lgd641.svg" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\img\loading.gif" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\img\video-play.png" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\img\vimeo-play.png" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\img\youtube-play.png" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\js\lightgallery-all.min.js" />
+    <Content Include="Homecss\plugins\masonry.pkgd.min.js" />
+    <Content Include="Homecss\plugins\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="Homecss\plugins\owl-carousel\assets\owl.video.play.html" />
+    <Content Include="Homecss\plugins\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Homecss\plugins\popper.min.js" />
+    <Content Include="Homecss\plugins\select2\dist\css\select2.min.css" />
+    <Content Include="Homecss\plugins\select2\dist\js\select2.full.min.js" />
+    <Content Include="Homecss\plugins\slick-animation.min.js" />
+    <Content Include="Homecss\plugins\slick\slick\slick.css" />
+    <Content Include="Homecss\plugins\slick\slick\slick.min.js" />
+    <Content Include="Homecss\plugins\sticky-sidebar\dist\sticky-sidebar.min.js" />
+    <Content Include="Homecss\TrackOrderBar.css" />
+    <Content Include="Home_Design\CheckoutDesign\css\images\bx_loader.html" />
+    <Content Include="Home_Design\CheckoutDesign\css\style.css" />
+    <Content Include="Home_Design\css\bootstrap.min.css" />
+    <Content Include="Home_Design\css\checkboxcss.css" />
+    <Content Include="Home_Design\css\font-awesome.min.css" />
+    <Content Include="Home_Design\css\grofer-css.css" />
+    <Content Include="Home_Design\css\icon-css.css" />
+    <Content Include="Home_Design\css\style.css" />
+    <Content Include="Home_Design\js\bootstrap.js" />
+    <Content Include="Home_Design\js\bootstrap.min.js" />
+    <Content Include="Home_Design\js\jquery-3.1.1.min.js" />
+    <Content Include="Home_Design\js\jquery.arcticmodal.js" />
+    <Content Include="Home_Design\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Home_Design\js\jquery.nicescroll.js" />
+    <Content Include="Home_Design\js\jquery.scrollTo.js" />
+    <Content Include="Home_Design\js\jquery2.0.3.min.js" />
+    <Content Include="Home_Design\js\multislider.js" />
+    <Content Include="Home_Design\js\scripts.js" />
+    <Content Include="images\about\01.jpg" />
+    <Content Include="images\about\011.jpg" />
+    <Content Include="images\about\02.jpg" />
+    <Content Include="images\about\022.jpg" />
+    <Content Include="images\about\03.jpg" />
+    <Content Include="images\about\033.png" />
+    <Content Include="images\about\04.jpg" />
+    <Content Include="images\about\044.jpg" />
+    <Content Include="images\app-store.png" />
+    <Content Include="images\avatar\01.jpg" />
+    <Content Include="images\avatar\02.jpg" />
+    <Content Include="images\avatar\03.jpg" />
+    <Content Include="images\avatar\04.jpg" />
+    <Content Include="images\banner-shape.png" />
+    <Content Include="images\blog-widget\01.jpg" />
+    <Content Include="images\blog-widget\02.jpg" />
+    <Content Include="images\blog-widget\03.jpg" />
+    <Content Include="images\blog-widget\04.jpg" />
+    <Content Include="images\blog-widget\05.jpg" />
+    <Content Include="images\blog\01.jpg" />
+    <Content Include="images\blog\02.jpg" />
+    <Content Include="images\blog\03.jpg" />
+    <Content Include="images\blog\04.jpg" />
+    <Content Include="images\blog\05.jpg" />
+    <Content Include="images\blog\06.jpg" />
+    <Content Include="images\blog\07.jpg" />
+    <Content Include="images\blog\08.jpg" />
+    <Content Include="images\branch\01.jpg" />
+    <Content Include="images\branch\02.jpg" />
+    <Content Include="images\branch\03.jpg" />
+    <Content Include="images\branch\04.jpg" />
+    <Content Include="images\brand\01.jpg" />
+    <Content Include="images\brand\02.jpg" />
+    <Content Include="images\brand\03.jpg" />
+    <Content Include="images\brand\04.jpg" />
+    <Content Include="images\brand\05.jpg" />
+    <Content Include="images\brand\06.jpg" />
+    <Content Include="images\category\dairy.jpg" />
+    <Content Include="images\category\drinks.jpg" />
+    <Content Include="images\category\fastfoods.jpg" />
+    <Content Include="images\category\fish.jpg" />
+    <Content Include="images\category\fruits.jpg" />
+    <Content Include="images\category\groceries.jpg" />
+    <Content Include="images\category\meat.jpg" />
+    <Content Include="images\category\seafoods.jpg" />
+    <Content Include="images\category\vegetables.jpg" />
+    <Content Include="images\coming-soon.png" />
+    <Content Include="images\countdown.png" />
+    <Content Include="images\error.png" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\google-store.png" />
+    <Content Include="images\home\category\01.jpg" />
+    <Content Include="images\home\category\02.jpg" />
+    <Content Include="images\home\category\03.jpg" />
+    <Content Include="images\home\classic\01.jpg" />
+    <Content Include="images\home\classic\02.jpg" />
+    <Content Include="images\home\classic\03.jpg" />
+    <Content Include="images\home\grid\01.jpg" />
+    <Content Include="images\home\grid\02.jpg" />
+    <Content Include="images\home\index\01.png" />
+    <Content Include="images\home\index\02.png" />
+    <Content Include="images\home\index\03.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\newsletter.jpg" />
+    <Content Include="images\offer\01.jpg" />
+    <Content Include="images\offer\02.jpg" />
+    <Content Include="images\offer\03.jpg" />
+    <Content Include="images\offer\04.jpg" />
+    <Content Include="images\offer\05.jpg" />
+    <Content Include="images\offer\06.jpg" />
+    <Content Include="images\offer\07.jpg" />
+    <Content Include="images\offer\08.jpg" />
+    <Content Include="images\offer\09.jpg" />
+    <Content Include="images\offer\10.jpg" />
+    <Content Include="images\offer\11.jpg" />
+    <Content Include="images\payment\jpg\01.jpg" />
+    <Content Include="images\payment\jpg\02.jpg" />
+    <Content Include="images\payment\jpg\03.jpg" />
+    <Content Include="images\payment\jpg\04.jpg" />
+    <Content Include="images\payment\png\01.png" />
+    <Content Include="images\payment\png\02.png" />
+    <Content Include="images\payment\png\03.png" />
+    <Content Include="images\product\01.jpg" />
+    <Content Include="images\product\02.jpg" />
+    <Content Include="images\product\03.jpg" />
+    <Content Include="images\product\04.jpg" />
+    <Content Include="images\product\05.jpg" />
+    <Content Include="images\product\06.jpg" />
+    <Content Include="images\product\07.jpg" />
+    <Content Include="images\product\08.jpg" />
+    <Content Include="images\product\09.jpg" />
+    <Content Include="images\product\10.jpg" />
+    <Content Include="images\product\11.jpg" />
+    <Content Include="images\product\12.jpg" />
+    <Content Include="images\product\13.jpg" />
+    <Content Include="images\product\14.jpg" />
+    <Content Include="images\product\15.jpg" />
+    <Content Include="images\product\16.jpg" />
+    <Content Include="images\product\17.jpg" />
+    <Content Include="images\product\18.jpg" />
+    <Content Include="images\product\19.jpg" />
+    <Content Include="images\product\20.jpg" />
+    <Content Include="images\promo\blog\01.jpg" />
+    <Content Include="images\promo\home\01.jpg" />
+    <Content Include="images\promo\home\02.jpg" />
+    <Content Include="images\promo\home\03.jpg" />
+    <Content Include="images\promo\home\04.jpg" />
+    <Content Include="images\promo\home\05.jpg" />
+    <Content Include="images\promo\home\06.jpg" />
+    <Content Include="images\promo\home\07.jpg" />
+    <Content Include="images\promo\home\08.jpg" />
+    <Content Include="images\promo\home\09.jpg" />
+    <Content Include="images\promo\shop\01.jpg" />
+    <Content Include="images\single-banner.jpg" />
+    <Content Include="images\suggest\01.jpg" />
+    <Content Include="images\suggest\02.jpg" />
+    <Content Include="images\suggest\03.jpg" />
+    <Content Include="images\suggest\04.jpg" />
+    <Content Include="images\suggest\05.jpg" />
+    <Content Include="images\suggest\06.jpg" />
+    <Content Include="images\suggest\07.jpg" />
+    <Content Include="images\suggest\08.jpg" />
+    <Content Include="images\team\01.jpg" />
+    <Content Include="images\team\02.jpg" />
+    <Content Include="images\team\03.jpg" />
+    <Content Include="images\team\04.jpg" />
+    <Content Include="images\team\05.jpg" />
+    <Content Include="images\testimonial-shape.png" />
+    <Content Include="images\testimonial\01.jpg" />
+    <Content Include="images\testimonial\02.jpg" />
+    <Content Include="images\tick.png" />
+    <Content Include="images\user.png" />
+    <Content Include="images\video.jpg" />
+    <Content Include="images\wanc.png" />
+    <Content Include="js\accordion.js" />
+    <Content Include="js\countdown.js" />
+    <Content Include="js\isotope.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\nice-select.js" />
+    <Content Include="js\slick.js" />
+    <Content Include="js\venobox.js" />
+    <Content Include="vendor\bootstrap\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\bootstrap.min.js" />
+    <Content Include="vendor\bootstrap\jquery-1.12.4.min.js" />
+    <Content Include="vendor\bootstrap\popper.min.js" />
+    <Content Include="vendor\countdown\countdown.min.js" />
+    <Content Include="vendor\isotope\isotope.pkgd.min.js" />
+    <Content Include="vendor\niceselect\nice-select.min.css" />
+    <Content Include="vendor\niceselect\nice-select.min.js" />
+    <Content Include="vendor\slickslider\slick.min.css" />
+    <Content Include="vendor\slickslider\slick.min.js" />
+    <Content Include="vendor\venobox\venobox.min.css" />
+    <Content Include="vendor\venobox\venobox.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="BrandImage\" />
+    <Folder Include="CategoryImage\" />
+    <Folder Include="Home_Design\font\" />
+    <Folder Include="IndexBanners\" />
+    <Folder Include="Products\ProductImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_Layouthome.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\flaticon\Flaticon.eot" />
+    <Content Include="fonts\flaticon\Flaticon.ttf" />
+    <Content Include="fonts\flaticon\Flaticon.woff" />
+    <Content Include="fonts\flaticon\Flaticon.woff2" />
+    <Content Include="fonts\flaticon\Flaticond41d.eot" />
+    <Content Include="fonts\fontawesome\fa-brands-400.eot" />
+    <Content Include="fonts\fontawesome\fa-brands-400.ttf" />
+    <Content Include="fonts\fontawesome\fa-brands-400.woff" />
+    <Content Include="fonts\fontawesome\fa-brands-400.woff2" />
+    <Content Include="fonts\fontawesome\fa-brands-400d41d.eot" />
+    <Content Include="fonts\fontawesome\fa-regular-400.eot" />
+    <Content Include="fonts\fontawesome\fa-regular-400.ttf" />
+    <Content Include="fonts\fontawesome\fa-regular-400.woff" />
+    <Content Include="fonts\fontawesome\fa-regular-400.woff2" />
+    <Content Include="fonts\fontawesome\fa-regular-400d41d.eot" />
+    <Content Include="fonts\fontawesome\fa-solid-900.eot" />
+    <Content Include="fonts\fontawesome\fa-solid-900.ttf" />
+    <Content Include="fonts\fontawesome\fa-solid-900.woff" />
+    <Content Include="fonts\fontawesome\fa-solid-900.woff2" />
+    <Content Include="fonts\fontawesome\fa-solid-900d41d.eot" />
+    <Content Include="fonts\icofont\icofont.woff" />
+    <Content Include="fonts\icofont\icofont.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\contact.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\about.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\shop.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\products.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\checkout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shared\_AdminLayout1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\PurchaseProductList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Inventory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddBanner.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewBanner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditBanner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddNewBrand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewBrand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddNewCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewAllCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Editcategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddSubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewSubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditSubcategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddnewProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditProducts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewAllProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewAllOrder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AllReturnRequests.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\RejectedReturns.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ApprovedReturns.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\PickupUnderProcess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\RefundRequest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ApprovedRefund.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddPin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\PinCode.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditPincode.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\SallerList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewSallerDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\cashbacklist.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\WalletList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddBookingSlot.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\UserLists.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Reviews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\HomeCateegories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewHomeCateegories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\SellerOrdersDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\addnotification.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewNotification.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ChooseAppyOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddDiscount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ViewAllDiscount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditAddedDiscounts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AddDeliveryCharges.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\minOrderofsellers.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Usersdetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Add_Library_Category.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Add_Library_SubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Querylist.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\OrderTransit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\DeleveredOrders.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\AwaitingPickup.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\OrderUnderProcess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\EditOrderDates.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\OrderShpped.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\SallerLogin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shared\sallerlayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\Dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\AddNewBrand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ViewBrand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\AddNewCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ViewAllCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\Editcategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\AddSubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ViewSubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\EditSubcategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\AddnewProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\EditProducts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ViewAllProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ViewAllOrder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ApprovedReturns.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\ApprovedRefund.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Saller\minOrderofsellers1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\CreatePurchase.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\SellerRegistrations.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Welcomeseller.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\CartDetailsBySession.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\AtoZsubcatproduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\GetProductBySubCategory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Homecss\fonts\Linearicons\Linearicons\Font\Linearicons.ttf" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfont5b62.eot" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfont5b62.ttf" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfont5b62.woff" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfont5b62.woff2" />
+    <Content Include="Homecss\plugins\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\fonts\lgd41d.eot" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\fonts\lgd641.eot" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\fonts\lgd641.ttf" />
+    <Content Include="Homecss\plugins\lightGallery-master\dist\fonts\lgd641.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Viewallbrand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Location.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\GetProductBySeller.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Showallproduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\MyProfile.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\registration.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Change_password.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\TrackOrder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\ProductPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\CartDetailBydatabes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\OrderSucessPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\OrderHistory.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\ShippingPolicy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\CancellationRefund.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\TermandCondition.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\NewUsers.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32076</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:32076/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

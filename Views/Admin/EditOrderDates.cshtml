@@ -1,0 +1,57 @@
+﻿@model Wanc.Models.tbl_orderdate
+@using Wanc.Models;
+@{
+    ViewBag.Title = "EditOrderDates";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<div class="page-content">
+    <div class="page-content-inner">
+
+        <div id="page-wrapper">
+            <div class="main-page">
+                <div class="row">
+                    <div class="col-md-6 validation-grids widget-shadow" data-example-id="basic-forms">
+                        <div class="form-title">
+                            <h4>Edit OrderDates</h4>
+                        </div>
+                        <div class="form-body">
+                            @if (TempData["msg"] != null)
+                            {
+                                <span style="color:green;">@TempData["msg"]</span>
+                            }
+                            <form data-toggle="validator" action="/admin_login/EditOrderDates" method="post" enctype="multipart/form-data">
+                                @Html.HiddenFor(a => a.ID)
+                                <div class="form-group">
+                                    <input type="time" class="form-control" id="inputName" placeholder="Enter Start Date" name="Starttime" required value="@Model.Starttime">
+                                </div>
+                                <div class="form-group">
+                                    <input type="time" class="form-control" id="inputName" placeholder="Enter End Date" name="Endtime" required value="@Model.Endtime">
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control" id="inputName" placeholder="Enter Date" name="datadate" required value="@Model.Date">
+                                </div>
+                                <div class="form-group">
+                                    <select name="Day" class="form-control">
+                                        <option value="Monday" @(Model.Day == "Monday" ? "selected" : "")>Monday</option>
+                                        <option value="Tuesday" @(Model.Day == "Tuesday" ? "selected" : "")>Tuesday</option>
+                                        <option value="Wednesday" @(Model.Day == "Wednesday" ? "selected" : "")>Wednesday</option>
+                                        <option value="Thursday" @(Model.Day == "Thursday" ? "selected" : "")>Thursday</option>
+                                        <option value="Friday" @(Model.Day == "Friday" ? "selected" : "")>Friday</option>
+                                        <option value="Saturday" @(Model.Day == "Saturday" ? "selected" : "")>Saturday</option>
+                                        <option value="Sunday" @(Model.Day == "Sunday" ? "selected" : "")>Sunday</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

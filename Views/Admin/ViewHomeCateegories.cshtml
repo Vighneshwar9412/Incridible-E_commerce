@@ -1,0 +1,60 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "ViewHomeCateegories";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+@if (TempData["MSG"] != null)
+{
+    @Html.Raw(TempData["MSG"]);
+    TempData["MSG"] = null;
+}
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All Categories(Home)</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight:bold;padding-top:15px">View All Categories(Home)</h3>
+        </div>
+
+
+        <table class="table" id="sarvesh1">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Subcategory</th>
+                    <th>Images</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 0;}
+                @foreach (var item in db.tbl_HomePageCaetegories.ToList())
+                {
+                    i = i + 1;
+                    <tr>
+
+                        <td>@i</td>
+                        <td>@item.name</td>
+                        <td><img src="@item.image" style="width:100px; height:100px" class="" /></td>
+                        <td>
+                            <a href="/Admin/DelHomeCategories?id=@item.id" onclick="return confirm('Are You Sure to Delete');" class="btn btn-danger">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</section>

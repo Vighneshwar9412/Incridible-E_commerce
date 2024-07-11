@@ -1,0 +1,191 @@
+﻿@using Wanc.Models;
+@{
+    ViewBag.Title = "ViewAllDiscount";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<ProductDto>)ViewBag.data;
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+<style>
+    td {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">All Discount Details</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px">All Discount Details</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table" id="Totaldata">
+                            <thead>
+                                <tr>
+                                    <th>Discount Type</th>
+                                    <th>From date</th>
+                                    <th>To &nbsp;&nbsp;date</th>
+                                    <th>Applied Discount</th>
+                                    <th>Discount Type</th>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
+                                    <th>MOQ</th>
+                                    <th>Price(Rs.)</th>
+                                    <th>Margin(%)</th>
+                                    <th>Gst(%)</th>
+                                    <th>Update BY</th>
+                                    <th colspan="3">Action</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody id="myTable">
+                                @{ int i = 0;}
+                                @foreach (var item in Data)
+                                {
+                                    i = i + 1;
+                                    <tr>
+
+                                        <td>@item.DiscountType</td>
+                                        <td>@item.Fromdate</td>
+                                        <td>@item.Todate</td>
+                                        <td>@item.ApplyDiscount </td>
+                                        <td>@item.AverageOrPercentage </td>
+                                        <td>@item.ID</td>
+                                        @if (item.Name != null)
+                                        {
+                                            if (item.Name.Length >= 12)
+                                            {
+                                                <td>@item.Name.Substring(0, 12)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Name</td>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.BrandName != null)
+                                        {
+                                            <td>@item.BrandName</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.CategoryName != null)
+                                        {
+                                            <td>@item.CategoryName</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Subname != null)
+                                        {
+                                            <td>@item.Subname</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Unit != null)
+                                        {
+                                            <td>@item.Unit</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Price != null)
+                                        {
+                                            <td>@item.Price</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.Discount != null)
+                                        {
+                                            <td>@item.Discount</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.GST != null)
+                                        {
+                                            <td>@item.GST</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (item.UpdateBy != null)
+                                        {
+                                            if (item.SelleroradminId == null)
+                                            {
+                                                <td>  @item.UpdateBy</td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    @if (db.sallerDetails.Any(a => a.sallerId == item.SelleroradminId))
+                                                    {
+                                                        <b> @db.sallerDetails.Where(a => a.sallerId == item.SelleroradminId).FirstOrDefault().Salerusername</b>
+                                                    }
+
+                                                </td>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+
+
+
+                                        <td><a href="RemoveAddedDiscount?Id=@item.ID" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Remove Added Discount</a></td>
+                                        <td><a href="EditAddedDiscounts?Id=@item.ID" onclick="return confirm('Are you sure?');" class="btn btn-warning btn-sm">Edit </a></td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

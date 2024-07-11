@@ -1,0 +1,241 @@
+﻿@model Wanc.Models.ProductDto
+@{
+    ViewBag.Title = "EditProducts";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#chkCashBack").click(function () {
+            if ($(this).is(":checked")) {
+                $("#txtCashBack").removeAttr("disabled");
+                $("#txtCashBack").focus();
+            } else {
+                $("#txtCashBack").attr("disabled", "disabled");
+            }
+        });
+    });
+</script>
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Add Product</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Add Product</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title" style="color:green">
+                            <i class="icon-bubble4"></i>@TempData["msg"]
+                        </h6>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("EditProducts", "Saller", FormMethod.Post, new
+                        {
+                            @enctype = "multipart/form-data"
+                        }))
+                        {
+                            <form>
+                                @Html.HiddenFor(a => a.ID)
+                                @Html.HiddenFor(a => a.ImageId)
+                                @Html.HiddenFor(a => a.UpdateBy)
+                                @Html.HiddenFor(a => a.Image)
+                                @Html.HiddenFor(a => a.SelleroradminId)
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label class="col-md-4">Enter Product Name:</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(a => a.Name, new
+           {
+               @class = "form-control",
+               @required = "required"
+           })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4">Enter Delivery Pin:</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(a => a.DeliveryPin, new
+           {
+               @class = "form-control",
+               @required = "required"
+           })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-4">Ente Product Brand:</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(a => a.BrandID, new SelectList(ViewBag.Brand, "ID", "BrandName"), new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Select Product Category:</label>
+                                    <div class="col-md-8">
+
+                                        @Html.DropDownListFor(a => a.categoryId, new SelectList(ViewBag.Cate, "ID", "Name"), new
+           {
+               @class = "form-control",
+               @required = "required"
+           })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Select SubCategory:</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(a => a.subcatid, new SelectList(ViewBag.subcate, "id", "subcategorname"), new { @class = "form-control", @required = "required" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Unit:</label>
+                                    <div class="col-md-8">
+
+                                        @Html.TextBoxFor(a => a.Unit, new
+           {
+               @class = "form-control",
+               @required = "required"
+           })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Enter Product Price:</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(a => a.Price, new
+           {
+               @class = "form-control",
+               @id = "Price",
+
+               @required = "required"
+           })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Enter Discount(%)</label>
+                                    <div class="col-md-8">
+                                        @Html.TextBoxFor(a => a.Discount, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Enter Product Description:</label>
+                                    <div class="col-md-8">
+                                        @Html.TextAreaFor(a => a.Description, 10, 40, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4"></label>
+                                    <div class="col-md-8">
+                                        <img id="user_img" style="height:250px;width:300px" src="/ProductImages/@Model.Image" alt="None" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4">Product Image: </label>
+                                    <div class="col-md-8">
+                                        <input type="file" multiple="multiple" title="search image" id="ImageFile"
+                                               name="file" onchange="show(this)" />
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                        <label class="col-md-4">Cashback Type :</label>
+                                        <div class="col-md-8">
+                                            <select name="Cashbacktype" class="form-control">
+                                                <option value="PERCENT">PERCENT</option>
+                                                <option value="VALUE">VALUE</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                @*<div class="form-group">
+                                        <div class="col-md-4">
+                                            <label for="chkCashBack">
+                                                <input type="checkbox" id="chkCashBack" />
+                                            </label>
+                                            <label>Apply CashBack ? </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="number" name="cashback" id="txtCashBack" disabled="disabled" class="form-control" />
+                                        </div>
+                                    </div>*@
+                                <div class="form-actions text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="Dashboard" class="btn btn-primary">Cancel</a>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@*<script>
+        function FillScat() {
+            var CategoryId = $('#categoryId').val();
+            var url = "/Saller/FillSubCategory?Id=" + CategoryId;
+            debugger;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "JSON",
+                success: function (subcatdata) {
+                    debugger;
+                    $("#fnSubCategory").html("");
+                    $("#fnSubCategory").append(subcatdata);
+                }
+            });
+        }
+    </script>*@
+
+<script type="text/javascript">
+
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function cdvalue() {
+        debugger;
+        var value = $("#price").val() * 1;
+        var per = $("#valuecd").val() * 1;
+        var tree = per * value;
+        var four = tree / 100;
+        var final = value - four;
+        $("#dvalue").val(final);
+    };
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#categoryId").change(function () {
+            $.get("/admin/getsubcategory", { categoryId: $("#categoryId").val() }, function (data) {
+                $("#subcatid").empty();
+                $.each(data, function (index, row) {
+                    $("#subcatid").append("<option value='" + row.id + "'>" + row.subcategorname + "</option>")
+                });
+            })
+        });
+    });
+</script>
+

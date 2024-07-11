@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Wanc.Models.PurchaseDetail>
+@{
+    ViewBag.Title = "PurchaseProductList";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Add Category</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Purchase Product List</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-body">All Purchase Product</h3>
+                    </div>
+                    <div class="panel-body">
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                        <th>Uplode By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.PurDate.Value.ToString("dd-MMM-yyyy")</td>
+                                            <td>@item.Productname</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Total</td>
+                                            <td>@item.UpdateBy</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <h3>No data in Database</h3>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

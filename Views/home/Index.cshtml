@@ -1,0 +1,356 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var catdata = db.Categories.ToList().Take(5);
+    var bannerList = (List<Banner>)ViewBag.Banners;
+    var pro = db.Products.ToList();
+    var cart = (List<KartDetailDto>)Session["kart"];
+    DateTime todaydate = DateTime.Now;
+    DateTime previousdays = todaydate.AddDays(-7);
+    var brandlist = (List<Brand>)ViewBag.brand;
+
+}
+
+<section class="banner-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 order-1 order-lg-0 order-xl-0">
+                @foreach (var Banner in db.Banners.ToList().Take(2))
+                {
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-12">
+                            @foreach (var item1 in db.Banners.Where(a => a.ID == Banner.ID).ToList())
+                            {
+                                <div class="home-grid-promo"><img src="@Banner.Images" width="100%" height="200px;" style="border-radius:10px;" /></div>
+                            }
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-8 order-0 order-lg-1 order-xl-1">
+                <div class="home-grid-slider slider-arrow slider-dots">
+                    @foreach (var Banner in db.Banners.Take(2))
+                    {
+
+                        <img src="@Banner.Images" width="100%" height="500px;" />
+
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section style="height: 217px; border-radius: 10px;">
+    <marquee>
+        @foreach (var Category in db.Categories.ToList())
+        {
+            <a class="suggest-card" href="#" style="width:300px; ">
+                <img src="@Category.Image" class="slick-arrow" />
+                <h5 style="font-size:20px; font-weight:700;">@Category.Name</h5>
+            </a>
+        }
+    </marquee>
+</section>
+
+<section class="section recent-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Subcategory items</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="myUL">
+            @foreach (var Product in db.Products.ToList().Take(20).OrderByDescending(a => a.ID))
+            {
+
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-media">
+                            <div class="product-label"></div>
+                            <button class="product-wish wish">
+                                <i class="fas fa-heart"></i>
+                            </button><a class="product-image" href="/Home/ProductPage?ProductId=@Product.ID"><img src="@Product.Image" alt="product" style="border-radius:10px; height:100px; "></a>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
+                            <h6 class="product-name"><a href="#"></a>@Product.Name</h6>
+                            <h6 class="product-price">@Product.Price Rs.<span><small><del>@Product.Discount </del></small></span></h6>
+                            <a href="/Home/ProductPage?ProductId=@Product.ID" class="product-add" title="View Product"><span>View Product</span></a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-btn-25"><a href="/home/Showallproduct" class="btn btn-outline"><i class="fas fa-eye"></i><span>show more</span></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="section promo-part">
+    <div class="container">
+        @foreach (var Banner in db.Banners.ToList().Take(1).OrderByDescending(a => a.ID))
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="@Banner.Images" alt="promo" style="height: 300px; border: 5px solid #199a48; border-radius: 10px;width:100%">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<section class="section countdown-part">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto">
+                <div class="countdown-content">
+                    <h3>special discount offer for vegetable items</h3>
+                    <div class="countdown countdown-clock" data-countdown="2022/12/22"><span class="countdown-time"><span>00</span><small>days</small></span><span class="countdown-time"><span>00</span><small>hours</small></span><span class="countdown-time"><span>00</span><small>minutes</small></span><span class="countdown-time"><span>00</span><small>seconds</small></span></div>
+                    <a href="#" class="btn btn-inline"><i class="fas fa-shopping-basket"></i><span>shop now</span></a>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <div class="countdown-img">
+                    <img src="/images/countdown.png" alt="countdown" width="100%">
+                    <div class="countdown-off"><span>20%</span><span>off</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section promo-part">
+    <div class="container">
+        @foreach (var Banner in db.Banners.Take(1))
+        {
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
+                    <div class="promo-img"><a href="#"><img src="@Banner.Images" alt="promo"></a></div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
+                    <div class="promo-img"><a href="#"><img src="@Banner.Images" alt="promo"></a></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<section class="section brand-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>shop by brands</h2>
+                </div>
+            </div>
+        </div>
+        <div class="brand-slider slider-arrow">
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/01.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>natural greeny</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/02.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>vegan lover</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/03.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>organic foody</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/04.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>ecomart limited</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/05.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>fresh fortune</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+            <div class="brand-wrap">
+                <div class="brand-media">
+                    <img src="/images/brand/06.jpg" alt="brand">
+                    <div class="brand-overlay"><a href="#"><i class="fas fa-link"></i></a></div>
+                </div>
+                <div class="brand-meta">
+                    <h4>econature</h4>
+                    <p>(45 items)</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-btn-50"><a href="/home/Viewallbrand" class="btn btn-outline"><i class="fas fa-eye"></i><span>view all brands</span></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section testimonial-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>client's feedback</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="testimonial-slider slider-arrow">
+                    @foreach (var Review in db.tbl_review.ToList())
+                    {
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left"></i>
+                            <p>@Review.Comment</p>
+                            <h5>@Review.ClientName</h5>
+                            <ul>
+                                <li class="fas fa-star"></li>
+                                <li class="fas fa-star"></li>
+                                <li class="fas fa-star"></li>
+                                <li class="fas fa-star"></li>
+                                <li class="fas fa-star"></li>
+                            </ul>
+                            <img src="/images/avatar/01.jpg" alt="testimonial">
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    function AddToKart(productId) {
+        var Url = "/Home/AddToKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+<script>
+    function AddToSessionKart(productId) {
+        var Url = "/Home/AddToSessionKart?ProductId=" + productId;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload(true);
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    };
+</script>
+<script>
+    function productplus(id) {
+        var Url = "/Home/KartPlus?productid=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload();
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+    function productminus(id) {
+        var Url = "/Home/KartMinus?productid=" + id;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "ok") {
+                    location.reload();
+                }
+                else {
+                    alert("Some Problem Occured");
+                }
+            }
+        });
+    }
+</script>
+<script>
+    function Search() {
+        var search = $("#search").val();
+        var Url = "/Home/getproductbypin?search=" + search;
+        var href = "";
+        var data = [];
+        if (search != null && search != "") {
+            $.ajax({
+                url: Url,
+                method: 'GET',
+                success: function (response) {
+                    debugger;
+                    console.log(response);
+                    $("#tbody").html('');
+                    console.log(response);
+                    $(response).each(function (key, value) {
+                    });
+                }
+            });
+            console.log(data);
+            $("#tbody").show();
+        }
+        else {
+        }
+    };
+
+</script>

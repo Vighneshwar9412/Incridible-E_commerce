@@ -1,0 +1,146 @@
+﻿@model IEnumerable<Wanc.Models.tbl_orderdate>
+@using Wanc.Models;
+@{
+    ViewBag.Title = "AddBookingSlot";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+}
+
+<section class="wrapper">
+    <div class="page-header" style="margin-top:20px;">
+        <div class="page-title">
+            <h3>Add Booking Time Slot</h3>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Add Booking Time Slot</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-body">Add Booking Time Slot</h3>
+                    </div>
+                    <div class="panel-body" style="padding:20px;">
+                        @if (TempData["msg"] != null)
+                        {
+                            <span style="color:green;">@TempData["msg"]</span>
+                        }
+                        <form data-toggle="validator" action="/Admin/OrderDates" method="post" enctype="multipart/form-data">
+
+                            <p style="color:red">@TempData["cat"]</p>
+                            <div class="form-group">
+                                <span style="color:red; font-weight:bold">Start Delivery Time</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="time" class="form-control" id="inputName" placeholder="Enter Start Time" name="Starttime" required>
+                            </div>
+                            <div class="form-group">
+                                <span style="color:red; font-weight:bold">End Delivery Time</span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="time" class="form-control" id="inputName" placeholder="Enter End Time" name="Endtime" required>
+                            </div>
+                            <div class="form-group">
+                                <span style="color:red; font-weight:bold">Delivery Date (Select After 2Days Ago)</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" id="inputName" placeholder="Enter Date" name="datadate" required>
+                            </div>
+                            <div class="form-group">
+                                <span style="color:red; font-weight:bold">Delivery Day</span>
+                            </div>
+                            <div class="form-group">
+                                <select name="Day" class="form-control">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            <div class="tables">
+                                <div class="table-responsive bs-example widget-shadow">
+                                    <h4>OrderDates List:</h4>
+                                    <a style="float:right;margin-top:-8%;" class="btn btn-success" onclick="exportexcel();">Download Reports</a>
+                                    <table class="table table-bordered user" id="transtable">
+                                        <thead>
+                                            <tr>
+                                                <th>S No</th>
+                                                <th>Start Time</th>
+                                                <th>End Time</th>
+                                                <th>Dates</th>
+                                                <th>Days</th>
+                                                <th colspan="1" style="text-align:center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                            int i = 0;
+                                            }
+                                            @foreach (var item in Model)
+                                            {
+                                                {
+                                                    i++;
+                                                }
+                                                <tr>
+                                                    <th scope="row">@i</th>
+                                                    <td>@item.Starttime.Value.ToString("hh:mm tt")</td>
+                                                    <td>@item.Endtime.Value.ToString("hh:mm tt")</td>
+                                                    <td>@item.Date</td>
+                                                    <td>@item.Day</td>
+                                                    <td>
+                                                        <a href="/Admin/DelOrderDates?Id=@item.ID" class="btn btn-danger" onclick="return confirm('do you want to delete')">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        }
+
+                        else
+                        {
+                            <div class="col-md-12">
+                                <h3>No data in database!!!</h3>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('.user').DataTable();
+    });
+</script>
+<script src="/AdminContent/js/export_to_excel.js"></script>
+<script src="/AdminContent/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    function exportexcel() {
+        $("#transtable").table2excel({
+            exclude: ".noExl",
+            name: "Table2Excel",
+            filename: "planListing",
+            fileext: ".xls"
+        });
+    }
+</script>

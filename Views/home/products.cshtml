@@ -1,0 +1,283 @@
+﻿@using Wanc.Models 
+@{
+    ViewBag.Title = "products";
+    Layout = "~/Views/_Layouthome.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    var catdata = db.Categories.ToList().Take(5);
+    var bannerList = (List<Banner>)ViewBag.Banners;
+    var pro = db.Products.ToList();
+}
+
+
+<section class="single-banner inner-section" style="background: url(/images/single-banner.jpg) no-repeat center;">
+    <div class="container">
+        <h2>Product </h2>    
+    </div>
+</section>
+@*<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            @foreach(var Product in db.Products.Take(1))
+            {
+                  <div class="col-lg-6">
+                <div class="details-gallery">
+                    <div class="details-label-group">
+
+                    </div>
+                    <ul class="details-preview">
+                            <li><img src="@Product.Image"  width="430px" height="350px"  alt="product" style="margin:12px;"></li>
+                    </ul>
+                       <ul class="details-thumb">
+                            <li><img src="@Product.Image" alt="product"></li>
+                            <li><img src="@Product.Image" alt="product"></li>
+                            <li><img src="@Product.Image" alt="product"></li>
+                            <li><img src="@Product.Image" alt="product"></li>
+                      </ul>
+                </div>
+            </div>
+                  <div class="col-lg-6">
+                <div class="details-content">
+                    <h3 class="details-name"><a href="#">@Product.Name</a></h3>
+                    <div class="details-meta">
+                      <p>SKU:<span>1234567</span></p>
+                        <p>BRAND:<a href="#">@Product.Brandname</a></p><br />
+                         
+                    </div>
+                    <div class="details-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3 reviews)</a></div>
+                    <h3 class="details-price"><del>@Product.Price</del><span>@Product.Unit<small>/per kilo</small></span></h3>
+                    <div class="details-list-group">
+                        <label class="details-list-title">tags:</label>
+                        <ul class="details-tag-list">
+                            <li><a href="#">organic</a></li>
+                            <li><a href="#">fruits</a></li>
+                            <li><a href="#">chilis</a></li>
+                        </ul>
+                    </div>
+                    <div class="details-list-group">
+                        <label class="details-list-title">Share:</label>
+                        <ul class="details-share-list">
+                            <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
+                            <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
+                            <li><a href="#" class="icofont-linkedin" title="Linkedin"></a></li>
+                            <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
+                        </ul>
+                    </div>
+                    <div class="details-add-group">
+                        <button class="product-add" title="Add to Cart"><i class="fas fa-shopping-basket"></i><span>add to cart</span></button>
+                        <div class="product-action"><button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button><input class="action-input" title="Quantity Number" type="text" name="quantity" value="1"><button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button></div>
+                    </div>
+                   
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>*@
+@*<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="#tab-desc" class="tab-link active" data-bs-toggle="tab">descriptions</a></li>
+                    <li><a href="#tab-spec" class="tab-link" data-bs-toggle="tab">Specifications</a></li>
+                    <li><a href="#tab-reve" class="tab-link" data-bs-toggle="tab">reviews (2)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade show active" id="tab-desc">
+            <div class="row">
+            @foreach(var Product in db.Products.Take(1))
+            {
+
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <div class="tab-descrip">
+                            <p>@Product.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab-spec">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+              @foreach(var Product in db.Products.Take(1))
+              {
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Product code</th>
+                                    <td>SKU: 101783</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Weight</th>
+                                    <td>@Product.Weight</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Styles</th>
+                                    <td>Girly</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Properties</th>
+                                    <td>Short Dress</td>
+                                </tr>
+                            </tbody>
+                        </table>
+              }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab-reve">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-details-frame">
+                        <ul class="review-list">
+                            @foreach(var Review in db.tbl_review.Take(1))
+                            { 
+                               <li class="review-item">
+                                <div class="review-media">
+                                    <a class="review-avatar" href="#"><img src="/images/avatar/01.jpg" alt="review"></a>
+                                    <h5 class="review-meta"><a href="#">@Review.ClientName</a><span>@Review.Createdate</span></h5>
+                                </div>
+                                <ul class="review-rating">
+                                    <li class="icofont-ui-rating"></li>
+                                    <li class="icofont-ui-rating"></li>
+                                    <li class="icofont-ui-rating"></li>
+                                    <li class="icofont-ui-rating"></li>
+                                    <li class="icofont-ui-rate-blank"></li>
+                                </ul>
+                                <p class="review-desc">@Review.Comment</p>
+                                <form class="review-reply"><input type="text" placeholder="reply your thoughts"><button><i class="icofont-reply"></i>reply</button></form>
+                                <ul class="review-reply-list">
+                                    <li class="review-reply-item">
+                                        <div class="review-media">
+                                            <a class="review-avatar" href="#"><img src="/images/avatar/02.jpg" alt="review"></a>
+                                            <h5 class="review-meta"><a href="#">@Review.ClientName</a><span><b>author -</b>@Review.Createdate</span></h5>
+                                        </div>
+                                        <p class="review-desc">@Review.Comment</p>
+                                        <form class="review-reply"><input type="text" placeholder="reply your thoughts"><button><i class="icofont-reply"></i>reply</button></form>
+                                    </li>
+                                  
+                                </ul>
+                            </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="product-details-frame">
+                        <h3 class="frame-title">add your review</h3>
+                        <form class="review-form">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="star-rating"><input type="radio" name="rating" id="star-1"><label for="star-1"></label><input type="radio" name="rating" id="star-2"><label for="star-2"></label><input type="radio" name="rating" id="star-3"><label for="star-3"></label><input type="radio" name="rating" id="star-4"><label for="star-4"></label><input type="radio" name="rating" id="star-5"><label for="star-5"></label></div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group"><textarea class="form-control" placeholder="Describe"></textarea></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group"><input type="text" class="form-control" placeholder="Name"></div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group"><input type="email" class="form-control" placeholder="Email"></div>
+                                </div>
+                                <div class="col-lg-12"><button class="btn btn-inline"><i class="icofont-water-drop"></i><span>drop your review</span></button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<section class="inner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section-heading">
+                    <h2>related this items</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="myUL">
+            @foreach (var Product in db.Products.ToList().Take(10).OrderByDescending(a => a.ID))
+            {
+                <div class="col">
+                    <div class="product-card">
+                        <div class="product-media">
+                            <div class="product-label"></div>
+                            <button class="product-wish wish">
+                                <i class="fas fa-heart"></i>
+                            </button><a class="product-image" href="#"><img src="@Product.Image" alt="product" style="border-radius:10px; height:100px; "></a>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-rating"><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="active icofont-star"></i><i class="icofont-star"></i><a href="#">(3)</a></div>
+                            <h6 class="product-name"><a href="product-video.html">@Product.Name</a></h6>
+                            <h6 class="product-price">@Product.Price Rs.<span><small><del>@Product.Discount </del></small></span></h6>
+                            <a href="/Home/ProductPage?ProductId=@Product.ID" class="product-add" title="View Product"><span>View Product</span></a></div>
+                    </div>
+
+                </div>
+            }
+        </div>
+       
+    </div>
+</section>
+<section class="news-part" style="background: url(/images/newsletter.jpg) no-repeat center;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-6 col-xl-7">
+                <div class="news-text">
+                    <h2>Get 20% Discount for Subscriber</h2>
+                    <p>Lorem ipsum dolor consectetur adipisicing accusantium</p>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-6 col-xl-5">
+                <form class="news-form"><input type="text" placeholder="Enter Your Email Address"><button><span><i class="icofont-ui-email"></i>Subscribe</span></button></form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="intro-part">
+    <div class="container">
+        <div class="row intro-content">
+            <div class="col-sm-6 col-lg-3">
+                <div class="intro-wrap">
+                    <div class="intro-icon"><i class="fas fa-truck"></i></div>
+                    <div class="intro-content">
+                        <h5>free home delivery</h5>
+                        <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="intro-wrap">
+                    <div class="intro-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="intro-content">
+                        <h5>instant return policy</h5>
+                        <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="intro-wrap">
+                    <div class="intro-icon"><i class="fas fa-headset"></i></div>
+                    <div class="intro-content">
+                        <h5>quick support system</h5>
+                        <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="intro-wrap">
+                    <div class="intro-icon"><i class="fas fa-lock"></i></div>
+                    <div class="intro-content">
+                        <h5>secure payment way</h5>
+                        <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Wanc.Models.SubcategoryDto>
+@{
+    ViewBag.Title = "ViewSubCategory";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#sarvesh4').DataTable();
+    });
+</script>
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All SubCategory</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">View All SubCategory</h3>
+        </div>
+        <div class="panel-body" style="overflow-x:scroll;">
+            <div class="tab-content">
+                <div class="tab-pane active fade in" id="inside_panel">
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+                            <table class="table" id="sarvesh4">
+                                <thead>
+                                    <tr>
+                                        <th>S. No</th>
+                                        @*<th>Delivery Pin</th>*@
+                                        <th>SubCategory Name</th>
+                                        <th>CategoryName</th>
+                                        <th>Update By</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                @if (Model != null)
+                                {
+                                    <tbody>
+                                        @{ int i = 0;}
+                                        @foreach (var item in Model)
+                                        {
+                                            i = i + 1;
+                                            <tr>
+                                                <td>@i</td>
+                                                @*<td>@item.DeliveryPin</td>*@
+                                                <td>@item.subcategorname</td>
+                                                <td>@item.ParentCategoryName</td>
+                                                <td>@item.UpdateBy</td>
+                                                <td>
+                                                    @*<a href="Editsubcategory?Id=@item.id" onclick="return confirm('Are you sure to Edit?');" class="btn btn-success">Edit</a>*@
+                                                    <a href="Deletesubcategory?Id=@item.id" onclick="return confirm('Are you sure to Delete?');" class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,213 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "UserLists";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<tbl_user>)ViewBag.Data;
+}
+
+<style>
+    th {
+        color: black;
+        text-align: center;
+    }
+</style>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"]);
+    TempData["msg"] = null;
+}
+
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Buyers Lists</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+
+        <div class="panel-body" style="overflow-x:scroll;">
+
+            <!-- /breadcrumbs line -->
+            <!-- Form components -->
+            <div class="tab-content">
+
+                <!-- First tab -->
+                <div class="tab-pane active fade in" id="inside_panel">
+
+
+
+                    <!-- Default table -->
+                    <div class="panel panel-default">
+                        <div class="table-responsive">
+
+                            <table class="table" id="Totaldata">
+
+                                <tr style=" background: lightgrey;">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>USerID</th>
+                                    <th>Mail-ID</th>
+                                    <th>Mobile</th>
+                                    <th>Password</th>
+                                    <th>Joining Date</th>
+                                    <th>Document Type</th>
+                                    <th>Document</th>
+                                    <th>Status</th>
+                                    <th colspan="2">Action</th>
+
+                                </tr>
+
+                                @{int i = 0;}
+                                @foreach (var item in Data)
+                                {
+                                    i++;
+                                    <tr>
+                                        <th style="background-color:lightgrey;">@i</th>
+                                        @if (item.full_name == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.full_name</th>
+                                        }
+
+                                        @if (item.self_s_id == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.self_s_id</th>
+                                        }
+
+
+                                        @if (item.email == null)
+                                        {
+
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.email</th>
+                                        }
+
+
+                                        @if (item.mobilenumber == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.mobilenumber</th>
+                                        }
+
+                                        @if (item.password == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.password</th>
+                                        }
+
+                                        @if (item.JoiningDate == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.JoiningDate.Value.ToString("dd-mmm-yyyy")</th>
+                                        }
+
+                                        @if (item.DocType == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>@item.DocType</th>
+                                        }
+                                        @if (item.DocImage == null)
+                                        {
+                                            <th>No Data!!!</th>
+                                        }
+                                        else
+                                        {
+                                            <th>
+                                                <img src="~/Images/@item.DocImage" style="height: 40px; width: 55px;">
+                                            </th>
+                                        }
+
+                                        <td>
+                                            @if (item.Active == true)
+                                            {
+                                                <span style="color:green;"><b>Active</b> </span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red;"> Not Active</span>
+                                            }
+                                        </td>
+
+                                        <th>
+                                            <a href="/admin/ViewUserDetails?Id=@item.self_s_id" class="btn btn-success btn-sm"> View</a>
+
+                                        </th>
+                                        @if (item.Active == true)
+                                        {
+                                            <th>
+
+                                                <a href="/admin/DeactivateORActivateUsers?UserId=@item.UserId" class="btn btn-success btn-sm"> Active </a>
+
+                                            </th>
+                                        }
+                                        else
+                                        {
+                                            <th>
+                                                <a href="/admin/DeactivateORActivateUsers?UserId=@item.UserId" class="btn btn-danger btn-sm"> De-Active </a>
+                                            </th>
+                                        }
+
+
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <!-- /default table -->
+                </div>
+                <!-- /form components -->
+                <!-- Footer -->
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<script type="text/javascript">
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

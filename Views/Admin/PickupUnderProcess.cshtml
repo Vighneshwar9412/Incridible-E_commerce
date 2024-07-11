@@ -1,0 +1,105 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "PickupUnderProcess";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var data = (List<MyReturnProductsDto>)ViewBag.data;
+}
+
+<style>
+    th {
+        text-align: center;
+       }
+    td {
+        text-align: center;
+    }
+</style>
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">@TempData["title"]</a></li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h6 class="panel-title" style="font-weight:bold; padding-top: 10px;">@TempData["title"]</h6>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in" id="inside_panel">
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (data != null)
+                        {
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Return Date</th>
+                                        <th>Order Date</th>
+                                        <th>Order ID</th>
+                                        <th>Pro ID</th>
+                                        <th>Pro Name</th>
+                                        <th>Seller-ID</th>
+                                        <th>Buyer-ID</th>
+                                        <th>Qty</th>
+                                        <th>Net Amount</th>
+                                        <th>Payment Type</th>
+                                        <th>Transaction-ID</th>
+                                        <th>Return Reason</th>
+                                        <th>Return Proof</th>
+                                        <th>Cancelled Return</th>
+                                        <th colspan="4">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                            int i = 0;
+                                    }
+                                    @foreach (var item in data)
+                                    {
+                                        i++;
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.ReturnDate</td>
+                                            <td>@item.CreateDate</td>
+                                            <td>@item.OrderIdN</td>
+                                            <td>@item.ProductId</td>
+                                            @if (item.Productname.Length >= 12)
+                                            {
+                                                <td>@item.Productname.Substring(0, 12)</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.Productname</td>
+                                            }
+                                            <td>@item.seller_SelID</td>
+                                            <td>@item.Buyer_selfID</td>
+                                            <td>@item.Quantity</td>
+                                            <td>@item.TotalAmount</td>
+                                            <td>@item.PaymentMethod</td>
+                                            <td></td>
+                                            <td>@item.ReturnReason</td>
+                                            <td>
+                                                <a href="~/Images/@item.Returnproof"> <img src="~/Images/@item.Returnproof" style="height: 90px; width: 90px;margin-top: -29px;" /></a>
+                                            </td>
+                                            <td>
+                                                @item.isReturnApproved
+                                            </td>
+                                            <td>@item.Status</td>
+
+                                            <td><a href="~/Admin/ReturnProceedOrder?ID=@item.Od_ID" class="btn btn-warning btn-sm">Proceed Order Status </a></td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

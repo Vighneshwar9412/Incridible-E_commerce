@@ -1,0 +1,32 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "Welcomeseller";
+    Layout = "~/Views/_Layouthome.cshtml";
+    var categorylist = (List<Category>)ViewBag.Category;
+    var itemdata = (List<subcategory>)ViewBag.subcategory;
+}
+
+<style>
+    .modal-backdrop {
+        z-index: 1 !important;
+    }
+</style>
+<br />
+
+<section class="sign-in">
+    <div class="container">
+
+        <br />
+        <center><h3 class="form-title">Registration Successful</h3></center>
+        <div class="content text-center">
+            <span style="font-size:15px;">
+                Welcome, In <b>Wanc</b>. Your ID <b>@ViewBag.id</b> and Password is <b>@ViewBag.pass</b> <br />
+                <a href="/Saller/SallerLogin" class="btn btn-primary" style="background: #0193DD;margin-bottom:10px; padding-top: 5px; padding-bottom: 5px; ">Login</a><br />
+        
+        </div>
+        </b>
+
+
+
+    </div>
+</section>

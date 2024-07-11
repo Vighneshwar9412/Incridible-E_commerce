@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "ViewBrand";
+    Layout = "~/shared/sallerlayout.cshtml";
+}
+
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Saller/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">View All Brands</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="font-weight:bold">View All Brands</h3>
+        </div>
+        @*<div class="panel-body" style="overflow-x:scroll;">
+
+                @using (Html.BeginForm("ViewBrand", "Saller", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+
+                }
+
+
+            </div>*@
+
+        <table class="table" id="sarvesh8">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Images</th>
+                    <th>Brand Name</th>
+                    <th>Update By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 0;}
+                @foreach (var item in Model)
+                {
+                    i = i + 1;
+                    <tr>
+
+                        <td>@i</td>
+                        <td><img src="@item.Images" style="width:70px;height:70px"></td>
+                        <td>@item.BrandName</td>
+                        <td>@item.UpdateBy</td>
+                        <td>
+                            <a href="/Saller/DelBrand?Id=@item.ID" onclick="return confirm('Are You Sure to Delete');" class="btn btn-danger">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</section><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

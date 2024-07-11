@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Wanc.Models.tbl_pincode>
+@using Wanc.Models
+@{
+    ViewBag.Title = "PinCode";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (List<tbl_pincode>)ViewBag.data;
+}
+
+<script>
+    $(document).ready(function () {
+        $('#sarvesh3').DataTable();
+    });
+</script>
+
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"]);
+    TempData["msg"] = null;
+}
+
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">All PinCode</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold">All PinCode</h6>
+        </div>
+        <div class="tab-content">
+
+            <div class="tab-pane active fade in" id="inside_panel">
+
+                <!-- Default table -->
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (Data != null && Data.Count() > 0)
+                        {
+                            <table class="table" id="Totaldata">
+                                <thead>
+                                    <tr>
+                                        <th>S No</th>
+                                        <th>Pin Code</th>
+                                        <th>State</th>
+                                        <th>City</th>
+                                        <th colspan="2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int i = 0;}
+                                    @foreach (var item in Data)
+                                    {
+                                        i = i + 1;
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.Pincode</td>
+
+                                            @if (item.State != null)
+                                            {
+                                                <td>@item.State</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            @if (item.City != null)
+                                            {
+                                                <td>@item.City</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
+                                            <td><a href="~/Admin/DelPincode?Id=@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure to Delete');">Delete</a></td>
+                                            <td><a href="~/Admin/EditPincode?Id=@item.Id" class="btn btn-warning btn-sm">Edit</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <h3>No data in Database</h3>
+                        }
+                    </div>
+                </div>
+                <!-- /default table -->
+            </div>
+            <!-- /form components -->
+            <!-- Footer -->
+
+
+        </div>
+    </div>
+
+</section>
+<script type="text/javascript">
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

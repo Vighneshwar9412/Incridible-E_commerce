@@ -1,0 +1,80 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "EditAddedDiscounts";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var Data = (Product)ViewBag.data;
+}
+
+<section class="wrapper">
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">Edit  Discount</a></li>
+        </ul>
+    </div>
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-body">Edit Discount</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form action="/Admin/EditAddedDiscounts" method="Post">
+
+
+                            <div class="form-group">
+                                <label class="col-md-2">From Date</label>
+                                <center>
+                                    <div class="col-md-8">
+                                        <input type="datetime" value="@Data.Fromdate" name="fromdate" class="form-control" />
+                                        <input type="hidden" value="@Data.ID" name="ID" class="form-control" />
+                                        <input type="hidden" value="@Data.DiscountType" name="DiscountType" class="form-control" />
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">To date</label>
+                                <center>
+                                    <div class="col-md-8">
+                                        <input type="datetime" value="@Data.Todate" name="todate" class="form-control" />
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">Discount</label>
+                                <center>
+                                    <div class="col-md-8">
+                                        <input type="text" value="@Data.ApplyDiscount" name="Discount" class="form-control" />
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">Discount Type</label>
+                                <center>
+                                    <div class="col-md-8">
+                                        <select class="form-control" value="@Data.AverageOrPercantage" name="averageOrPercentage">
+                                            <option value="">Select</option>
+                                            <option value="Amount">Amount</option>
+                                            <option value="Percentage">Percentage</option>
+                                        </select>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,204 @@
+﻿@model Wanc.Models.sallerDetail
+@using Wanc.Models
+@{
+    ViewBag.Title = "SellerRegistrations";
+    Layout = "~/Views/_Layouthome.cshtml";
+    var categorylist = (List<Category>)ViewBag.Category;
+    var itemdata = (List<subcategory>)ViewBag.subcategory;
+    var Pincode = (List<tbl_pincode>)ViewBag.pincode;
+    var pro = (List<Product>)ViewBag.pro;
+}
+
+
+<br /><br />
+<div class="container" style="width:90%;">
+    <div class="row" style="box-shadow: 0 0 5px; border-radius: 30px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div>
+                <br />
+                <center>
+                    <h3 class="form-title"><b>Become a Seller</b></h3>
+                    @if (TempData["messge"] != null)
+                    {
+                        <p style="color:red">@TempData["messge"]</p>
+
+                    }
+                </center>
+            </div>
+            <form action="/Home/SellerRegistrations" method="post" enctype="multipart/form-data">
+                <br />
+                <h1 style="font-size: 19px; color: #C42000; background: white; font-weight: bold; ">Personal Details</h1><hr />
+                <div class="col-sm-12" id="divtwo">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="Full Name" required />
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label></label>
+                                <input type="text" name="SallerEmailId" id="SallerEmailId" class="form-control" placeholder="Emain-ID" required />
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label><i class="zmdi zmdi-phone"></i></label>
+                                <input type="text" name="sallerContactNo" id="num3" placeholder="Mobile Number" class="form-control" maxlength="12" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" required />
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <h1 style="font-size: 19px; color: #C42000; background: white; font-weight: bold; ">Shop Details</h1><hr />
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-group"><b>Select Documents</b></label>
+
+                            <select name="DocumentType" class="form-control">
+                                <option value="">  --Select--</option>
+                                <option value="GST Certificate">GST Certificate</option>
+                                <option value="Shop Licence">Shop Licence</option>
+                                <option value="Udhyog Aadhar">Udhyog Aadhar</option>
+                                <option value="Trade Licence">Trade Licence</option>
+                                <option value="Drug Licence">Aadhar Number</option>
+                                <option value="FSSAI Registration">FSSAI Registration </option>
+                                <option value="Drug Licence">Drug Licence</option>
+                            </select>
+                        </div><br />
+                        <div class="col-md-3">
+                            <label class="form-group"><b>Document No.</b></label>
+                            <input type="text" class="form-control" name="DocumentNo" required/ >
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Choose File</b></p>
+                            <input type="file" class="form-control" name="File" id="File" required/>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Pan No.</b></p>
+                            <input type="text" class="form-control" name="PANno" required/>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>CIN No.</b></p>
+                            <input type="text" class="form-control" name="CINno" required/>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Type Of Business</b></p>
+                            <div class="form-group">
+                                <select name="BussinessType" class="form-control">
+                                    <option value="">  --Select--</option>
+                                    <option value="Retailer">  Retailer</option>
+                                    <option value="Manufacture">  Manufacture</option>
+                                    <option value="Wholesaler">  Wholesaler</option>
+                                    <option value="Distibuter/Dealer">  Distibuter/Dealer</option>
+                                    <option value="Service_Provider">  Service Provider</option>
+                                    <option value="Service_Provider">  Farmer</option>
+                                    <option value="Other">  Other</option>
+                                </select>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Shop Name</b></p>
+                            <input type="text" class="form-control" name="ShopName"  required/>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Full Address</b></p>
+                            <input type="text" class="form-control" name="ShopAddress" required/>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Select City</b></p>
+                            <select class="form-control" name="City" required>
+                                <option value="">Select City</option>
+                                @foreach (var item in Pincode)
+                                {
+                                    <option value="@item.City">@item.City</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Select Pincode</b></p>
+                            <select class="form-control" name="Pincode" required>
+                                <option value="">Select City</option>
+                                @foreach (var item in Pincode)
+                                {
+                                    <option value="@item.Pincode">@item.Pincode</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <p><b>Select State</b></p>
+                            <select class="form-control" name="State" required>
+                                <option value="">Select City</option>
+                                @foreach (var item in Pincode)
+                                {
+                                    <option value="@item.State">@item.State</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <input type="button" style="font-size: 19px; color: #C42000; background: white; font-weight: bold; " value="Bank Details" required /><hr />
+                <div class="col-sm-12" id="divtwo1">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-group"><b>Bank Name</b></label>
+                            <input type="text" name="BamkName" id="BamkName" class="form-control" placeholder="Bank Name" required />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-group"><b>Bank Address</b></label>
+                            <input type="text" name="bankAddress" id="bankAddress" class="form-control" placeholder="Bank Address" required />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-group">
+                                <b>Banidicery Name</b>
+                            </label>
+                            <input type="text" name="BanificeryName" id="BanificeryName" class="form-control" placeholder="Nominee Name" required />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-group"><b>Account Number</b></label>
+                            <input type="text" name="AccountNumber" id="AccountNumber" class="form-control" placeholder="Account Number" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-group"><b>IFSE Code</b></label>
+                            <input type="text" name="IFSECode" id="IFSECode" class="form-control" placeholder="IFSE Code"required />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" required>
+                                <label class="form-check-label"> <a href="/home/ShippingPolicy">Privacy and Policy</a></label>
+                            </div>
+                            <br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" required>
+                                <label class="form-check-label"> <a href="/home/TermandCondition">Term and Conditions</a></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-sm-12" style="text-align:center">
+                    <div class="form-group form-button">
+                        <button class="ps-btn " style=" padding: 10px; background: #119744; border-radius:5px;"> Register</button>
+                        <button class="ps-btn" type="reset" style="padding: 10px; background: #b1adad; border-radius: 5px;">Reset</button>
+                    </div>
+                </div><br /><br />
+            </form>
+        </div>
+        <br />
+    </div>
+</div>

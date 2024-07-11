@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "SallerLogin";
+    Layout = "~/Views/_Layouthome.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<section class="user-form-part">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-10">
+                <center>
+                    @if (TempData["msg"] != null)
+                    {
+                        <p style="color:green">@TempData["msg"]</p>
+                    }
+                </center>
+
+                <div class="user-form-card">
+                    <div class="user-form-title">
+                        <h3 style="text-align:center;">Seller Login</h3>
+                    </div>
+                    <div class="user-form-group">
+                        <form class="user-form" action="/Saller/SallerLogin" method="post">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="logingid" placeholder="Enter Saller-ID">
+                            </div><br /><br />
+                            <div class="form-group">
+                                <input class="form-control" type="password" name="pwd" placeholder="Password">
+                            </div><br /><br />
+                            <div class="form-check mb-3">
+                                <input type="checkbox" id="remember-me" name="remember-me">
+                                <label class="form-check-label" for="check">Rememeber me</label>
+                            </div>
+                            <div class="form-button">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

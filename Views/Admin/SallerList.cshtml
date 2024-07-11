@@ -1,0 +1,144 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "SallerList";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    var data = (List<sallerDetail>)ViewBag.dat;
+}
+
+<style>
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+
+<section class="wrapper">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/Admin/Dashboard">Dashboard</a></li>
+            <li class="active"><a href="#">All Saller Details</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <a href="javascript:void(0);" onclick="tableToExcel('Totaldata', 'My Downline List')" style="border-radius: 0px; float:right;" class="btn btn-primary"><i class="fa fa-file-excel-o" style="margin-top:3px;"></i> Download In Excel</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title" style="font-weight:bold; padding-top:15px;">All Saller Details</h6>
+        </div>
+
+
+        <div class="tab-content">
+
+            <div class="tab-pane active fade in" id="inside_panel">
+
+                <div class="panel panel-default">
+                    <div class="table-responsive">
+                        @if (data != null)
+                        {
+                            <table class="table" id="Totaldata">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Name</th>
+                                        <th>Contact No.</th>
+                                        <th>UserName</th>
+                                        <th>Password</th>
+                                        <th>Document Type</th>
+                                        <th>Document</th>
+                                        <th colspan="3">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @{ int i = 0;}
+                                    @foreach (var item in data)
+                                    {
+                                        i = i + 1;
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.FirstName</td>
+                                            <td>@item.sallerContactNo</td>
+                                            <td>@item.Salerusername</td>
+                                            <td>@item.sallerpass</td>
+
+                                            @if (item.DocumentType != null)
+                                            {
+                                                <td>@item.DocumentType</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Not Found</td>
+                                            }
+
+                                            @if (item.Document != null)
+                                            {
+                                                <td>
+                                                    <a href="/Admin/ViewSallerDetails?Id=@item.sallerId"><img src="~/Images/@item.Document" style="width:100px;height:50px" /></a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>Not Found</td>
+                                            }
+
+                                            <td>
+                                                @if (item.Active != true)
+                                                {
+                                                    <a href="/Admin/ActiveSaller?Id=@item.sallerId" class="btn btn-danger btn-sm">De-Activate</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="/admin/ActiveSaller?Id=@item.sallerId" class="btn btn-primary btn-sm"> Active </a>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/Delsaller?Id=@item.sallerId" onclick="return confirm('Are You Sure to Delete');" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/ViewSallerDetails?Id=@item.sallerId" class="btn btn-success btn-sm">View</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+
+                        }
+                        else
+                        {
+                            <center><h1>NO Data!!!</h1></center>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<script type="text/javascript">
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

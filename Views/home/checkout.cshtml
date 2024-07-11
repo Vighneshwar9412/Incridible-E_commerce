@@ -1,0 +1,60 @@
+﻿@model Wanc.Models.tbl_registration
+@using Wanc.Models
+@{
+    ViewBag.Title = "checkout";
+    Layout = "~/Views/_Layouthome.cshtml";
+    string dd = Convert.ToString(Session["Amount"]);
+}
+<section class="inner-section wishlist-part">
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-scroll">
+                    <div class="account-title">
+                        <h4>Place Order</h4>
+                    </div>
+                    <div class="row">
+                        @if (TempData["Message"]!=null)
+                        {
+                            <p style="color:red">@TempData["Message"]</p>
+                            
+                            
+                        } 
+                        <form action="/home/Checkout" method="post">
+                            <div>
+                                <label class="form-group" for="exampleInputName">Your Name</label>
+                                <input type="text" class="form-control" value="@Model.name" name="CustomerName" required readonly>
+                            </div><br /><input type="hidden" name="CustomerUniqueID" value="@Model.id" />
+                            <div>
+                                <label class="form-group" for="exampleInputMobile">Mobile</label>
+                                <input type="number" class="form-control" value="@Model.mobile1" name="CustomerNumber" required readonly>
+                            </div><br />
+                            <div>
+                                <label class="form-group" for="exampleInputAddress">Shipping Address</label>
+                                <input type="text" class="form-control" name="ShippingAddress" required />
+                            </div><br />
+                            <div>
+                                <label class="form-group" for="exampleInputAddress">Pincode</label>
+                                <input type="number" class="form-control" name="Pincode" required />
+                            </div><br />
+                            <div>
+                                <label class="form-group" for="exampleInputPayment">Payment Mode</label>
+                                <select class="form-control" name="PaymentMode" required>
+                                    <option value="COD">COD</option>
+                                </select>
+                            </div><br />
+                            <div>
+                                <label class="form-group" for="exampleInputEmail1">Amount</label>
+                                <input type="number" class="form-control" value="@Session["Amount"]" name="Amount" required readonly>
+                            </div><br />
+                            <center>
+                                <input type="submit" class="btn btn-success" href="#" onclick="return confirm('Are Your Sure , Confirm this Order?')" value="Place Order" />
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

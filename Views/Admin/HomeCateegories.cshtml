@@ -1,0 +1,165 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "HomeCateegories";
+    Layout = "~/shared/_AdminLayout1.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+}
+
+<section class="wrapper">
+    <div>
+        <ul class="breadcrumb" style="    background: white;    color: red;">
+            <li>#Image Size Must Be Under 2000*2000</li>
+        </ul>
+    </div>
+    @if (TempData["MSG"] != null)
+    {
+        @Html.Raw(TempData["MSG"]);
+         TempData["MSG"] = null;
+    }
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title" style="color:green;padding-top:15px">
+                            <b>Manage Categories (Home)</b>
+
+                        </h6>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("HomeCateegories", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group">
+                                <label class="col-md-4">Add Categories ( home page):</label>
+                                <div class="col-md-8">
+                                    @foreach (var item in db.Categories.ToList())
+                                    {
+                                        <input type="checkbox" name="CatID" value="@item.ID " /> @item.Name <br />
+                                    }
+                                </div>
+                            </div>
+
+
+                            <div class="form-actions text-right">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img style="height:auto; width:100px">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#gallery-photo-add').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+    });
+
+</script>
+
+<script>
+    function cdvalue() {
+        debugger;
+        var value = $("#price").val() * 1;
+        var per = $("#valuecd").val() * 1;
+        var tree = per * value;
+        var four = tree / 100;
+        var final = value - four;
+        $("#dvalue").val(final);
+    };
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#categoryId").change(function () {
+            $.get("/admin/getsubcategory", { categoryId: $("#categoryId").val() }, function (data) {
+                $("#subcatid").empty();
+                $.each(data, function (index, row) {
+                    $("#subcatid").append("<option value='" + row.id + "'>" + row.subcategorname + "</option>")
+                });
+            })
+        });
+    });
+
+    function showhde() {
+        if ($('#showbrand').css('display') == 'none') {
+            $("#showbrand").show(500);
+        }
+        else {
+            $("#showbrand").hide(500);
+        }
+
+
+    };
+    function brandsubmit() {
+        debugger;
+        var inputbrand = $("#brnd").val();
+        var Url = "/Admin/Addbrands?BRAND=" + inputbrand;
+        $.ajax({
+            url: Url,
+            method: 'GET',
+            success: function (response) {
+                if (response == "OK") {
+                    debugger;
+                    location.reload(true);
+                    alert("Brand Added");
+                }
+                else {
+                    alert("Already Exists");
+                }
+
+            }
+        });
+
+    };
+</script>
+@*<script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({ selector: 'textarea' });
+    </script>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $fields = $('#fields');
+        $('#btnAddField').click(function (e) {
+            confirm('Are You sure');
+            e.preventDefault();
+            $('<input type="text" name="Heading" />&nbsp;&nbsp;&nbsp;<input type="text" name="Para" /><br/>').appendTo($fields);
+        });
+
+        var $fields1 = $('#fields1');
+        $('#btnAddField1').click(function (e) {
+            confirm('Are You sure');
+            e.preventDefault();
+            $('<input type="text" name="SHeading" />&nbsp;&nbsp;&nbsp;<input type="text" name="SPara" /><br/>').appendTo($fields1);
+        });
+    });
+
+
+</script>

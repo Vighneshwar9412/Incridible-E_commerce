@@ -1,0 +1,129 @@
+﻿@using Wanc.Models
+@{
+    ViewBag.Title = "minOrderofsellers1";
+    Layout = "~/shared/sallerlayout.cshtml";
+    wanc_dbEntities db = new wanc_dbEntities();
+    int sallerid = Convert.ToInt32(Session["SallerID"]);
+}
+
+<style>
+    #headingadd {
+        background-color: #8B5C7E;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-top: -15px;
+        color: white;
+    }
+</style>
+<br />
+<br />
+<br />
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"]);
+     TempData["msg"] = null;
+}
+<div class="container">
+    <center>
+        <div class="col-md-11" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+            <h2 id="headingadd">Add minimum Order</h2><br />
+
+            <div class="panel-group" id="accordion">
+                <form action="/Saller/minOrderofsellers1" method="post">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3" style="display: none">
+                                    <label style="float:left;">&nbsp</label>
+                                    <br />
+                                    <input type="text" class="form-control" name="sellerid" value="@sallerid">
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="float:left; font-size:15px">
+                                        Enter Minimum Order :
+                                    </label>
+                                    <br />
+                                    <input type="text" class="form-control" name="MinAmount" value="" required>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label style="float:left; font-size:15px">
+                                        &nbsp;
+                                    </label>
+                                    <br />
+                                    <input class="btn btn-success " type="submit" value="Submit" style="float: left">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                </form>
+            </div>
+        </div>
+    </center>
+</div>
+@{
+    var dataa = db.MinOrder_For_sallers.Where(a => a.sellerid == sallerid).ToList();
+}
+@if (dataa != null && dataa.Count >= 0)
+{
+
+    <div class="container">
+        <center>
+            <div class="col-md-11" style="margin-top:50px;margin-bottom:50px;background:#fff;padding:15px;">
+                <h2 id="headingadd">Minimun Order Details</h2><br />
+
+                <div class="panel-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Seller-ID</th>
+                                <th>Minimum order</th>
+                                <th>CreateDate</th>
+                                <th>Update By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 0;}
+                            @foreach (var item in dataa)
+                            {
+                                i++;
+                                <tr>
+                                    <th>@i</th>
+                                    <th>
+
+                                        @db.sallerDetails.Where(a => a.sallerId == sallerid).FirstOrDefault().Salerusername
+
+                                    </th>
+                                    <th>@item.MinAmount</th>
+                                    <th>@item.craetedate</th>
+                                    <th>@item.UpdateBy</th>
+
+                                    @*<th>
+                                            <a href="/Admin/DeleteDeliveryCharge?ID=@item.ID" class="btn btn-danger btn-sm">Delete</a>
+                                        </th>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </center>
+    </div>
+}
+else
+{
+    <h1>No Data!!!</h1>
+}
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
